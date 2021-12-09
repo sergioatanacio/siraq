@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="<?php domain_print('misEstilos.css');?>" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <form action="<?php domain_print('load_products_push');?>">
+        <p>Nombre del producto</p>
+        <input type="text" name="Nombre del producto" id="">
+        <p>Descripción del producto</p>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <p>Imagen del producto</p>
+        <input type="file" name="Subir imagen del producto" id="">
+    </form>
+
+    <form action="<?php domain_print('load_products_push');?>" method="POST" enctype="multipart/form-data">
+        <p>Añadir imagen:</p> 
+        <input name="archivo" id="archivo" type="file"/>
+        <input type="submit" name="subir" value="Subir imagen"/>
+    </form>
+        
+    <script src="<?php domain_print('script');?>"></script>
+</body>
+</html>
+
+
