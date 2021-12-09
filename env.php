@@ -1,7 +1,7 @@
 <?php
 
 const db_host       = 'localhost';
-const db_nombre     = 'students';
+const db_nombre     = 'siraq_prints';
 const db_usuario    = 'root';
 const db_pasword    = '';
 
