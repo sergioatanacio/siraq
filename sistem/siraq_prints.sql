@@ -27,8 +27,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `courses`
 --
 
-CREATE TABLE `courses` (
-  `id_courses` int(11) NOT NULL,
+CREATE TABLE `tags` (
+  `id_tag` int(11) NOT NULL,
+  `name_tag` varchar(150) NOT NULL,
+  `description_tag` varchar(150) NOT NULL
+  `cover_tag` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `sheets` (
+  `id_sheets` int(11) NOT NULL,
+  `name_course` varchar(150) NOT NULL,
+  `teacher` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `relations` (
+  `id_sheets` int(11) NOT NULL,
   `name_course` varchar(150) NOT NULL,
   `teacher` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
