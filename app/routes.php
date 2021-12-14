@@ -4,13 +4,7 @@
 
 $routePrint('', 'generalController@apps');
 $routePrint('user', 'generalController@user');
-
-
-
-
-
-
-
+$routePrint('administrative_panel', 'generalController@administrative_panel');
 
 
 

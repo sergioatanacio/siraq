@@ -4,13 +4,18 @@ $generalController = function($method, $conection, $petition) use ($models)
 {
     $methodsToReturn =
     [
-        'apps'          => function() 
+        'apps'                  => function() 
             {
                 return response_require('beginning.html');
             },
-        'user'          => function() 
+        'user'                  => function() 
             {
                 return response_require('user/user.html');
+            },
+        'administrative_panel'  => function() 
+            {
+
+                return response_require('user/administrative_panel.html');
             },
         'start'         => function() 
             {
