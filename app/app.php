@@ -8,6 +8,10 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return response_require('beginning.html');
             },
+        'user'          => function() 
+            {
+                return response_require('user/user.html');
+            },
         'start'         => function() 
             {
                 return response_require('start/start.html');

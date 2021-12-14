@@ -3,6 +3,24 @@
 <?php
 
 $routePrint('', 'generalController@apps');
+$routePrint('user', 'generalController@user');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $routePrint('table', 'generalController@start');
 $routePrint('script', 'generalController@script_start');
 $routePrint('students', 'generalController@students');
