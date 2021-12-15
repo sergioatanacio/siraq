@@ -8,6 +8,14 @@
         <title>New page</title>
         <link href="css/style.css" rel="stylesheet">
     </head>
+    <style>
+        [data-content]{
+            display: none;
+        }
+        .active[data-content]{
+            display: block;
+        }
+    </style>
     <body>
         <header >
             <a>Siraq</a>
@@ -20,33 +28,71 @@
             <a href="<?php domain_print('');?>">
                 <button>Ir al inicio</button>
             </a>
-            <button id="add_product">Agregar producto</button>
-            <button id="add_tag">Etiqueta</button>
-            <button id="my_profile">Mi perfil</button>
+            <button data-target="#tab_add_product" id="add_product">Agregar producto</button>
+            <button data-target="#tab_add_tag" id="add_tag">Etiqueta</button>
+            <button data-target="#tab_my_profile" id="my_profile">Mi perfil</button>
         </section>
-        <section id="tab">
-
+        <section id="tabs">
+            <section data-content id="tab_add_product">
+                <form action="">
+                    <p>Nombre</p>
+                    <input type="text">
+                    <p>Description</p>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <p>Tamaño</p>
+                    <input type="text">
+                    <p>Precio</p>
+                    <input type="text">
+                    <p>Cantidad</p>
+                    <input type="text">
+                    <p>Etiqueta</p>
+                    <input type="text">
+                    <p>Archivo</p>
+                    <input type="text">
+                    <button>Cargar</button>
+                </form>
+            </section>
+            <section data-content id="tab_add_tag">
+                <form action="">
+                    <p>Nombre etiqueta</p>
+                    <input type="text">
+                    <p>Description</p>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <p>Portada de etiqueta</p>
+                    <button>Cargar</button>
+                    <button>Guardar</button>
+                </form>
+            </section>
+            <section data-content id="tab_my_profile">
+                <p>Nombre</p>
+                <input type="text">
+                <p>Descripción</p>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <p>Telefono</p>
+                <input type="text">
+                <p>Dirección</p>
+                <input type="text">
+                <p>Imagen</p>
+                <button>Cargar</button>
+                <button>Guardar</button>
+            </section>
         </section>
-        <form action="">
-            <p>Nombre</p>
-            <input type="text">
-            <p>Description</p>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <p>Tamaño</p>
-            <input type="text">
-            <p>Precio</p>
-            <input type="text">
-            <p>Cantidad</p>
-            <input type="text">
-            <p>Etiqueta</p>
-            <input type="text">
-            <p>Archivo</p>
-            <input type="text">
-            <button>Cargar</button>
-        </form>
         <script>
+            const targets = document.querySelectorAll('[data-target]');
+            const content = document.querySelectorAll('[data-content]');
+            targets.forEach(target=>{
+                target.addEventListener('click', ()=>{
+                    content.forEach(c=>{
+                        c.classList.remove('active')
+                    });    
+                    const t = document.querySelector(target.dataset.target);
+                    t.classList.add('active')
+                })
+
+            })
             document.getElementById('add_product').addEventListener('click', function() {
-                document.getElementById('tab').innerHTML = '';
+                document.querySelectorAll('#tabs section').style.display = "none";
+                //document.querySelector('#tab_add_product').style.visibility = "visible";
             })
         </script>
     </body>
