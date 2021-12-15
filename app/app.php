@@ -12,9 +12,25 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return response_require('user/user.html');
             },
-        'administrative_panel'  => function() 
+        'administrative_panel'  => function() use ($petition, $models, $conection)
             {
+                def($resultUser,
+                    iffn(
+                        fn()=>isset($petition),
+                        fn()=>
+                            $models
+                            (
+                                'user_siraq', 'users_login', 
+                                [
+                                    'email'     => $petition['email'],    
+                                    'password'  => $petition['password'],
+                                ], 
+                                $conection
+                            )()
+                    )
+                );
 
+                pre($resultUser);
                 return response_require('user/administrative_panel.html');
             },
         'start'         => function() 

@@ -146,15 +146,15 @@ function iffn($condition, $true, $false = null)
 {
     if($condition())
     {
-        return $true;
+        return $true();
     }
     elseif($false !== null)
     {
-        return $false;
+        return $false();
     }
     else
     {
-        return fn() => null;
+        return null;
     }
 }
 

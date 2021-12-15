@@ -8,6 +8,35 @@
     $sqlProducts = $connectionDb->prepare("INSERT INTO `products` (`id_products`, `id_user`, `id_mazo`, `nombre_products`, `description_products`) VALUES (?, ?, ?, ?, ?)");
     $sqlProducts->execute(array($id_products, $id_user, $id_mazo, $nombre_products, $description_products,)); */
 
+$user_siraq     = function($method, $connection, array $petition)
+{
+    $methodsToReturn = [
+        'users_login'  => function(/*$name_course, $teacher*/) use ($connection, $petition)
+            {
+                def($consultation ,"SELECT * FROM `users` WHERE `email` = '".$petition['email']."' AND `password` = '".$petition['password']."' ");
+                return assocQuery($connection->query($consultation));
+
+                //$sqlProducts = $connection->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` = ? ");
+
+                /* return 
+                    $sqlProducts->execute
+                        (
+                            array($petition['email'], $petition['password'],)
+                        )
+                ; */
+            },
+        'name_of_course_inscriptions'   => function() use ($connection, $petition)
+            {
+                $sqlProducts = $connection->query("SELECT * FROM `courses`");
+                return assocQuery($sqlProducts);
+
+            },
+    ];
+    return $methodsToReturn[$method];
+};
+
+
+
 $courses        = function($method, $connection, array $petition)#: bool
 {
     $methodsToReturn = [
