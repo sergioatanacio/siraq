@@ -4,6 +4,10 @@ $generalController = function($method, $conection, $petition) use ($models)
 {
     $methodsToReturn =
     [
+        'temporary'             => function() 
+            {
+                return response_require('temporary_siraq/temporary.html');
+            },
         'apps'                  => function() 
             {
                 return response_require('beginning.html');

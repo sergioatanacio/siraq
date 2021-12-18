@@ -2,7 +2,8 @@
 
 <?php
 
-$routePrint('', 'generalController@apps');
+$routePrint('', 'generalController@temporary');
+$routePrint('apps', 'generalController@apps');
 $routePrint('user', 'generalController@user');
 $routePrint('administrative_panel', 'generalController@administrative_panel');
 
