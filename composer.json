@@ -1,0 +1,17 @@
+{
+    "name": "store/siraq",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sergio Atanacio",
+            "email": "you@example.com"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "5.1.3"
+    }
+}

@@ -1,5 +1,12 @@
 /public/images/
+/public/bootstrap-5.1.3-dist/
 *.png
 *.pdf
 *.jpg
 *.svg
+*.zip
+*.rar
+
+
+/vendor/
+
