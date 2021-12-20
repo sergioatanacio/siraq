@@ -6,7 +6,8 @@ $generalController = function($method, $conection, $petition) use ($models)
     [
         'temporary'             => function() 
             {
-                return response_require('temporary_siraq/temporary.html');
+                return response_require('temporary_siraq/temporarySecond.html');
+                #return response_require('temporary_siraq/temporary.html');
             },
         'apps'                  => function() 
             {
