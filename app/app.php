@@ -15,7 +15,11 @@ $generalController = function($method, $conection, $petition) use ($models)
             },
         'user'                  => function() 
             {
-                return response_require('user/user.html');
+                return response_require('temporary_siraq/temporaryUser.html');
+            },
+        'temporaryAdmin'   => function() 
+            {
+                return response_require('temporary_siraq/temporaryAdmin.html');
             },
         'administrative_panel'  => function() use ($petition, $models, $conection)
             {

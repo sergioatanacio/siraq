@@ -5,6 +5,7 @@
 $routePrint('', 'generalController@temporary');
 $routePrint('apps', 'generalController@apps');
 $routePrint('user', 'generalController@user');
+$routePrint('temporaryAdmin', 'generalController@temporaryAdmin');
 $routePrint('administrative_panel', 'generalController@administrative_panel');
 
 
