@@ -6,5 +6,5 @@
 *.rar
 
 
-/vendor/
+vendor/
 
