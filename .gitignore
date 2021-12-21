@@ -1,8 +1,7 @@
 /public/images/
 
-*.png
+
 *.pdf
-*.jpg
 *.svg
 *.zip
 *.rar
