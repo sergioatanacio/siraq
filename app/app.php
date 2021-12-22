@@ -41,9 +41,10 @@ $generalController = function($method, $conection, $petition) use ($models)
                 #pre($resultUser);
                 
                 return iffn(fn()=>$resultUser !== [],
-                    fn()=> response_require('temporary_siraq/temporaryAdmin.html'),
+                    #fn()=> response_require('temporary_siraq/temporaryAdmin.html'),
+                    fn()=> header('Location: '.'/temporary_administrative_panel'),
                     fn()=> 'El usuario o la contraseña es incorrecto. Prueba nuevamente o comunicate con soporte.
-                    </br><a class="small" href="/user">Regresar</a>
+                    </br><a class="small" href="/user">Intentar otra vez</a>
                     </br><a class="small" href="/">Ir al inicio</a>
                     ');
                 #return response_require('user/administrative_panel.html');
