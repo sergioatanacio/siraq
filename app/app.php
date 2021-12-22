@@ -15,9 +15,40 @@ $generalController = function($method, $conection, $petition) use ($models)
             },
         'user'                  => function() 
             {
-                return response_require('temporary_siraq/temporaryUser.html');
+                return response_require('temporary_siraq/temporaryLogin.html');
             },
         'temporaryAdmin'   => function() 
+            {
+                return response_require('temporary_siraq/temporaryAdmin.html');
+            },
+        'login_controller'  => function() use ($petition, $models, $conection)
+            {
+                def($resultUser,
+                    iffn(
+                        fn()=>isset($petition),
+                        fn()=>
+                            $models
+                            (
+                                'user_siraq', 'users_login', 
+                                [
+                                    'email'     => $petition['email'],    
+                                    'password'  => $petition['password'],
+                                ], 
+                                $conection
+                            )()
+                    )
+                );
+                #pre($resultUser);
+                
+                return iffn(fn()=>$resultUser !== [],
+                    fn()=> response_require('temporary_siraq/temporaryAdmin.html'),
+                    fn()=> 'El usuario o la contraseña es incorrecto. Prueba nuevamente o comunicate con soporte.
+                    </br><a class="small" href="/user">Regresar</a>
+                    </br><a class="small" href="/">Ir al inicio</a>
+                    ');
+                #return response_require('user/administrative_panel.html');
+            },
+        'temporary_administrative_panel'   => function() 
             {
                 return response_require('temporary_siraq/temporaryAdmin.html');
             },
