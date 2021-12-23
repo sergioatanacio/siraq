@@ -167,3 +167,33 @@ if(! function_exists('pre'))
         echo '</pre>';
     }
 }
+
+if(! function_exists('domain')) 
+{
+    function domain($route) {
+        return domain . $route;
+    }
+}
+
+function sessionStarted()
+{
+    if(!isset($_SESSION)){ session_start();}
+    $_SESSION['session'] = true;
+}
+
+function activeSession()
+{
+    if(!isset($_SESSION)){ session_start();}
+    $sessionStarted = (!isset($_SESSION['session'])) ? false : $_SESSION['session'] ;
+
+    if ($sessionStarted == false) {
+        // echo "Debes iniciar sesión.";
+        header("Location:" . domain("user"));
+        die();
+    }
+}
+
+function sessionEnded(){
+    if(!isset($_SESSION)){ session_start();}
+    $_SESSION['session'] = false;
+}

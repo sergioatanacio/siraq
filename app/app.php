@@ -17,10 +17,6 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return response_require('temporary_siraq/temporaryLogin.html');
             },
-        'temporaryAdmin'   => function() 
-            {
-                return response_require('temporary_siraq/temporaryAdmin.html');
-            },
         'login_controller'  => function() use ($petition, $models, $conection)
             {
                 def($resultUser,
@@ -42,7 +38,10 @@ $generalController = function($method, $conection, $petition) use ($models)
                 
                 return iffn(fn()=>$resultUser !== [],
                     #fn()=> response_require('temporary_siraq/temporaryAdmin.html'),
-                    fn()=> header('Location: '.'/temporary_administrative_panel'),
+                    function(){
+                        sessionStarted();
+                        return header('Location: '.'/temporary_administrative_panel');
+                    },
                     fn()=> 'El usuario o la contraseña es incorrecto. Prueba nuevamente o comunicate con soporte.
                     </br><a class="small" href="/user">Intentar otra vez</a>
                     </br><a class="small" href="/">Ir al inicio</a>
@@ -51,6 +50,7 @@ $generalController = function($method, $conection, $petition) use ($models)
             },
         'temporary_administrative_panel'   => function() 
             {
+                activeSession();
                 return response_require('temporary_siraq/temporaryAdmin.html');
             },
         'administrative_panel'  => function() use ($petition, $models, $conection)
@@ -73,6 +73,11 @@ $generalController = function($method, $conection, $petition) use ($models)
 
                 pre($resultUser);
                 return response_require('user/administrative_panel.html');
+            },
+        'close_session'   => function() 
+            {
+                sessionEnded();
+                activeSession();
             },
         'start'         => function() 
             {
