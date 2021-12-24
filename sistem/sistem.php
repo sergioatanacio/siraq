@@ -56,7 +56,7 @@ $routePure = function($route, $controller, $connect, $requestObject, $request_ur
 
 $routeFn = function($route, $controller) use ($connection, $request, $routePure)
 {
-    return $routePure($route, $controller, $connection, $request, $_SERVER['REQUEST_URI'], $_REQUEST);
+    return $routePure($route, $controller, $connection, $request, $_SERVER['REQUEST_URI'] ?? null, $_REQUEST);
 };
 
 $routePrint = function($route, $controller) use ($routeFn)
