@@ -197,3 +197,12 @@ function sessionEnded(){
     if(!isset($_SESSION)){ session_start();}
     $_SESSION['session'] = false;
 }
+
+function template($template_require, $contend_insert)
+{
+    $contend = fn()=> require response($contend_insert);
+
+    return require response($template_require);
+
+}
+    
