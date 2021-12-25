@@ -5,18 +5,7 @@
    <?php response_require('temporary_siraq/templates/temporaryHead.html')?>
 </head>
    <body>
-      <h1><?php $contend()?></h1>
       <!-- header section strats -->
-      <?php response_require('temporary_siraq/templates/menu.html')?>
-
-      <?php #response_require('temporary_siraq/templates/aboutUs.html')?>
-      <?php #response_require('temporary_siraq/templates/arrivalSection.html')?>
-      <?php response_require('temporary_siraq/templates/products.html')?>
-            
-      <?php response_require('temporary_siraq/templates/footer.html')?>
-      
-      <!-- footer end -->
-      <?php response_require('temporary_siraq/templates/javascripts.html')?>
-
+      <?php printFunction($contend())?>
    </body>
 </html>

@@ -62,7 +62,9 @@ $routeFn = function($route, $controller) use ($connection, $request, $routePure)
 $routePrint = function($route, $controller) use ($routeFn)
 {
     $routeWithoutPoint = explode('.', $route);
-    echo(rtrim($routeFn($routeWithoutPoint[0], $controller), '1'));
+
+    printFunction($routeFn($routeWithoutPoint[0], $controller));
+    #echo(rtrim($routeFn($routeWithoutPoint[0], $controller), '1'));
     #var_dump($routeFn($route, $controller));
 };
 

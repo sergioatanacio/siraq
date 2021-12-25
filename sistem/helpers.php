@@ -198,11 +198,16 @@ function sessionEnded(){
     $_SESSION['session'] = false;
 }
 
-function template($template_require, $contend_insert)
+function template($template_require, $contend_insert, $string = null)
 {
-    $contend = fn()=> require response($contend_insert);
-
+    def($contend, iffn(fn()=>$string === 'string', 
+        fn()=>  fn()=>  $contend_insert,
+        fn()=>  fn()=>  require response($contend_insert)
+    )); 
     return require response($template_require);
-
 }
-    
+
+function printFunction($printFunction)
+{
+    echo(rtrim($printFunction, '1'));
+}
