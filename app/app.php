@@ -6,7 +6,10 @@ $generalController = function($method, $conection, $petition) use ($models)
     [
         'temporary'             => function() 
             {
-                return response_require('temporary_siraq/beginning.php');
+                return template(
+                    'temporary_siraq/temporarySecond.html', 
+                    'temporary_siraq/contentStart.html'
+                ); 
                 #return response_require('temporary_siraq/temporary.html');
             },
         'apps'                  => function() 
@@ -15,7 +18,10 @@ $generalController = function($method, $conection, $petition) use ($models)
             },
         'user'                  => function() 
             {
-                return response_require('temporary_siraq/temporaryLogin.html');
+                return template(
+                    'temporary_siraq/temporarySecond.html', 
+                    'temporary_siraq/temporaryLogin.html'
+                ); 
             },
         'login_controller'  => function() use ($petition, $models, $conection)
             {
