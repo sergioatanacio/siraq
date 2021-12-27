@@ -283,3 +283,44 @@ function printFunction($printFunction)
 {
     echo(rtrim($printFunction, '1'));
 }
+
+/**
+ * Permite insertar código no funcional para no tener que hacer toda una cópia de cada elemento
+ * y para no tener que cambiar el valor de una variable de manera no funcional en el scope global.
+ */
+function edit($data, $edit)
+{
+    return $edit($data);
+}
+/*
+Este es un ejemplo de uso
+$persona = ['nombre' => null, 'nombre_dos' => null];
+$persona2 = edit($persona, function($dato)
+{
+   $dato['nombre'] = true;
+   return $dato;
+});
+var_dump($persona); var_dump($persona2);
+*/
+
+
+/**
+ * Permite cambiar el valor de una variable eligiendolo por el indice.
+ */
+function editIndex($data, $index, $insert)
+{
+    $data[$index] = $insert;
+    return $data;
+}
+/*
+$persona = [ 
+    'datos_personales'    => [
+            'nombre'    => 'julio',
+            'apellido'  => 'quispe'
+        ]
+];
+$persona2 = editIndex($persona, 'datos_personales',
+    editIndex($persona['datos_personales'], 'nombre', ['mauro', 'bernardo'])
+);
+var_dump($persona); var_dump($persona2);
+*/
