@@ -12,12 +12,12 @@ $routePrint('temporary_administrative_panel', 'generalController@temporary_admin
 
 
 
+
+
+
+
+
 $routePrint('administrative_panel', 'generalController@administrative_panel');
-
-
-
-
-
 
 
 

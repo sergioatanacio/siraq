@@ -1,26 +1,5 @@
 <?php
-/**
- * Permite realizar una operación pero de manera funcional y recursiva. El primer 
- * valor es un string con el valor de un operador.
- */
-function operation(string $operator, array $values, $result = null)
-{
-    if($values === [])
-    {
-        return $result;
-    }
-    else
-    {
-        if ($result === null) 
-        {
-            $values = array_reverse($values);
-            $result = lastElement($values);
-            $values = popArray($values);
-        }
-            $sendEvalResult = eval('return '.$result.' '.$operator.' '.lastElement($values).';');
-            return operation($operator, popArray($values), $sendEvalResult);
-    }
-}
+
 
 /**
  * Permite crear una variable a la que no puede cambiarse el valor al estilo de los 
@@ -58,6 +37,121 @@ function iffn($condition, $true, $false = null)
 }
 
 /**
+ * Permite insertar código no funcional para no tener que hacer toda una cópia de cada elemento
+ * y para no tener que cambiar el valor de una variable de manera no funcional en el scope global.
+ */
+function edit($data, $edit)
+{
+    return $edit($data);
+}
+/*
+Este es un ejemplo de uso
+$persona = ['nombre' => null, 'nombre_dos' => null];
+$persona2 = edit($persona, function($dato)
+{
+   $dato['nombre'] = true;
+   return $dato;
+});
+var_dump($persona); var_dump($persona2);
+*/
+
+
+/**
+ * Permite cambiar el valor de una variable eligiendolo por el indice.
+ */
+function editIndex($data, $index, $insert)
+{
+    $data[$index] = $insert;
+    return $data;
+}
+/*
+$persona = [ 
+    'datos_personales'    => [
+            'nombre'    => 'julio',
+            'apellido'  => 'quispe'
+        ]
+];
+$persona2 = editIndex($persona, 'datos_personales',
+    editIndex($persona['datos_personales'], 'nombre', ['mauro', 'bernardo'])
+);
+var_dump($persona); var_dump($persona2);
+*/
+
+
+/**
+ * Recibe un array y retorna su último elemento.
+ */
+if(! function_exists('lastElement')) 
+{
+    function lastElement($lastElement): array
+    {
+        if(!is_array($lastElement) || $lastElement == []){
+            return  [];
+        } else{
+            return $lastElement[count($lastElement) - 1];
+        }
+    }
+}
+
+/**
+ * Recive un array y lo devuelve eliminado su último elemento.
+ */
+if(! function_exists('popArray')) 
+{
+    function popArray($popFunction)
+    {
+        array_pop($popFunction);
+        return $popFunction;
+    }
+}
+
+/**
+ * Permite realizar una operación pero de manera funcional y recursiva. El primer 
+ * valor es un string con el valor de un operador.
+ */
+/*
+function operation(string $operator, array $values, $result = null)
+{
+    if($values === [])
+    {
+        return $result;
+    }
+    else
+    {
+        if ($result === null) 
+        {
+            $values = array_reverse($values);
+            $result = lastElement($values);
+            $values = popArray($values);
+        }
+            $sendEvalResult = eval('return '.$result.' '.$operator.' '.lastElement($values).';');
+            return operation($operator, popArray($values), $sendEvalResult);
+    }
+}*/
+
+function operation()
+{
+    def($args, array_reverse(func_get_args()));
+
+    $operation = function(string $operator, array $values, $result = null) use (&$operation)
+    {
+        return iffn(
+            fn()=>$values === [],
+            fn()=>$result,
+            function() use ($operator, $values, $result, $operation)
+            {
+                def($sendEvalResult, 
+                    eval('return '.$result.' '.$operator.' '.lastElement($values).';'));
+                return $operation($operator, popArray($values), $sendEvalResult); 
+            }
+        );
+    };
+
+    return $operation(lastElement($args), popArray($args));
+}
+
+
+/**
  * Convierte el resultado de una consulta SQL en un array.
  */
 if(! function_exists('assocQuery'))
@@ -84,62 +178,29 @@ if(! function_exists('assocQuery'))
 if(! function_exists('joinArrangement'))
 {
     function joinArrangement($array, $newItem = null) : array
-    {
-        /*
+    {        
         def($fixReturned, 
             iffn(fn()=>is_array($array),
                 fn()=>$array,
                 iffn(fn()=>$array == null || $array == '',
                     fn()=>[],
-                    fn()=>
+                    fn()=>[$array]
                 )
             )
         );
-        */
 
-
-        if (is_array($array)) {
-            $fixReturned = $array;
-        } elseif ($array == null || $array == '') {
-            $fixReturned = [];
-        } else {
-            $fixReturned[] = $array;
-        }
-        
-        if (isset($newItem) && $newItem != []) {
-            $fixReturned[] = $newItem;
-        }
-        
-        return $fixReturned;
+        return iffn(
+            fn()=>isset($newItem) && $newItem != [],
+            fn()=>edit($fixReturned, function($arrayNewItem) use ($newItem)
+                {
+                    $arrayNewItem[] = $newItem;
+                    return $arrayNewItem;
+                }),
+            fn()=>$fixReturned
+        );
     }
 }
 
-/**
- * Recive un array y lo devuelve eliminado su último elemento.
- */
-if(! function_exists('popArray')) 
-{
-    function popArray($popFunction)
-    {
-        array_pop($popFunction);
-        return $popFunction;
-    }
-}
-
-/**
- * Recibe un array y retorna su último elemento.
- */
-if(! function_exists('lastElement')) 
-{
-    function lastElement($lastElement): array
-    {
-        if(!is_array($lastElement) || $lastElement == []){
-            return  [];
-        } else{
-            return $lastElement[count($lastElement) - 1];
-        }
-    }
-}
 
 /**
  * Se trae una ruta como si fuera un string, ese es el valor de retorno.
@@ -198,7 +259,6 @@ if(! function_exists('getAnItem'))
         }
     }
 }
-
 
 
 /**
@@ -267,9 +327,9 @@ function sessionEnded(){
  * se pone el índice del array y se ejecuta esa función, y todo eso se hace dentro de la 
  * función printFunction();
  */
-function template($template_require, $contend_insert, $string = null)
+function template($template_require, $contend_insert)
 {
-    def($contend, iffn(fn()=>$string === 'data', 
+    def($contend, iffn(fn()=>is_array($contend_insert), 
         fn()=>  fn()=>  $contend_insert,
         fn()=>  fn()=>  require response($contend_insert)
     )); 
@@ -284,43 +344,3 @@ function printFunction($printFunction)
     echo(rtrim($printFunction, '1'));
 }
 
-/**
- * Permite insertar código no funcional para no tener que hacer toda una cópia de cada elemento
- * y para no tener que cambiar el valor de una variable de manera no funcional en el scope global.
- */
-function edit($data, $edit)
-{
-    return $edit($data);
-}
-/*
-Este es un ejemplo de uso
-$persona = ['nombre' => null, 'nombre_dos' => null];
-$persona2 = edit($persona, function($dato)
-{
-   $dato['nombre'] = true;
-   return $dato;
-});
-var_dump($persona); var_dump($persona2);
-*/
-
-
-/**
- * Permite cambiar el valor de una variable eligiendolo por el indice.
- */
-function editIndex($data, $index, $insert)
-{
-    $data[$index] = $insert;
-    return $data;
-}
-/*
-$persona = [ 
-    'datos_personales'    => [
-            'nombre'    => 'julio',
-            'apellido'  => 'quispe'
-        ]
-];
-$persona2 = editIndex($persona, 'datos_personales',
-    editIndex($persona['datos_personales'], 'nombre', ['mauro', 'bernardo'])
-);
-var_dump($persona); var_dump($persona2);
-*/

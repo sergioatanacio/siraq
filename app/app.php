@@ -8,7 +8,10 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return template(
                     'temporary_siraq/temporarySecond.html', 
-                    'temporary_siraq/contentStart.html'
+                    [
+                        'title' => fn()=> '<title>Siraq - Estampados polos y personalizados</title>',
+                        'contend' => fn()=> require response('temporary_siraq/contentStart.html'),
+                    ]
                 ); 
                 #return response_require('temporary_siraq/temporary.html');
             },
@@ -20,7 +23,10 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return template(
                     'temporary_siraq/temporarySecond.html', 
-                    'temporary_siraq/temporaryLogin.html'
+                    [
+                        'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
+                        'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
+                    ]
                 ); 
             },
         'login_controller'  => function() use ($petition, $models, $conection)
@@ -62,7 +68,14 @@ $generalController = function($method, $conection, $petition) use ($models)
         'temporary_administrative_panel'   => function() 
             {
                 activeSession();
-                return response_require('temporary_siraq/temporaryAdmin.html');
+                #return response_require('temporary_siraq/temporaryAdmin.html');
+                return template(
+                    'temporary_siraq/temporarySecond.html', 
+                    [
+                        'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
+                        'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
+                    ]
+                ); 
             },
         'administrative_panel'  => function() use ($petition, $models, $conection)
             {
