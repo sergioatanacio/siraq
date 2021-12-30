@@ -246,7 +246,7 @@ if(! function_exists('getAnItem'))
         return iffn(
             fn()=>!is_array($array) || $array == [],
             fn()=>$result,
-            function() use ($array, $index)
+            function() use ($array, $index, $result)
             {
                 def($lastElement, lastElement($array));
                 def($resultingElement, $lastElement[$index]);
