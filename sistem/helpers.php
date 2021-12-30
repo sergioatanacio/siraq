@@ -83,13 +83,13 @@ var_dump($persona); var_dump($persona2);
  */
 if(! function_exists('lastElement')) 
 {
-    function lastElement($lastElement): array
+    function lastElement($lastElement) 
     {
-        if(!is_array($lastElement) || $lastElement == []){
-            return  [];
-        } else{
-            return $lastElement[count($lastElement) - 1];
-        }
+        return iffn(
+            fn()=>!is_array($lastElement) || $lastElement == [],
+            fn()=>[],
+            fn()=>$lastElement[count($lastElement) - 1]
+        );
     }
 }
 
@@ -128,21 +128,37 @@ function operation(string $operator, array $values, $result = null)
             return operation($operator, popArray($values), $sendEvalResult);
     }
 }*/
-
 function operation()
 {
     def($args, array_reverse(func_get_args()));
 
     $operation = function(string $operator, array $values, $result = null) use (&$operation)
     {
+        def($firstValue, iffn(
+            fn()=>$result === null,
+            fn()=>lastElement($values),
+            fn()=>$result
+        ));
+        
+        def($secondValue, iffn(
+            fn()=>$result === null,
+            fn()=>lastElement(popArray($values)),
+            fn()=>lastElement($values)
+        ));
+        
+        def($processedValues, iffn(
+            fn()=>$result === null,
+            fn()=>popArray(popArray($values)),
+            fn()=>popArray($values)
+        ));
+        
         return iffn(
             fn()=>$values === [],
             fn()=>$result,
-            function() use ($operator, $values, $result, $operation)
+            function() use ($operator, $processedValues, $firstValue, $secondValue, $operation)
             {
-                def($sendEvalResult, 
-                    eval('return '.$result.' '.$operator.' '.lastElement($values).';'));
-                return $operation($operator, popArray($values), $sendEvalResult); 
+                def($sendEvalResult, eval('return '.$firstValue.' '.$operator.' '.$secondValue.';'));
+                return $operation($operator, $processedValues, $sendEvalResult); 
             }
         );
     };
@@ -158,6 +174,20 @@ if(! function_exists('assocQuery'))
 {
     function assocQuery($query, $index = null)
     {   
+        return iffn(
+            fn()=>$query != null,
+            fn()=>edit($query, function($petition) use ($index)
+            {
+                $result = [];
+                while ($elements = $petition->fetch(\PDO::FETCH_ASSOC))
+                {
+                    $result[] = ($index != null) ? $elements[$index] : $elements;
+                }
+                return $result;
+            }),
+            fn()=>null,
+        );
+        /*
         if ($query != null) {
             $result = [];
             while ($elements = $query->fetch(\PDO::FETCH_ASSOC))
@@ -169,11 +199,13 @@ if(! function_exists('assocQuery'))
         }
         
         return $result;
+        */
     }
 }
 
 /**
- * Agrega un elemento al ultimo lugar de un array.
+ * Agrega un elemento al ultimo lugar de un array. O tambien puede decirse que fuciona dos elementos 
+ * en un array.
  */
 if(! function_exists('joinArrangement'))
 {
@@ -201,6 +233,38 @@ if(! function_exists('joinArrangement'))
     }
 }
 
+/**
+ * En un array de varios elementos, o un array multinivel, permite seleccionar elementos del array
+ * por el indice, por ejemplo en un array multinivel de personas donde se encuentran datos como
+ * el nombre, la edad el sexo, etc, permite obtener un array con todos los nombres de las 
+ * personas que se encuentran en ese array.
+ */
+if(! function_exists('getAnItem'))
+{
+    function getAnItem(array $array, string $index = null, array $result = [])
+    {
+        return iffn(
+            fn()=>!is_array($array) || $array == [],
+            fn()=>$result,
+            function() use ($array, $index)
+            {
+                def($lastElement, lastElement($array));
+                def($resultingElement, $lastElement[$index]);
+                return getAnItem(popArray($array), $index, joinArrangement($result, $resultingElement));
+            },
+        );
+
+        /*
+        if (!is_array($array) || $array == []) {
+            return $result;
+        } else {
+            $lastElement = lastElement($array);
+            $resultingElement = $lastElement[$index];
+            return getAnItem(popArray($array), $index, joinArrangement($result, $resultingElement));
+        }
+        */
+    }
+}
 
 /**
  * Se trae una ruta como si fuera un string, ese es el valor de retorno.
@@ -244,22 +308,6 @@ if(! function_exists('domain_print'))
         #return file_get_contents(__DIR__.'/../resourses/'.$resourse);
     };
 }
-
-
-if(! function_exists('getAnItem'))
-{
-    function getAnItem(array $array, string $index = null, array $result = [])
-    {
-        if (!is_array($array) || $array == []) {
-            return $result;
-        } else {
-            $lastElement = lastElement($array);
-            $resultingElement = $lastElement[$index];
-            return getAnItem(popArray($array), $index, joinArrangement($result, $resultingElement));
-        }
-    }
-}
-
 
 /**
  * Permite debuguear una variable en php.
@@ -344,3 +392,4 @@ function printFunction($printFunction)
     echo(rtrim($printFunction, '1'));
 }
 
+echo(operation('*', 10, 14));
