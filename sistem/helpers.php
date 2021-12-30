@@ -392,4 +392,3 @@ function printFunction($printFunction)
     echo(rtrim($printFunction, '1'));
 }
 
-echo(operation('*', 10, 14));
