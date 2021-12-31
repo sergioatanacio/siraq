@@ -9,7 +9,9 @@ $generalController = function($method, $conection, $petition) use ($models)
                 return template(
                     'temporary_siraq/temporarySecond.html', 
                     [
-                        'title' => fn()=> '<title>Siraq - Estampados polos y personalizados</title>',
+                        'title' => fn()=> 
+                            '<title>Siraq - Estampados polos y personalizados</title>
+                            <link href="template_front/css/style.css" rel="stylesheet" />',
                         'contend' => fn()=> require response('temporary_siraq/contentStart.html'),
                     ]
                 ); 
@@ -73,7 +75,7 @@ $generalController = function($method, $conection, $petition) use ($models)
                     'temporary_siraq/temporarySecond.html', 
                     [
                         'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
-                        'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
+                        'contend' => fn()=> require response('temporary_siraq/temporaryAdmin.html'),
                     ]
                 ); 
             },
