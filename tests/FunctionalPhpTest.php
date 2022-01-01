@@ -32,7 +32,7 @@ class FunctionalPhpTest extends TestCase
             true);
 
 
-        $this->assertEquals();
+        $this->assertEquals(operation('-', 5, 3), 2);
 
         $this->assertEquals($generalController('temporary_administrative_panel', $connection, []), fn()=> template(
                 'temporary_siraq/temporarySecond.html', 
