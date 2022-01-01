@@ -1,6 +1,6 @@
 <?php
 
-$generalController = function($method, $conection, $petition) use ($models)
+def($generalController, function($method, $connectionArg, $petition) use ($models)
 {
     $methodsToReturn =
     [
@@ -31,7 +31,7 @@ $generalController = function($method, $conection, $petition) use ($models)
                     ]
                 ); 
             },
-        'login_controller'  => function() use ($petition, $models, $conection)
+        'login_controller'  => function() use ($petition, $models, $connectionArg)
             {
                 def($resultUser,
                     iffn(
@@ -44,7 +44,7 @@ $generalController = function($method, $conection, $petition) use ($models)
                                     'email'     => $petition['email'],    
                                     'password'  => $petition['password'],
                                 ], 
-                                $conection
+                                $connectionArg
                             )()
                     )
                 );
@@ -79,7 +79,7 @@ $generalController = function($method, $conection, $petition) use ($models)
                     ]
                 ); 
             },
-        'administrative_panel'  => function() use ($petition, $models, $conection)
+        'administrative_panel'  => function() use ($petition, $models, $connectionArg)
             {
                 def($resultUser,
                     iffn(
@@ -92,7 +92,7 @@ $generalController = function($method, $conection, $petition) use ($models)
                                     'email'     => $petition['email'],    
                                     'password'  => $petition['password'],
                                 ], 
-                                $conection
+                                $connectionArg
                             )()
                     )
                 );
@@ -109,7 +109,7 @@ $generalController = function($method, $conection, $petition) use ($models)
             {
                 return response_require('start/start.html');
             },
-        'students'      => function() use ($petition, $models, $conection)
+        'students'      => function() use ($petition, $models, $connectionArg)
             {
                 return $models
                 (
@@ -118,10 +118,10 @@ $generalController = function($method, $conection, $petition) use ($models)
                         'nombre_de_alumno'  => $petition['nombre_alumno'],    
                         'sexo'              => $petition['sex'],
                     ], 
-                    $conection
+                    $connectionArg
                 )();
             },
-        'courses'       => function() use ($petition, $models, $conection)
+        'courses'       => function() use ($petition, $models, $connectionArg)
             {
                 return $models
                 (
@@ -130,10 +130,10 @@ $generalController = function($method, $conection, $petition) use ($models)
                         'name_course'   => $petition['front_name_course'],    
                         'teacher'       => $petition['front_teacher'],
                     ], 
-                    $conection
+                    $connectionArg
                 )();
             },
-        'inscriptions_insert'  => function() use ($petition, $models, $conection)
+        'inscriptions_insert'  => function() use ($petition, $models, $connectionArg)
             {
                 return json_encode
                 ($models
@@ -143,34 +143,34 @@ $generalController = function($method, $conection, $petition) use ($models)
                             'name_course_inscriptions'  => $petition['name_course_inscriptions'],    
                             'name_student_inscriptions' => $petition['name_student_inscriptions'],
                         ], 
-                        $conection
+                        $connectionArg
                     )()
                 );
             },
-        'json_course'  => function() use ($petition, $models, $conection)
+        'json_course'  => function() use ($petition, $models, $connectionArg)
             {
                 return json_encode
                 ($models
                     (
-                        'courses', 'name_of_course_inscriptions', [], $conection
+                        'courses', 'name_of_course_inscriptions', [], $connectionArg
                     )()
                 );
             },
-        'json_inscriptions'  => function() use ($petition, $models, $conection)
+        'json_inscriptions'  => function() use ($petition, $models, $connectionArg)
             {
                 return json_encode
                 ($models
                     (
-                        'courses', 'name_of_course_inscriptions', [], $conection
+                        'courses', 'name_of_course_inscriptions', [], $connectionArg
                     )()
                 );
             },
-        'json_students'  => function() use ($petition, $models, $conection)
+        'json_students'  => function() use ($petition, $models, $connectionArg)
             {
                 return json_encode
                 ($models
                     (
-                        'students_tbl', 'name_pupil_inscriptions', [], $conection
+                        'students_tbl', 'name_pupil_inscriptions', [], $connectionArg
                     )()
                 );
             },
@@ -180,21 +180,21 @@ $generalController = function($method, $conection, $petition) use ($models)
 
                 return require response('start/script_start.js');
             },
-        'table_simple'  => function() use ($petition, $models, $conection)
+        'table_simple'  => function() use ($petition, $models, $connectionArg)
             {
                 return json_encode
                 ($models
                     (
-                        'inscriptions', 'name_table_simple', [], $conection
+                        'inscriptions', 'name_table_simple', [], $connectionArg
                     )()
                 );
             },
 
     ];
     return $methodsToReturn[$method];
-};
+});
 
-$listick = function($method, $conection, $petition) use ($models)
+def($listick, function($method, $connectionArg, $petition) use ($models)
 {
     $methodsToReturn =
     [
@@ -212,9 +212,9 @@ $listick = function($method, $conection, $petition) use ($models)
             },
     ];
     return $methodsToReturn[$method];
-};
+});
 
-$siraq = function($method, $conection, $petition) use ($models)
+def($siraq, function($method, $connectionArg, $petition) use ($models)
 {
     $methodsToReturn =
     [
@@ -274,9 +274,9 @@ $siraq = function($method, $conection, $petition) use ($models)
         },
     ];
     return $methodsToReturn[$method];
-};
+});
 
-$stylesMis = function($method, $conection, $petition) use ($models)
+def($stylesMis, function($method, $connectionArg, $petition) use ($models)
 {
     $methodsToReturn =
     [
@@ -289,9 +289,9 @@ $stylesMis = function($method, $conection, $petition) use ($models)
     ];
 
     return $methodsToReturn[$method];
-};
+});
 
-$younotes = function($method, $conection, $petition) use ($models)
+def($younotes, function($method, $connectionArg, $petition) use ($models)
 {
     $methodsToReturn =
     [
@@ -314,5 +314,5 @@ $younotes = function($method, $conection, $petition) use ($models)
     ];
 
     return $methodsToReturn[$method];
-};
+});
 
