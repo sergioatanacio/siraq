@@ -33,15 +33,12 @@ class FunctionalPhpTest extends TestCase
 
 
         $this->assertEquals(operation('-', 5, 3), 2);
-
-        $this->assertEquals($generalController('temporary_administrative_panel', $connection, []), fn()=> template(
-                'temporary_siraq/temporarySecond.html', 
-                [
-                    'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
-                    'contend' => fn()=> require response('temporary_siraq/temporaryAdmin.html'),
-                ]
-            )
+        
+        $this->assertEquals(
+            operation('-', [5, 6, 2, 1]),
+            -4
         );
+
 
 
     }
