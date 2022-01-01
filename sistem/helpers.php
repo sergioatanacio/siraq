@@ -25,24 +25,16 @@ if(! function_exists('response_require'))
     };
 }
 
-if(! function_exists('domain_return')) 
+/**
+ * Retorna el dominio de la constante en el archivo env con una ruta agregada como argumento.
+ */
+if(! function_exists('domain')) 
 {
-    function domain_return($domain)
-    {
-        return(domain.'/'.$domain);
-        #return file_get_contents(__DIR__.'/../resourses/'.$resourse);
-    };
+    function domain($route) {
+        return domain . '/' . $route;
+    }
 }
 
-if(! function_exists('domain_print')) 
-{
-    function domain_print($domain)
-    {
-        echo(domain_return($domain));
-        #return(domain.'/'.$domain);
-        #return file_get_contents(__DIR__.'/../resourses/'.$resourse);
-    };
-}
 
 /**
  * Permite debuguear una variable en php.
@@ -57,15 +49,7 @@ if(! function_exists('pre'))
     }
 }
 
-/**
- * Permite imprimir el dominio del sitio web, usando las constantes del archivo env.
- */
-if(! function_exists('domain')) 
-{
-    function domain($route) {
-        return domain . '/' . $route;
-    }
-}
+
 
 /**
  * Inicia la sesión de una persona.

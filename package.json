@@ -1,0 +1,26 @@
+{
+  "name": "siraq",
+  "version": "1.0.0",
+  "description": "Mvc in a functional way.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergioatanacio/siraq.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergioatanacio/siraq/issues"
+  },
+  "homepage": "https://github.com/sergioatanacio/siraq#readme",
+  "devDependencies": {
+    "jest": "^27.4.5"
+  }
+}
