@@ -111,7 +111,10 @@ if(! function_exists('popArray'))
 
 /**
  * Permite realizar una operación pero de manera funcional y recursiva. El primer 
- * valor es un string con el valor de un operador.
+ * valor es un string con el valor de un operador. Los siguientes valores son los elementos que
+ * se usarán para aplicar la operación. Si solo se colocan 2 argumentos, entonces el primer 
+ * argumento se usa como operador, y el segundo debe ser un array con los datos con los cuales
+ * se van a realizar la operación.
  */
 /*
 function operation(string $operator, array $values, $result = null)
@@ -136,38 +139,46 @@ function operation()
 {
     def($args, array_reverse(func_get_args()));
 
-    $operation = function(string $operator, array $values, $result = null) use (&$operation)
-    {
-        def($firstValue, iffn(
-            fn()=>$result === null,
-            fn()=>lastElement($values),
-            fn()=>$result
-        ));
-        
-        def($secondValue, iffn(
-            fn()=>$result === null,
-            fn()=>lastElement(popArray($values)),
-            fn()=>lastElement($values)
-        ));
-        
-        def($processedValues, iffn(
-            fn()=>$result === null,
-            fn()=>popArray(popArray($values)),
-            fn()=>popArray($values)
-        ));
-        
-        return iffn(
-            fn()=>$values === [],
-            fn()=>$result,
-            function() use ($operator, $processedValues, $firstValue, $secondValue, $operation)
-            {
-                def($sendEvalResult, eval('return '.$firstValue.' '.$operator.' '.$secondValue.';'));
-                return $operation($operator, $processedValues, $sendEvalResult); 
-            }
-        );
-    };
+    def($operation, 
+        function(string $operator, array $values, $result = null) use (&$operation)
+        {
+            def($firstValue, iffn(
+                fn()=>$result === null,
+                fn()=>lastElement($values),
+                fn()=>$result
+            ));
+            
+            def($secondValue, iffn(
+                fn()=>$result === null,
+                fn()=>lastElement(popArray($values)),
+                fn()=>lastElement($values)
+            ));
+            
+            def($processedValues, iffn(
+                fn()=>$result === null,
+                fn()=>popArray(popArray($values)),
+                fn()=>popArray($values)
+            ));
+            
+            return iffn(
+                fn()=>$values === [],
+                fn()=>$result,
+                function() use ($operator, $processedValues, $firstValue, $secondValue, $operation)
+                {
+                    def($sendEvalResult, eval('return '.$firstValue.' '.$operator.' '.$secondValue.';'));
+                    return $operation($operator, $processedValues, $sendEvalResult); 
+                }
+            );
+        }
+    );
 
-    return $operation(lastElement($args), popArray($args));
+    return iffn(
+        fn()=>count($args) !== 2,
+        fn()=>$operation(lastElement($args), popArray($args)),
+        fn()=>$operation(lastElement($args), array_reverse($args[0]))
+    );
+
+    #return $operation(lastElement($args), popArray($args));
 }
 
 

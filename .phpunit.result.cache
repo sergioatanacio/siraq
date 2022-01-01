@@ -1,1 +1,1 @@
-{"version":1,"defects":{"PostTest::test_add_comment_to_post":3,"FunctionalPhpTest::test_FunctionalPhpTest":3},"times":{"PostTest::test_add_comment_to_post":0,"FunctionalPhpTest::test_FunctionalPhpTest":0.015}}
+{"version":1,"defects":{"PostTest::test_add_comment_to_post":3,"FunctionalPhpTest::test_FunctionalPhpTest":3},"times":{"PostTest::test_add_comment_to_post":0,"FunctionalPhpTest::test_FunctionalPhpTest":0.006}}
