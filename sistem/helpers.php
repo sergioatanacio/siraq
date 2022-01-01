@@ -40,14 +40,14 @@ function iffn($condition, $true, $false = null)
  * Permite insertar código no funcional para no tener que hacer toda una cópia de cada elemento
  * y para no tener que cambiar el valor de una variable de manera no funcional en el scope global.
  */
-function edit($data, $edit)
+function run($data, $run)
 {
-    return $edit($data);
+    return $run($data);
 }
 /*
 Este es un ejemplo de uso
 $persona = ['nombre' => null, 'nombre_dos' => null];
-$persona2 = edit($persona, function($dato)
+$persona2 = run($persona, function($dato)
 {
    $dato['nombre'] = true;
    return $dato;
@@ -176,7 +176,7 @@ if(! function_exists('assocQuery'))
     {   
         return iffn(
             fn()=>$query != null,
-            fn()=>edit($query, function($petition) use ($index)
+            fn()=>run($query, function($petition) use ($index)
             {
                 $result = [];
                 while ($elements = $petition->fetch(\PDO::FETCH_ASSOC))
@@ -223,7 +223,7 @@ if(! function_exists('joinArrangement'))
 
         return iffn(
             fn()=>isset($newItem) && $newItem != [],
-            fn()=>edit($fixReturned, function($arrayNewItem) use ($newItem)
+            fn()=>run($fixReturned, function($arrayNewItem) use ($newItem)
                 {
                     $arrayNewItem[] = $newItem;
                     return $arrayNewItem;
