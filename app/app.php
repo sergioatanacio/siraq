@@ -2,8 +2,7 @@
 
 def($generalController, function($method, $connectionArg, $petition) use ($models)
 {
-    $methodsToReturn =
-    [
+    def($methodsToReturn, [
         'temporary'             => function() 
             {
                 return template(
@@ -190,7 +189,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                 );
             },
 
-    ];
+    ]);
     return $methodsToReturn[$method];
 });
 
