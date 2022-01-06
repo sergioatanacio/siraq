@@ -25,7 +25,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                 return template(
                     'temporary_siraq/temporarySecond.html', 
                     [
-                        'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
+                        'title' => fn()=> '<title>Siraq - Login</title>',
                         'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
                     ]
                 ); 
@@ -58,11 +58,17 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                     function()
                     {
                         sessionEnded();
-                        return
-                        'El usuario o la contraseña es incorrecto. Prueba nuevamente o comunicate con soporte.
-                        </br><a class="small" href="/user">Intentar otra vez</a>
-                        </br><a class="small" href="/">Ir al inicio</a>
-                        ';
+                        return template(
+                            'temporary_siraq/temporarySecond.html', 
+                            [
+                                'title' => fn()=> '<title>Siraq - Message</title>',
+                                'contend' => fn()=> 
+                                'El usuario o la contraseña es incorrecto. Prueba nuevamente o comunicate con soporte.
+                                </br><a class="small" href="/user">Intentar otra vez</a>
+                                </br><a class="small" href="/">Ir al inicio</a>
+                                ',
+                            ]
+                        ); 
                     });
                 #return response_require('user/administrative_panel.html');
             },

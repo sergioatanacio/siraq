@@ -74,7 +74,7 @@ function sessionStarted()
 /**
  * Hace que las personas que accedan al recurso en cuestión deban tener la sesión iniciada.
  */
-function activeSession(string $direction = '/')
+function activeSession(string $direction = '')
 {
     def($sessionStarted, run(
         function()
