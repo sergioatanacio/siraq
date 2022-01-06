@@ -1,2 +1,1 @@
-# functional-mvc
-Mvc in a functional way.
+# puff-folders
