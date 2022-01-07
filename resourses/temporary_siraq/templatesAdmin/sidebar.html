@@ -1,48 +1,87 @@
+<style>
+.button_sidebar{
+    display: flex;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 1rem;
+    color: rgba(240, 248, 255, 0.555);
+}
+
+.section_button{
+    min-width: 14rem; 
+    background-color: #299ddb00;
+}
+
+.horizontal_line{
+    border: 0 none; 
+    padding: 0; 
+    margin: 0; 
+    min-height: 0.1rem; 
+    background-color: rgba(255, 255, 255, 0.178);
+}
+
+.ul_button{
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: baseline;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.a_button{
+    justify-content: center;
+    display: flex;
+}
+
+.img_button{
+    max-width: 14rem; 
+    justify-content: flex-end;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+</style>
+
 
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="navbar-brand sidebar-brand d-flex align-items-center justify-content-center" href="/temporary_administrative_panel">
-        <div class="sidebar-brand-icon ">
-            <img width="250" src="template_front/images/logo.svg" alt="#" />
-        </div>
-    </a>
+    <div style="display: flex;">
+        <section class="section_button">
+            <a name="anchor" class="a_button"><div>
+                    <img src="template_front/images/logo.svg" class="img_button"/>
+            </div></a>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+            <!-- Nav Item - Dashboard -->
+                <!-- Divider -->
+                <hr class="horizontal_line"/>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/temporary_administrative_panel">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="horizontal_line"/>
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/temporary_administrative_panel">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
+            <ul class="ul_button">
+                <button class="button_sidebar">Agregar producto</button>
+                <button class="button_sidebar">Etiquetas</button>
+                <button class="button_sidebar">Mi perfil</button>
+            </ul>
+        </section>
+        <section class="pg-empty-placeholder"></section>
     </div>
+    <hr class="horizontal_line"/>
 
-    <div class="nav-item">
-        <label data-target="#tab_add_product" id="add_product">
-            <i class="fas fa-fw fa-chart-area"></i>
-            Agregar producto
-        </label></br>
-        <label data-target="#tab_tag_of_siraq" id="tag_of_siraq">
-            <i class="fas fa-fw fa-chart-area"></i>
-            Etiquetas
-        </label></br>
-        <label data-target="#tab_tag_of_siraq" id="tag_of_siraq">
-            <i class="fas fa-fw fa-chart-area"></i>
-            Mi perfil
-        </label></br>
-    </div>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
 </ul>
 <!-- End of Sidebar -->
+
+
