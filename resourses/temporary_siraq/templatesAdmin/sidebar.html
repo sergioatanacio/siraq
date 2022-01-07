@@ -44,6 +44,18 @@
     margin-bottom: 1rem;
 }
 
+/* Esto es para la navegación por pestañas. */
+[data-content]{
+    display: none;
+}
+
+.active_button[data-target]{
+    background-color: rgba(127, 255, 212, 0.418);
+}
+
+.active[data-content]{
+    display: block;
+}
 </style>
 
 
@@ -72,9 +84,27 @@
             <hr class="horizontal_line"/>
 
             <ul class="ul_button">
-                <button class="button_sidebar">Agregar producto</button>
-                <button class="button_sidebar">Etiquetas</button>
-                <button class="button_sidebar">Mi perfil</button>
+                <button  
+                    data-target="#tab_add_product" 
+                    id="add_product" 
+                    class="button_sidebar">
+                    Agregar producto
+                </button>
+
+                <button  
+                    data-target="#tab_add_tag" 
+                    id="add_tag" 
+                    class="button_sidebar">
+                    Etiquetas
+                </button>
+
+                <button  
+                    data-target="#tab_my_profile" 
+                    id="my_profile" 
+                    class="button_sidebar">
+                    Mi perfil
+                </button>
+
             </ul>
         </section>
         <section class="pg-empty-placeholder"></section>
@@ -83,5 +113,51 @@
 
 </ul>
 <!-- End of Sidebar -->
+<section id="tabs">
+    <section data-content id="tab_add_product">
+        <?php response_require('temporary_siraq/templatesAdmin/contentWrapper.html')?>
+    </section>
+    <section data-content id="tab_add_tag">
+        <p>Agregar Tag</p>
+    </section>
+    
+    <section data-content id="tab_my_profile">
+        <p>Mi perfil</p>
+    </section>
+</section>
+
+
+
+<script>
+
+    
+    const targets = document.querySelectorAll('[data-target]');
+    const content = document.querySelectorAll('[data-content]');
+
+    document.querySelector('#add_product').classList.add('active_button');
+    document.querySelector('#tab_add_product').classList.add('active');
+
+    console.log(targets);
+    targets.forEach(target=>{
+        target.addEventListener('click', ()=>{
+            content.forEach(c=>{
+                c.classList.remove('active')
+            });  
+
+            const t = document.querySelector(target.dataset.target);
+            t.classList.add('active')
+
+            targets.forEach(t=>{
+                t.classList.remove('active_button')
+            });
+
+            const b = document.getElementById(target.id);
+            b.classList.add('active_button');
+
+        })
+
+    })
+
+</script>
 
 
