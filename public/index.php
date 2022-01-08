@@ -8,7 +8,7 @@ require __DIR__.'/../env.php';
  * Obteniendo los código para que funcione el frameworck
  */
 require __DIR__.'/../libraries/puff/puff.php';
-
+    
 /**
  * Obteniendo los archivos de programación del sistema, el modelo y el controlador.
  */
