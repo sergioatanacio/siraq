@@ -6,17 +6,71 @@
         font-family: sans-serif;
     }
     body{
-        background: rgba(43, 56, 62, 1);
+        background: rgb(50, 72, 88);
+        margin: 0;
     }
     .wrapper{
-        display:flex
+        display:grid;
+        grid-template-columns: 1fr 6fr;
+        grid-gap: 2em;
+
     }
+
+    /* Esto es para la navegación por pestañas. */
+    [data-content]{
+        display: none;
+    }
+
+    .active_button[data-target]{
+        background-color: rgba(127, 255, 212, 0.418);
+    }
+
+    .active[data-content]{
+        display: grid;
+    }
+
 </style>
 
 <!-- Page Wrapper -->
 <div class="wrapper" >
-    <?php response_require('temporary_siraq/templatesAdmin/sidebar.html')?>
+    <section>
+        <?php response_require('temporary_siraq/templatesAdmin/sidebar.html')?>
+    </section>
+    <section>
+        <?php response_require('temporary_siraq/templatesAdmin/tabs_templatesAdmin.html')?>
+    </section>
 </div>
+
+<script>
+    
+    const targets = document.querySelectorAll('[data-target]');
+    const content = document.querySelectorAll('[data-content]');
+
+    document.querySelector('#add_product').classList.add('active_button');
+    document.querySelector('#tab_add_product').classList.add('active');
+
+    console.log(targets);
+    targets.forEach(target=>{
+        target.addEventListener('click', ()=>{
+            content.forEach(c=>{
+                c.classList.remove('active')
+            });  
+
+            const t = document.querySelector(target.dataset.target);
+            t.classList.add('active')
+
+            targets.forEach(t=>{
+                t.classList.remove('active_button')
+            });
+
+            const b = document.getElementById(target.id);
+            b.classList.add('active_button');
+
+        })
+
+    })
+
+</script>
 
 <!-- End of Page Wrapper -->
 <script src="/scripts/temporaryAdmin.js"></script>
