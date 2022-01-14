@@ -17,7 +17,14 @@
     grid-area: 2/2;
 }
 
-.form_login {
+.title_login h1 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    color: #C4C4C4;
+}
+
+.login_section form {
     grid-area: 3 / 2;
     display: grid;
     grid-template-rows: 1fr 1fr 0.5fr 1fr;
@@ -25,55 +32,78 @@
     font-size: 2em;
 }
 
-.h1_title_login {
-    margin: 0;
-    font-size: 2em;
+.login_section form div {
+    border-radius: 2em; 
+    padding-left: 1em; 
+    padding-right: 1em; 
+    font-size: 0.65em; 
+    color: rgba(215, 215, 225, 1); 
+    display: flex; 
+    align-items: center;
+}
+
+.login_section form div input {
+    height: 1.4em;
+    width: 1.4em;
+}
+
+.login_section form div label {
+    font-size: 0.7em;
     font-family: 'Roboto', sans-serif;
-    color: #C4C4C4;
+    color: rgba(53, 169, 242, 1);
+    margin-left: 0.5em;
+
+}
+
+.login_section form .element {
+    border-radius: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 0.65em;
+    color: rgba(215, 215, 225, 1);
 }
 
 .inputs_login {
-    border-radius: 2em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-size: 0.65em;
     background-color: rgba(43, 56, 62, 1);
-    color: rgba(215, 215, 225, 1);
 }
 
 .boton_login {
-    border-radius: 2em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-size: 0.65em;
     background-color: #02AF9C;
-    color: rgba(215, 215, 225, 1);
 }
 
 .opciones_login {
-    display: block;
     text-align: center;
+    grid-area: 4 / 2; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+}
+
+.opciones_login a{
+    color: #35A9F2;
     font-size: 1.2em;
     font-family: 'Roboto', sans-serif;
-    color: #35A9F2;
+    align-items: center; 
+    justify-content: center;
+
 }
+
 </style>
 
 <section class="login_section">
     <div class="title_login">
-        <h1 class="h1_title_login">Bienvenido a Siraq</h1>
+        <h1>Bienvenido a Siraq</h1>
     </div>
-    <form class="form_login user" action="/login_controller" method="post">
-        <input type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" class="inputs_login">
-        <input type="password" id="exampleInputPassword" placeholder="Password" name="password" class="inputs_login">
-        <div style="border-radius: 2em; padding-left: 1em; padding-right: 1em; font-size: 0.65em; color: rgba(215, 215, 225, 1); display: flex; align-items: center;">
-            <input type="checkbox" id="customCheck" style="height: 1.4em; width: 1.4em;">
-            <label for="customCheck" style="font-size: 0.7em; font-family: 'Roboto', sans-serif; color: rgba(53, 169, 242, 1); margin-left: 0.5em;">Remember Me</label>
+    <form action="/login_controller" method="post">
+        <input type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" class="inputs_login element">
+        <input type="password" id="exampleInputPassword" placeholder="Password" name="password" class="inputs_login element">
+        <div>
+            <input type="checkbox" id="customCheck">
+            <label for="customCheck">Recuérdame</label>
         </div>
-        <input type="submit" value="Iniciar sesión" class="boton_login">
+        <input type="submit" value="Iniciar sesión" class="boton_login element">
     </form>
-    <div style="grid-area: 4 / 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-content: center;" class="opciones_login">
-        <a class="opciones_login small" href="forgot-password.html">¿Has olvidado tu contraseña?</a>
-        <a href="register.html" class="opciones_login">¡Crea una cuenta!</a>
+    <div class="opciones_login">
+        <a href="forgot-password.html">¿Has olvidado tu contraseña?</a>
+        <a href="register.html">¡Crea una cuenta!</a>
     </div>
 </section>
