@@ -50,6 +50,24 @@
     grid-column-start: 1;
     grid-column-end: 3;
 }
+
+.form_add_product div {
+    border-radius: 1em;
+    border-width: 0;
+    background-color: #D7D7E1;
+    display: grid;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    grid-template-areas: 1fr;
+}
+
+.form_add_product div input {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+}
 </style>
 
 <section class="section_add_product">
@@ -68,7 +86,10 @@
         <label for="" class="label_form">Etiqueta</label>
         <input name="name">
         <label for="" class="label_form">Archivo</label>
-        <input name="name">
+        <div>
+            <input type="file" name="name">
+            <label style="align-self: center; text-align: center; font-size: 1em; font-family: 'Roboto', sans-serif;">Subir archivo</label>
+        </div>
         <button>Subir</button>
     </form>
 </section>
