@@ -1,61 +1,80 @@
+<style>
+.label_form {
+    align-self: center;
+    color: #999A9A;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+}
+
+.section_add_product {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 3em 23em;
+    height: 100vh;
+    align-content: center;
+    grid-row-gap: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form_add_product {
+    grid-area: 2/2;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-row-gap: 1.1em;
+    grid-column-gap: 1em;
+}
+
+.section_add_product h1 {
+    grid-area: 1/2;
+    text-align: center;
+    display: grid;
+    margin: 0;
+    padding: 0;
+    align-self: baseline;
+    color: #D7D7E1;
+    font-size: 1.5em;
+}
+
+.form_add_product input {
+    border-radius: 1em;
+    border-width: 0;
+    background-color: #2B383E;
+}
+
+.form_add_product button {
+    background-color: #02AF9C;
+    color: #FFFBFA;
+    border-radius: 1em;
+    border-width: 0;
+    font-size: 1em;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+</style>
+
+<section class="section_add_product">
+    <h1>Agregar producto</h1> 
+    <form class="form_add_product" action="/login_controller" method="post">
+        <label for="" class="label_form">Nombre</label>
+        <input name="name">
+        <label for="" class="label_form">Descripción</label>
+        <input name="name">
+        <label for="" class="label_form">Tamaño</label>
+        <input name="name">
+        <label for="" class="label_form">Precio</label>
+        <input name="name">
+        <label for="" class="label_form">Cantidad</label>
+        <input name="name">
+        <label for="" class="label_form">Etiqueta</label>
+        <input name="name">
+        <label for="" class="label_form">Archivo</label>
+        <input name="name">
+        <button>Subir</button>
+    </form>
+</section>
 
 
-    <div class="container">
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center" style="min-width: 50rem;">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Agregar producto </h1>
-                                    </div>
-                                    <form 
-                                        class="user" 
-                                        action="/login_controller" 
-                                        method="post">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control form-control-user"
-                                                    id="exampleInputEmail" aria-describedby="emailHelp"
-                                                    placeholder="Enter Email Address..." name="email">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Password" name="password">
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                    <label class="custom-control-label" for="customCheck">Remember
-                                                        Me</label>
-                                                </div>
-                                            </div>
-                                            <input class="btn btn-primary btn-user btn-block" type="submit" value="Iniciar sesión">
-
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 
 

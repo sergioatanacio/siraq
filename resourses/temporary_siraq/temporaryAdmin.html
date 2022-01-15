@@ -5,14 +5,15 @@
         box-sizing: border-box;
         font-family: sans-serif;
     }
+    
     body{
-        background: rgb(50, 72, 88);
         margin: 0;
     }
+
     .wrapper{
         display:grid;
         grid-template-columns: 1fr 6fr;
-        grid-gap: 2em;
+        background: #111E27;
 
     }
 
@@ -29,14 +30,25 @@
         display: grid;
     }
 
+    .sidebar{
+        background-color: #202D36;
+        height: 100vh;
+    }
+
+    .sidebar_contend{
+        height: 100vh;
+        padding: 0 2em; 
+    }
+
 </style>
 
-<!-- Page Wrapper -->
+
+
 <div class="wrapper" >
-    <section>
+    <section class="sidebar">
         <?php response_require('temporary_siraq/templatesAdmin/sidebar.html')?>
     </section>
-    <section>
+    <section class="sidebar_contend">
         <?php response_require('temporary_siraq/templatesAdmin/tabs_templatesAdmin.html')?>
     </section>
 </div>
