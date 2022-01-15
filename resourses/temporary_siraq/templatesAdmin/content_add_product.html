@@ -1,6 +1,6 @@
 <style>
 .label_form {
-    align-self: center;
+    align-self: start;
     color: #999A9A;
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
@@ -9,7 +9,7 @@
 .section_add_product {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 3em 23em;
+    grid-template-rows: 3em 25em;
     height: 100vh;
     align-content: center;
     grid-row-gap: 1em;
@@ -19,9 +19,10 @@
 .form_add_product {
     grid-area: 2/2;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
     grid-row-gap: 1.1em;
     grid-column-gap: 1em;
+    grid-template-rows: 1fr 3fr repeat(6, 1fr);
 }
 
 .section_add_product h1 {
@@ -35,10 +36,15 @@
     font-size: 1.5em;
 }
 
-.form_add_product input {
+.form_add_product_input {
     border-radius: 1em;
     border-width: 0;
     background-color: #2B383E;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #D7D7E1;
 }
 
 .form_add_product button {
@@ -68,23 +74,33 @@
     min-height: 100%;
     opacity: 0;
 }
+
+.form_add_product textarea {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+
+
+
+
 </style>
 
 <section class="section_add_product">
     <h1>Agregar producto</h1> 
     <form class="form_add_product" action="/login_controller" method="post">
         <label for="" class="label_form">Nombre</label>
-        <input name="name">
+        <input name="name" class="form_add_product_input">
         <label for="" class="label_form">Descripción</label>
-        <input name="name">
+        <textarea class="form_add_product_input" name="" id="" cols="30" rows="10"></textarea>
         <label for="" class="label_form">Tamaño</label>
-        <input name="name">
-        <label for="" class="label_form">Precio</label>
-        <input name="name">
+        <input name="name" class="form_add_product_input">
+        <label for="" class="label_form">Precio en soles</label>
+        <input type="number" name="name" class="form_add_product_input">
         <label for="" class="label_form">Cantidad</label>
-        <input name="name">
+        <input type="number" name="name" class="form_add_product_input">
         <label for="" class="label_form">Etiqueta</label>
-        <input name="name">
+        <input name="name" class="form_add_product_input">
         <label for="" class="label_form">Archivo</label>
         <div>
             <input type="file" name="name">
