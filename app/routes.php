@@ -23,5 +23,5 @@ $routePrint('temporary_administrative_panel',
     'generalController@temporary_administrative_panel');
 
 
-
+$resource_not_found('generalController@404');
 

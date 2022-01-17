@@ -3,6 +3,7 @@
 def($generalController, function($method, $connectionArg, $petition) use ($models)
 {
     def($methodsToReturn, [
+        '404'                   => fn()=> "Este es un error 404 personalizado.",
         'temporary'             => function() 
             {
                 return template(
