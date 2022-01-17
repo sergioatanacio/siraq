@@ -117,7 +117,7 @@
             <input type="file" name="name">
             <label style="align-self: center; text-align: center; font-size: 1em; font-family: 'Roboto', sans-serif;">Subir archivo</label>
         </div>
-        <button>Subir</button>
+        <button id="upload_add_product">Subir</button>
     </form>
 </section>
 
@@ -126,7 +126,7 @@
 
 consultFn();
 
-function alumnos_ajax() 
+function upload_add_product() 
 {
     ejecutarAlumnosAjax = function() 
     {
@@ -134,7 +134,7 @@ function alumnos_ajax()
         data.append('nombre_alumno', name_of_alumno);
         data.append('sex', sex);
 
-        fetch('<?php domain_print("students");?>', 
+        fetch('/students', 
         {
             method: 'POST',
             body:   data,
@@ -279,19 +279,6 @@ function inscriptions_fetch()
     })
 }
 
-document.getElementById("inscriptions_button").addEventListener("click", function () 
-{
-    inscriptions_fetch();
-    consultFn();
-});
-
-
-
-document.getElementById("consult").addEventListener("click", function () 
-{
-    consultFn();
-});
-
 function consultFn()
 {
     let data = new FormData();
@@ -407,9 +394,9 @@ function consultFn()
     /*document.getElementById("insert_consult").innerHTML = 'Hello';*/
 }
 
-document.getElementById("consult").addEventListener("click", function() 
+document.getElementById("upload_add_product").addEventListener("click", function() 
 {
-    consultJoin();
+    upload_add_product();
 });
 
 
