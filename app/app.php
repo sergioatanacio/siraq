@@ -79,23 +79,16 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                     ]
                 ); 
             },
-        'tags'=> function()
+        'tags'=> function() use ($petition, $models, $connectionArg)
             {
-                def($resultUser,
-                    iffn(
-                        fn()=>isset($petition),
-                        fn()=>
-                            $models
-                            (
-                                'user_siraq', 'users_login', 
-                                [
-                                    'email'     => $petition['email'],    
-                                    'password'  => $petition['password'],
-                                ], 
-                                $connectionArg
-                            )()
-                    )
+                def($resultTags, 
+                    $models
+                    (
+                        'tags_siraq', 'tags_of_products', [], 
+                        $connectionArg
+                    )()
                 );
+                return json_encode($resultTags);
             },
         'apps'                  => function() 
             {

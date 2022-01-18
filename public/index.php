@@ -18,6 +18,6 @@ require __DIR__.'/../app/app.php';
 /**
  * Obteniendo el sistema de rutas que van a ejecutar las peticiónes.
  */
-//require __DIR__.'/../app/routes.php';
-def($routesPrin, require __DIR__.'/../app/routes.php');
-printFunction($routesPrin);
+require __DIR__.'/../app/routes.php';
+//def($routesPrin, require __DIR__.'/../app/routes.php');
+//printFunction($routesPrin);

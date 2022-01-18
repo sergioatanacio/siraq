@@ -35,7 +35,17 @@ $user_siraq     = function($method, $connection, array $petition)
     return $methodsToReturn[$method];
 };
 
-
+$tags_siraq     = function($method, $connection, array $petition)
+{
+    $methodsToReturn = [
+        'tags_of_products' => function(/*$name_course, $teacher*/) use ($connection, $petition)
+            {
+                def($consultation ,"SELECT * FROM `tags`");
+                return assocQuery($connection->query($consultation));
+            }
+    ];
+    return $methodsToReturn[$method];
+};
 
 $courses        = function($method, $connection, array $petition)#: bool
 {
