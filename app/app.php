@@ -3,8 +3,7 @@
 def($generalController, function($method, $connectionArg, $petition) use ($models)
 {
     def($methodsToReturn, [
-        '404'                   => fn()=>                 
-        template(
+        '404' => fn()=> template(
             'temporary_siraq/temporarySecond.html', 
             [
                 'title' => fn()=> 
@@ -25,20 +24,6 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                     ]
                 ); 
                 #return response_require('temporary_siraq/temporary.html');
-            },
-        'apps'                  => function() 
-            {
-                return response_require('beginning.html');
-            },
-        'user'                  => function() 
-            {
-                return template(
-                    'temporary_siraq/temporarySecond.html', 
-                    [
-                        'title' => fn()=> '<title>Siraq - Login</title>',
-                        'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
-                    ]
-                ); 
             },
         'login_controller'  => function() use ($petition, $models, $connectionArg)
             {
@@ -91,6 +76,38 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                     [
                         'title' => fn()=> '<title>Siraq - Admin Dashboard</title>',
                         'contend' => fn()=> require response('temporary_siraq/temporaryAdmin.html'),
+                    ]
+                ); 
+            },
+        'tags'=> function()
+            {
+                def($resultUser,
+                    iffn(
+                        fn()=>isset($petition),
+                        fn()=>
+                            $models
+                            (
+                                'user_siraq', 'users_login', 
+                                [
+                                    'email'     => $petition['email'],    
+                                    'password'  => $petition['password'],
+                                ], 
+                                $connectionArg
+                            )()
+                    )
+                );
+            },
+        'apps'                  => function() 
+            {
+                return response_require('beginning.html');
+            },
+        'user'                  => function() 
+            {
+                return template(
+                    'temporary_siraq/temporarySecond.html', 
+                    [
+                        'title' => fn()=> '<title>Siraq - Login</title>',
+                        'contend' => fn()=> require response('temporary_siraq/temporaryLogin.html'),
                     ]
                 ); 
             },
