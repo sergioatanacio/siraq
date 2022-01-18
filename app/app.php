@@ -92,13 +92,16 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
             },
         'add_product_process'=> function() use ($petition, $models, $connectionArg)
             {
-                def($resultTags, 
-                    $models
-                    (
-                        'products_siraq', 'add_product_model', [], 
-                        $connectionArg
-                    )()
-                );
+                def($resultTags, iffn(
+                    fn()=> isset($petition),
+                    fn()=> $models
+                        (
+                            'products_siraq', 'add_product_model', $petition, 
+                            $connectionArg
+                        )(),
+                    fn()=>[false]
+                ));
+                
                 return json_encode($resultTags);
             },
         'apps'                  => function() 

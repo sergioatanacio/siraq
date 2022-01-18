@@ -101,7 +101,7 @@
 
 <section class="section_add_product">
     <h1>Agregar producto</h1> 
-    <form action="" method="post" class="form_add_product">
+    <form action="" class="form_add_product" onclick="()">
         <label for="" class="label_form">Nombre</label>
         <input id="name_of_product" class="form_add_product_input" required>
         <label for="" class="label_form">Descripción</label>
@@ -144,7 +144,7 @@ fetch("/tags")
 .then(function(texto) 
 {
     json_tags = JSON.parse(texto); 
-    console.log(json_tags);
+    //console.log(json_tags);
     let select = json_tags.map(function(dataTag) 
     {
         return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
@@ -167,49 +167,62 @@ document.getElementById('upload_add_product').addEventListener('click', upload_a
 
 function upload_add_product() 
 {
-    let data = new FormData();
-    data.append('name_of_product', document.getElementById('name_of_product').value);
-    data.append('description_product', document.getElementById('description_product').value);
-    data.append('product_size', document.getElementById('product_size').value);
-    data.append('product_price_in_soles', document.getElementById('product_price_in_soles').value);
-    data.append('product_quantity', document.getElementById('product_quantity').value);
-    data.append('product_label', document.getElementById('product_label').value);
-
-    fetch('/add_product_process', 
-    {
-        method: 'POST',
-        body:   data,
-    })
-    .then(function(response) 
-    {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw "Error en la llamada";
-        }
-    })
-    .then(function(texto) 
-    {
-        console.log(texto);
-        document.getElementById("result_message").innerHTML = JSON.parse(texto) 
-            ? 'El producto fué registrado con éxito.' 
-            : 'El producto no pudo ser registrado, comunícate con soporte.'; 
-
-        // document.getElementById("escribir_curso").innerHTML = texto;
-
-        document.getElementById('name_of_product').value        = '';
-        document.getElementById('description_product').value    = '';
-        document.getElementById('product_size').value           = '';
-        document.getElementById('product_price_in_soles').value = '';
-        document.getElementById('product_quantity').value       = '';
-        document.getElementById('product_label').value          = '';
-
-    })
-    .catch(function(error) 
-    {
-        console.log(error);
-    })
+    let ejecutar_upload_add_product = function()
+    {        
+        let data = new FormData();
+        data.append('name_of_product', name_of_product);
+        data.append('description_product', description_product);
+        data.append('product_size', product_size);
+        data.append('product_price_in_soles', product_price_in_soles);
+        data.append('product_quantity', product_quantity);
+        data.append('product_label', product_label);
     
+        fetch('/add_product_process', 
+        {
+            method: 'POST',
+            body:   data,
+        })
+        .then(function(response) 
+        {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada";
+            }
+        })
+        .then(function(texto) 
+        {
+            console.log(data);
+            /*document.getElementById("result_message").innerHTML = JSON.stringify(data);  */
+            document.getElementById("result_message").innerHTML = JSON.parse(texto) 
+                ? 'El producto fué registrado con éxito.' 
+                : 'El producto no pudo ser registrado, comunícate con soporte.';
+    
+            // document.getElementById("escribir_curso").innerHTML = texto;
+    
+            document.getElementById('name_of_product').value        = '';
+            document.getElementById('description_product').value    = '';
+            document.getElementById('product_size').value           = '';
+            document.getElementById('product_price_in_soles').value = '';
+            document.getElementById('product_quantity').value       = '';
+            document.getElementById('product_label').value          = '';
+    
+        })
+        .catch(function(error) 
+        {
+            console.log(error);
+        })
+
+    }
+    
+    let name_of_product         = document.getElementById('name_of_product').value;
+    let description_product     = document.getElementById('description_product').value;
+    let product_size            = document.getElementById('product_size').value;
+    let product_price_in_soles  = document.getElementById('product_price_in_soles').value;
+    let product_quantity        = document.getElementById('product_quantity').value;
+    let product_label           = document.getElementById('product_label').value;
+
+    ejecutar_upload_add_product();
 }
 
 

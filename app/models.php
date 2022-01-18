@@ -52,10 +52,14 @@ $products_siraq     = function($method, $connection, array $petition)
     $methodsToReturn = [
         'add_product_model' => function() use ($connection, $petition)
             {
-                def($consultation ,"SELECT * FROM `tags`");
+                def($consultation ,"INSERT INTO `sheets` 
+                (`name_sheets`, `description_sheets`, `price`, `amount`, `image_sheets`)
+                VALUES
+                ('".$petition['name_of_product']."', '".$petition['description_product']."', '".$petition['product_size']."', '".$petition['product_price_in_soles']."', '".$petition['product_quantity']."');");
                 return assocQuery($connection->query($consultation));
             }
     ];
+
     return $methodsToReturn[$method];
 };
 
