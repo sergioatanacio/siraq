@@ -47,6 +47,18 @@ $tags_siraq     = function($method, $connection, array $petition)
     return $methodsToReturn[$method];
 };
 
+$products_siraq     = function($method, $connection, array $petition)
+{
+    $methodsToReturn = [
+        'add_product_model' => function() use ($connection, $petition)
+            {
+                def($consultation ,"SELECT * FROM `tags`");
+                return assocQuery($connection->query($consultation));
+            }
+    ];
+    return $methodsToReturn[$method];
+};
+
 $courses        = function($method, $connection, array $petition)#: bool
 {
     $methodsToReturn = [
