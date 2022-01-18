@@ -150,7 +150,7 @@ fetch("/tags")
         return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
     });
 
-    document.getElementById("product_label").innerHTML = select; 
+    document.getElementById("product_label").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
 
 })
 .catch(function(error) 
