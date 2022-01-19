@@ -92,6 +92,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
             },
         'add_product_process'=> function() use ($petition, $models, $connectionArg)
             {
+                /*
                 def($resultTags, iffn(
                     fn()=> isset($petition),
                     fn()=> $models
@@ -102,7 +103,8 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                     fn()=>[false]
                 ));
                 
-                return json_encode($resultTags);
+                return json_encode($resultTags);*/
+                return json_encode($petition);
             },
         'apps'                  => function() 
             {

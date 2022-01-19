@@ -101,7 +101,7 @@
 
 <section class="section_add_product">
     <h1>Agregar producto</h1> 
-    <form action="" class="form_add_product" onclick="()">
+    <form action="" class="form_add_product" >
         <label for="" class="label_form">Nombre</label>
         <input id="name_of_product" class="form_add_product_input" required>
         <label for="" class="label_form">Descripción</label>
@@ -167,9 +167,11 @@ document.getElementById('upload_add_product').addEventListener('click', upload_a
 
 function upload_add_product() 
 {
+
     let ejecutar_upload_add_product = function()
     {        
-        let data = new FormData();
+        const data = new FormData();
+
         data.append('name_of_product', name_of_product);
         data.append('description_product', description_product);
         data.append('product_size', product_size);
@@ -177,6 +179,8 @@ function upload_add_product()
         data.append('product_quantity', product_quantity);
         data.append('product_label', product_label);
     
+        console.log(JSON.stringify(data));
+
         fetch('/add_product_process', 
         {
             method: 'POST',
@@ -193,10 +197,10 @@ function upload_add_product()
         .then(function(texto) 
         {
             console.log(data);
-            /*document.getElementById("result_message").innerHTML = JSON.stringify(data);  */
-            document.getElementById("result_message").innerHTML = JSON.parse(texto) 
+            document.getElementById("result_message").innerHTML = JSON.stringify(data);  
+            /*document.getElementById("result_message").innerHTML = JSON.parse(texto) 
                 ? 'El producto fué registrado con éxito.' 
-                : 'El producto no pudo ser registrado, comunícate con soporte.';
+                : 'El producto no pudo ser registrado, comunícate con soporte.';*/
     
             // document.getElementById("escribir_curso").innerHTML = texto;
     
