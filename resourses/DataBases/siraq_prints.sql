@@ -28,6 +28,7 @@ CREATE TABLE `sheets` (
   `id_sheets` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name_sheets` varchar(300) NOT NULL,
   `description_sheets` text NOT NULL,
+  `product_size` text NOT NULL,
   `price` int NOT NULL,
   `amount` int NOT NULL,
   `image_sheets` text NOT NULL
@@ -60,10 +61,10 @@ VALUES
 
 
 INSERT INTO `sheets` 
-  (`id_sheets`, `name_sheets`, `description_sheets`, `price`, `amount`, `image_sheets`)
+  (`id_sheets`, `name_sheets`, `description_sheets`, `product_size`, `price`, `amount`, `image_sheets`)
 VALUES
-  (1, 'Mikey mouse', 'Muñeco de disney', '2', '200', 'Link de Mikey mouse'),
-  (2, 'Cobra Kai', 'Arbol insignia', '3', '30', 'Link de Cobra Kai'),
-  (3, 'Grut', 'De marvel', '5', '50', 'Link de Grut');
+  (1, 'Mikey mouse', 'Muñeco de disney', `product_size`, '2', '200', 'Link de Mikey mouse'),
+  (2, 'Cobra Kai', 'Arbol insignia', `product_size`, '3', '30', 'Link de Cobra Kai'),
+  (3, 'Grut', 'De marvel', '5', `product_size`, '50', 'Link de Grut');
 
 

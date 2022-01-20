@@ -56,7 +56,7 @@ $products_siraq     = function($method, $connection, array $petition)
                 (`name_sheets`, `description_sheets`, `price`, `amount`, `image_sheets`)
                 VALUES
                 ('".$petition['name_of_product']."', '".$petition['description_product']."', '".$petition['product_size']."', '".$petition['product_price_in_soles']."', '".$petition['product_quantity']."');");
-                return assocQuery($connection->query($consultation));
+                return $connection->query($consultation);
             }
     ];
 
