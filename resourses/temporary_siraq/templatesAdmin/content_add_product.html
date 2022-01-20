@@ -95,7 +95,7 @@
     
     <section class="section_add_product">
         <h1>Agregar producto</h1> 
-        <form id="form_upload_add_product_id" class="form_add_product" >
+        <form id="form_upload_add_product_id" class="form_add_product" enctype="multipart/form-data">
             <label for="" class="label_form">Nombre</label>
             <input name="name_of_product" class="form_add_product_input" required>
             <label for="" class="label_form">Descripción</label>
@@ -107,7 +107,7 @@
             <label for="" class="label_form">Cantidad</label>
             <input name="product_quantity" type="number" class="form_add_product_input">
             <label for="" class="label_form">Etiqueta</label>
-            <select name="product_label" class="form_add_product_input">
+            <select id="product_label_id" name="product_label" class="form_add_product_input">
                 <option disabled="" selected >Selecciona una etiqueta</option>
                 <option>Ingles</option>
                 <option>Frances</option>
@@ -126,34 +126,36 @@
     
     <script>
     
-    fetch("/tags")
-    .then(function(response) 
+    let function_tags = () =>
     {
-        if (response.ok) {
-            return response.text();
-        } else {
-            throw "Error en la llamada";
-        }
-    })
-    .then(function(texto) 
-    {
-        json_tags = JSON.parse(texto); 
-        //console.log(json_tags);
-        let select = json_tags.map(function(dataTag) 
+        fetch("/tags")
+        .then(function(response) 
         {
-            return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
-        });
-    
-        document.getElementById("product_label").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
-    
-    })
-    .catch(function(error) 
-    {
-        console.log(error);
-    })
-    
-    
-    
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada";
+            }
+        })
+        .then(function(texto) 
+        {
+            json_tags = JSON.parse(texto); 
+            //console.log(json_tags);
+            let select = json_tags.map(function(dataTag) 
+            {
+                return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
+            });
+        
+            document.getElementById("product_label_id").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
+        
+        })
+        .catch(function(error) 
+        {
+            console.log(error);
+        })
+    };
+
+    function_tags();
     
     let form_upload_add_product = document.getElementById('form_upload_add_product_id');
     
@@ -181,6 +183,9 @@
             //console.log(texto);
             //document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
             document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+            form_upload_add_product.reset();
+            function_tags();
+
             /*document.getElementById("result_message").innerHTML = JSON.parse(texto) 
                 ? 'El producto fué registrado con éxito.' 
                 : 'El producto no pudo ser registrado, comunícate con soporte.';*/
