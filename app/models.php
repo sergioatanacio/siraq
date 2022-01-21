@@ -55,11 +55,11 @@ $products_siraq     = function($method, $connection, array $petition)
                 def($consultation ,"INSERT INTO `sheets` 
                 (`name_sheets`, `description_sheets`, `product_size`, `price`, `amount`, `image_sheets`)
                 VALUES
-                ('".$petition['name_of_product']."', '".$petition['description_product']."', '".$petition['product_size']."', '".$petition['product_price_in_soles']."', '".$petition['product_quantity']."');");
+                ('".$petition['name_of_product']."', '".$petition['description_product']."', '".$petition['product_size']."', '".$petition['product_price_in_soles']."', '".$petition['product_quantity']."', '".$petition['upload_file']."');");
                 return $connection->query($consultation);
             }
     ];
-
+    
     return $methodsToReturn[$method];
 };
 

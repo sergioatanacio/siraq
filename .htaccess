@@ -1,0 +1,24 @@
+
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,NE,R=301]
+
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?siraq.shop$
+RewriteCond %{REQUEST_URI} !^/siraq/public/
+RewriteCond %{REQUEST_URI} !^/wp/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+Rewritecond %{REQUEST_URI} !^wordpress
+Rewritecond %{REQUEST_URI} !^resourses
+Rewritecond %{REQUEST_URI} !^file_store
+
+RewriteRule ^(.*)$ /siraq/public/$1
+RewriteCond %{HTTP_HOST} ^(www.)?siraq.shop$
+RewriteRule ^(/)?$ siraq/public/index.php [L]
+</IfModule>

@@ -1,5 +1,5 @@
 /public/static_resources/
-/file_store/
+/public/file_store/
 libraries/puff
 *.zip
 *.rar

@@ -92,18 +92,27 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
             },
         'add_product_process'=> function() use ($petition, $models, $connectionArg)
             {
-                /*
+                def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
+                def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
+                def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
+                echo($carpeta_destino);
+                def($petition_more_upload_file, operation('+', $petition, ['upload_file' => $name_without_spaces]));
+                
                 def($resultTags, iffn(
-                    fn()=> isset($petition),
-                    fn()=> $models
+                    fn()=> isset($petition_more_upload_file['upload_file']),
+                    function() use ($petition_more_upload_file, $models, $connectionArg, $carpeta_destino)
+                    {
+                        $models
                         (
-                            'products_siraq', 'add_product_model', $petition, 
+                            'products_siraq', 'add_product_model', $petition_more_upload_file, 
                             $connectionArg
-                        )(),
+                        )();
+                        move_uploaded_file($_FILES['upload_file']['tmp_name'], $carpeta_destino);
+                    },
                     fn()=>[false]
-                ));*/
-                $nombre_imagen  = $_FILES['upload_file']['name'];
-                return json_encode($nombre_imagen);
+                ));
+
+                return json_encode($petition_more_upload_file);
                 //return json_encode($resultTags);
                 /*return json_encode($petition);*/
             },
