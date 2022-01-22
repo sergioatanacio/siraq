@@ -67,13 +67,12 @@ html body {
     position: relative;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
 }
 
 .tipos_estampados div div img {
+    min-width: 100%;
     min-height: 100%;
-    position: relative;
     height: 100%;
+    position: absolute;
+    right: calc(10%  - width);
 }

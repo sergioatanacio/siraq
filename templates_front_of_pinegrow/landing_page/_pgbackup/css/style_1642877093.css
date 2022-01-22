@@ -63,17 +63,7 @@ html body {
 }
 
 .tipos_estampados div div {
+    object-position: center;
+    object-fit: cover;
     height: 9.5em;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.tipos_estampados div div img {
-    min-height: 100%;
-    position: relative;
-    height: 100%;
 }

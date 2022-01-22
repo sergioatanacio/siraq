@@ -61,19 +61,3 @@ html body {
     grid-gap: 1.5em;
     grid-auto-rows: auto;
 }
-
-.tipos_estampados div div {
-    height: 9.5em;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.tipos_estampados div div img {
-    min-height: 100%;
-    position: relative;
-    height: 100%;
-}
