@@ -1,10 +1,143 @@
-<?php response_require('temporary_siraq/templates/menu.html')?>
+<style>
+:root {
+    --siraq-gris-fondo: #111E27;
+    --texto-botones: #999A9A;
+}
 
-<?php #response_require('temporary_siraq/templates/aboutUs.html')?>
-<?php #response_require('temporary_siraq/templates/arrivalSection.html')?>
-<?php response_require('temporary_siraq/templates/products.html')?>
+html body nav {
+    display: grid;
+    grid-template-columns: 7em 1fr;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    padding-bottom: 2em;
+}
 
-<?php response_require('temporary_siraq/templates/footer.html')?>
+html body nav a img {
+    width: 100%;
+}
 
-<!-- footer end -->
-<?php response_require('temporary_siraq/templates/javascripts.html')?>
+html body nav div {
+    text-decoration: none;
+    font-size: 0.8em;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: end;
+    text-align: right;
+    grid-gap: 2em;
+}
+
+html body nav div a {
+    color: var(--texto-botones);
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+html body .wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 850px;
+}
+
+html body section section p {
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--texto-botones);
+    margin-top: 0;
+}
+
+html body {
+    margin: 0;
+    padding: 0;
+    background: var(--siraq-gris-fondo);
+    font-family: 'Roboto', sans-serif;
+}
+
+.tipos_estampados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+</style>
+
+<section class="wrapper">
+    <nav>
+        <a href="/" style="width: 6.5em;"> <img width="250" src="http://localhost:8000//images/logo.svg" alt="#"/> </a>
+        <div>
+            <a href="https://sites.google.com/view/siraq-shop/inicio">Catalogo de polos en stock</a>
+            <a href="">
+Nosotros</a>
+        </div>
+    </nav>
+    <section>
+        <h2 style="text-align: center; font-size: 1.1em; font-family: 'Roboto', sans-serif; font-weight: 700; color: var(--texto-botones); margin: 0 0 1.2em;">Estampado de polos</h2>
+        <p>Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.</p>
+    </section>
+    <section>
+        <p>Los tipos de estampado que usamos son.</p>
+        <section class="tipos_estampados">
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+            <div>
+                <div>
+                    <img src="http://pinegrow.com/placeholders/img13.jpg" style="width: 100%;"/>
+                </div>
+                <p>Paragraph</p>
+            </div>
+        </section>
+    </section>
+    <section>
+        <a href="#numero">Llamanos para realizar una cotización.</a>
+        <p>
+            Somos Siraq, una empresa de venta y estampado personalizados. Tenemos jersey algodon, jersey spum, y estampado en sublimado, vinil textil, base directa. </p>
+    </section>
+    <footer>
+        <p><strong>Dirección:</strong> <br>Jiron Humbold 1647.  <br>Galería Casita del deporte Segundo piso, puestos E05 y E09. <br>La victoria.  <br>Lima-Perú </p>
+        <a href="https://wa.me/message/T773NR3FHHZKA1" target="_blank"> <strong id="numero">Whatsapp Tienda, y tambien yape:</strong>
+        +51 935 863 556 </a>
+        <p><strong>Email:</strong> siraqshop@gmail.com</p>
+        <div>
+            <p><strong> <a href="https://www.youtube.com/channel/UC8k-unuctOVT1uSVnuQK8fA" target="_blank">
+              Youtube </a> </strong></p>
+            <p><strong> <a href="https://web.facebook.com/Siraq-108789428242745/?ref=pages_you_manage" target="_blank">
+              Facebook </a> </strong></p>
+            <p><strong> <a href="https://vm.tiktok.com/ZM8co6RhA/" target="_blank">
+              TikTok </a> </strong></p>
+            <p><strong>Sergio Atanacio</strong></p>
+            <p><strong>953 225 906</strong></p>
+            <p><strong>Angel Gabriel</strong></p>
+        </div>
+    </footer>
+</section>
