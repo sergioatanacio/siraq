@@ -59,5 +59,4 @@ html body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
-    grid-auto-rows: auto;
 }
