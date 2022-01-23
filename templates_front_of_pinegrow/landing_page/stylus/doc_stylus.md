@@ -76,3 +76,8 @@ border-radius(n)
     height 200px
     border 1px solid white
     center()
+
+## Import
+@import "componentes/globales.styl"
+@import "componentes/buscadores.styl"
+@import "componentes/filtros.styl"
