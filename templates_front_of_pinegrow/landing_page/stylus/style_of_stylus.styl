@@ -1,71 +1,66 @@
 :root 
-    --siraq-gris-fondo #111E27;
-    --texto-botones #999A9A;
+    --siraq-gris-fondo #111E27
+    --texto-botones #999A9A
+
+common_text()
+    text-decoration none
+    font-size 0.8em
+    font-family 'Roboto', sans-serif
+    color var(--texto-botones)
+
+html 
+    body 
+        margin 0
+        padding 0
+        background var(--siraq-gris-fondo)
+        common_text()
+        nav 
+            display grid
+            grid-template-columns 7em 1fr
+            align-items center
+            justify-content space-between
+            margin-left auto
+            margin-right auto
+            margin-top 2em
+            padding-bottom 2em
+            a 
+                img 
+                    width 100%
+            div 
+                display grid
+                grid-template-columns auto auto
+                justify-content end
+                text-align right
+                grid-gap 2em
+                a
+                    common_text()
+
+        .wrapper 
+            margin-left auto
+            margin-right auto
+            max-width 850px
+            section 
+                .subtitle 
+                    text-align center
+                    margin-bottom 2.8em
 
 
-html body nav {
-    display: grid;
-    grid-template-columns: 7em 1fr;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2em;
-    padding-bottom: 2em;
-}
-
-html body nav a img {
-    width: 100%;
-}
-
-html body nav div {
-    text-decoration: none;
-    font-size: 0.8em;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: end;
-    text-align: right;
-    grid-gap: 2em;
-}
-
-html body .wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 850px;
-}
-
-.wrapper section .subtitle {
-    text-align: center;
-    margin-bottom: 2.8em;
-}
-
-html body {
-    margin: 0;
-    padding: 0;
-    background: var(--siraq-gris-fondo);
-    font-family: 'Roboto', sans-serif;
-}
-
-.tipos_estampados {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9.5em, 1fr));
-    grid-gap: 1.5em;
-    grid-auto-rows: auto;
-    min-height: 29em;
-}
-
-.tipos_estampados div div {
-    height: 9.5em;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.tipos_estampados div div img {
-    min-height: 100%;
-    position: relative;
-    height: 100%;
-}
+.tipos_estampados 
+    display grid
+    grid-template-columns repeat(auto-fill, minmax(9.5em, 1fr))
+    grid-gap 1.5em
+    grid-auto-rows auto
+    min-height 29em
+    div 
+        div 
+            height 9.5em
+            position relative
+            margin 0
+            padding 0
+            display flex
+            justify-content center
+            overflow hidden
+            img 
+                min-height 100%
+                position relative
+                height 100%

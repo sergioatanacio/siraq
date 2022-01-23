@@ -2,6 +2,15 @@
   --siraq-gris-fondo: #111e27;
   --texto-botones: #999a9a;
 }
+html body {
+  margin: 0;
+  padding: 0;
+  background: var(--siraq-gris-fondo);
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
 html body nav {
   display: grid;
   grid-template-columns: 7em 1fr;
@@ -16,28 +25,26 @@ html body nav a img {
   width: 100%;
 }
 html body nav div {
-  text-decoration: none;
-  font-size: 0.8em;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: end;
   text-align: right;
   grid-gap: 2em;
 }
+html body nav div a {
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
 html body .wrapper {
   margin-left: auto;
   margin-right: auto;
   max-width: 850px;
 }
-.wrapper section .subtitle {
+html body .wrapper section .subtitle {
   text-align: center;
   margin-bottom: 2.8em;
-}
-html body {
-  margin: 0;
-  padding: 0;
-  background: var(--siraq-gris-fondo);
-  font-family: 'Roboto', sans-serif;
 }
 .tipos_estampados {
   display: grid;
