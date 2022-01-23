@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+mixin card-products(tex_of_card)
+    div 
+        div: img(src="http://pinegrow.com/placeholders/img13.jpg") 
+        p= tex_of_card
+html(lang="en")
+    head
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="description" content=""> 
+        <meta name="author" content=""> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <title>New page</title>         
+        <link href="css/style_of_stylus.css" rel="stylesheet"> 
+    body
+        nav
+            a(href="/" style="width: 6.5em;")
+                img(width="250" src="http://localhost:8000//images/logo.svg" alt="#")
+            div
+                a(href="https://sites.google.com/view/siraq-shop/inicio") Catalogo de polos en stock
+                a Nosotros
+        section.wrapper 
+            section
+                h2 Estampado de polos
+                p Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.
+            section
+                p Los tipos de estampado que usamos son.
+                section.tipos_estampados
+                    +card-products('Base directa')
+                    +card-products('Sublimado')
+                    +card-products('Transfer digital')
+                    +card-products('Vinil textil')
+                    +card-products('Plastizol')
+                    +card-products('Dtf')
+            section 
+                p Los precios del estampado dependen del tamaño del diseño, ascí como el color de la prenda. Prenda: Negra, de colores, blanca.
+                section.tipos_estampados
+                    +card-products('Logo 7 cm x 5 cm')
+                    +card-products('A4')
+                    +card-products('A3')
+
+            section
+                a(href="#numero") Llamanos para realizar una cotización.
+                p Somos Siraq, una empresa de venta y estampado personalizados. Tenemos jersey algodon, jersey spum, y estampado en sublimado, vinil textil, base directa. 
+            footer
+                p <strong>Dirección:</strong> <br>Jiron Humbold 1647.  <br>Galería Casita del deporte Segundo piso, puestos E05 y E09. <br>La victoria.  <br>Lima-Perú 
+                a(href="https://wa.me/message/T773NR3FHHZKA1" target="_blank") <strong id="numero">Whatsapp Tienda, y tambien yape:</strong> +51 935 863 556 
+                p <strong>Email:</strong> siraqshop@gmail.com
+                div
+                    p: strong: a(href="https://www.youtube.com/channel/UC8k-unuctOVT1uSVnuQK8fA" target="_blank") Youtube
+                    p: strong: a(href="https://web.facebook.com/Siraq-108789428242745/?ref=pages_you_manage" target="_blank") Facebook
+                    p: strong: a(href="https://vm.tiktok.com/ZM8co6RhA/" target="_blank") TikTok 
+                    p: strong Sergio Atanacio
+                    p: strong 953 225 906
+                    p: strong Angel Gabriel

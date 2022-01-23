@@ -43,9 +43,6 @@ html body .wrapper {
   margin-right: auto;
   max-width: 750px;
 }
-html body .wrapper section {
-  width: 100%;
-}
 html body .wrapper section h2 {
   text-align: center;
   font-size: 1.1em;
@@ -56,21 +53,15 @@ html body .wrapper section p {
   text-align: center;
 /* margin-bottom 2.8em */
 }
-html body .wrapper section .tipos_estampados {
+html body .wrapper .tipos_estampados {
   display: grid;
-/* grid-column repeat(4, minmax(10em, 12em)) */
-/* grid-auto-columns 10em
-                    grid-auto-flow column */
-  grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
   row-gap: 3.65em;
   column-gap: 2.5em;
-/* grid-auto-rows minmax(10em, auto)  */
-  justify-content: center;
-/* grid-auto-rows auto */
-  height: auto;
-  margin-bottom: 7.7em;
+  grid-auto-rows: auto;
+  min-height: 29em;
 }
-html body .wrapper section .tipos_estampados div div {
+html body .wrapper .tipos_estampados div div {
   height: 10em;
   position: relative;
   margin: 0 0 2em;
@@ -79,7 +70,7 @@ html body .wrapper section .tipos_estampados div div {
   justify-content: center;
   overflow: hidden;
 }
-html body .wrapper section .tipos_estampados div div img {
+html body .wrapper .tipos_estampados div div img {
   min-height: 100%;
   position: relative;
   height: 100%;
