@@ -92,6 +92,11 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
             },
         'add_product_process'=> function() use ($petition, $models, $connectionArg)
             {
+                run(__DIR__ . './../public/file_store/img_products/', fn($path_to_create) => iffn(
+                        fn()=> !is_dir($path_to_create),
+                        fn()=> mkdir($path_to_create, 0777, true)
+                    )
+                );
                 def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
                 def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
                 def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
