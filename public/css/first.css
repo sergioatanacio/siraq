@@ -1,0 +1,143 @@
+/* Este css se debe compilar en la carpeta css de public */
+:root {
+/* Colores */
+  --siraq-gris-fondo: #111e27;
+  --texto-botones: #999a9a;
+  --verde-botones: #02af9c;
+  --plataforma-de-fondo: #202d36;
+/* Tamaños */
+  --ancho-nav: 850px;
+  --ancho-wrapper: 750px;
+}
+html body {
+  margin: 0;
+  padding: 0;
+  background: var(--siraq-gris-fondo);
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
+html body nav {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-nav);
+  margin-top: 2em;
+  padding-bottom: 2em;
+}
+html body nav a img {
+  width: 100%;
+}
+html body nav div {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: end;
+  text-align: right;
+  grid-gap: 2em;
+}
+html body nav div a {
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
+html body .wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-wrapper);
+}
+html body .wrapper section {
+  width: 100%;
+}
+html body .wrapper section h2 {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0 0 1.2em;
+}
+html body .wrapper section p {
+  text-align: center;
+/* margin-bottom 2.8em */
+}
+html body .wrapper section .tipos_estampados {
+  display: grid;
+/* grid-column repeat(4, minmax(10em, 12em)) */
+/* grid-auto-columns 10em
+                    grid-auto-flow column */
+  grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
+  row-gap: 3.65em;
+  column-gap: 2.5em;
+/* grid-auto-rows minmax(10em, auto)  */
+  justify-content: center;
+/* grid-auto-rows auto */
+  height: auto;
+  margin-bottom: 3.8em;
+}
+html body .wrapper section .tipos_estampados div div {
+  height: 10em;
+  position: relative;
+  margin: 0 0 2em;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+html body .wrapper section .tipos_estampados div div img {
+  min-height: 100%;
+  position: relative;
+  height: 100%;
+}
+html body .wrapper .boton_ver_precio {
+  display: grid;
+  grid-template-columns: repeat(2, 16.6em);
+  grid-template-rows: 2.5em;
+  gap: 6.2em;
+  justify-content: center;
+  margin-bottom: 3.8em;
+}
+html body .wrapper .boton_ver_precio a button {
+  font-size: 0.8em;
+  width: 100%;
+  height: 100%;
+  background: var(--verde-botones);
+  color: #fff;
+  border: none;
+  border-radius: 3em;
+}
+html body footer {
+  background: var(--plataforma-de-fondo);
+  font-size: 16px;
+  height: 19.5em;
+}
+html body footer .footer_contend {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-wrapper);
+  height: 100%;
+  display: grid;
+  grid-template-rows: 12.5em;
+  grid-template-columns: 18em 24em;
+  gap: minmax(3em, 6.5em);
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: calc(3.75px * 16px);
+  line-height: 20px;
+}
+html body footer .footer_contend div {
+  font-size: 12px;
+}
+html body footer .footer_contend p,
+html body footer .footer_contend ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html body .footer_botton {
+  height: 3.5rem;
+  min-height: 3.5rem;
+  background: var(--siraq-gris-fondo);
+}

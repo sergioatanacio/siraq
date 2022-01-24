@@ -14,6 +14,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
         ),
         'temporary'             => function() 
             {
+                return header('Location: '.'/index.html');
                 return template(
                     'temporary_siraq/temporarySecond.html', 
                     [

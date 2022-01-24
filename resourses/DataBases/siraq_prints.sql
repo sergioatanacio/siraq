@@ -35,11 +35,39 @@ CREATE TABLE `sheets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-CREATE TABLE `relations` (
+CREATE TABLE `relations_tags_sheets` (
   `id_relations` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `id_tag` int NOT NULL,
   `id_sheets` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `stamping_materials` (
+  `id_stamping_materials` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name_of_material` text NOT NULL,
+  `description_material` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `material_images` (
+  `id_material_images` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_material` int NOT NULL,
+  `linck_material`text NOT NULL,
+  `description_material`text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `quantity_pricing_table` (
+  `id_quantity_pricing_table` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `1-11` int NOT NULL,
+  `12-24` int NOT NULL,
+  `25-49` int NOT NULL,
+  `50-99` int NOT NULL,
+  `100-+` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 
 INSERT INTO `users` 
   (`id_user`, `name_user`, `email`, `password`, `description`, `phone`, `direction`, `image`) 
