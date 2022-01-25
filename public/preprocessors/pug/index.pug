@@ -1,68 +1,22 @@
 //- Se debe compilar en la carpeta raiz.
 
 <!DOCTYPE html> 
-mixin card-products(tex_of_card)
-    div 
-        div: img(src="http://pinegrow.com/placeholders/img13.jpg") 
-        p= tex_of_card
-html(lang="es")
-    head
-        <meta charset="utf-8"> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-        <meta name="description" content=""> 
-        <meta name="author" content=""> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-        <title>New page</title>         
-        <link href="css/first.css" rel="stylesheet"> 
-    body
-        nav
-            a(href="/" style="width: 6.5em;")
-                img(width="250" src="/images/logo.svg" alt="#")
-            div
-                a(href="https://sites.google.com/view/siraq-shop/inicio") Catalogo de polos en stock
-                a Nosotros
-        section.wrapper 
-            section
-                h2 Estampado de polos
-                p Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.
-            section
-                p Los tipos de estampado que usamos son.
-                section.tipos_estampados
-                    +card-products('Base directa')
-                    +card-products('Sublimado')
-                    +card-products('Transfer digital')
-                    +card-products('Vinil textil')
-                    +card-products('Plastizol')
-                    +card-products('Dtf')
-            section 
-                p Los precios del estampado dependen del tamaño del diseño, ascí como el color de la prenda. Prenda: Negra, de colores, blanca.
-                section.tipos_estampados
-                    +card-products('Logo 7 cm x 5 cm')
-                    +card-products('A4')
-                    +card-products('A3')
-            section.boton_ver_precio
-                a: button Ver precio de estampado de Polos
-                a: button Ver precio de estampado en Poleras
-        footer
-            section.footer_contend
-                div
-                    p Contacto directo <br><br>
-                    p Whatsapp Tienda, y tambien yape: +51 935 863 556 <br>
-                    | Email: siraqshop@gmail.com <br>
-                    | Sergio Atanacio. Representante: +51 953 225 906 <br><br>
-                    p Redes
-                    ul 
-                        li Youtube
-                        li Facebook
-                        li TikTok
-                div 
-                    p Dirección <br>
-                    | Aviación 282. Tercer piso. Puesto 311. <br>
-                    | Referencia: Cerca a la reja entre Avicación con Jiron Humbold.<br>
-                    | La Victoria. <br>
-                    | Lima-Perú<br>
-        .footer_botton
-        script.
-            fetch hola
-            Que está pasando
 
+html(lang="es")
+    head#headId
+    body#bodyId
+    script.
+        fetch("/resourses/templates/template_head_index.html")
+        .then(response=>response.text())
+        .then(data=>{
+            document.getElementById('headId').innerHTML = data;
+
+            fetch("/resourses/templates/template_body_index.html")
+            .then(response=>response.text())
+            .then(data=>{
+                document.getElementById('bodyId').innerHTML = data;
+            })
+            .catch(err=>console.log(err))
+            
+        })
+        .catch(err=>console.log(err))

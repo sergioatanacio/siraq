@@ -1,0 +1,13 @@
+section.login_section
+    .title_login: h1 Bienvenido a Siraq
+    form(action="/login_controller" method="post")
+        input.inputs_login.element(type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email")
+        input.inputs_login.element(type="password" id="exampleInputPassword" placeholder="Password" name="password")
+        div
+            <input type="checkbox" id="customCheck">
+            <label for="customCheck">Recuérdame</label>
+        input.boton_login.element(type="submit" value="Iniciar sesión")
+    .opciones_login
+        a(href="forgot-password.html") ¿Has olvidado tu contraseña?
+        a(href="register.html") ¡Crea una cuenta!
+
