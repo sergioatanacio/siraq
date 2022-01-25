@@ -1,0 +1,101 @@
+section.section_add_product
+    h1 Agregar producto
+    form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
+        label.label_form(for="") Nombre
+        input.form_add_product_input(type="" name="name_of_product" required)
+        label.label_form(for="") Descripción
+        textarea.form_add_product_input(type="description_product" name="" cols="30" rows="10")
+        label.label_form(for="") Tamaño
+        input.form_add_product_input(type="" name="product_size")
+        label.label_form(for="") Precio en soles
+        input.form_add_product_input(type="number" name="product_price_in_soles")
+        label.label_form(for="") Cantidad
+        input.form_add_product_input(type="number" name="product_quantity")
+        label.label_form(for="") Etiqueta
+        select.form_add_product_input#product_label_id(type="" name="product_label")
+            option(disabled="" selected) Selecciona una etiqueta
+            option Ingles
+            option Frances
+            option Italiano
+        label.label_form(for="") Archivo
+            div 
+                input(name="upload_file" type="file")
+                label(for="") Subir archivo
+        input#upload_add_product(type="submit" value="Subir producto")
+    #result_message
+    
+script.
+    let function_tags = () =>
+    {
+        fetch("/tags")
+        .then(function(response) 
+        {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada";
+            }
+        })
+        .then(function(texto) 
+        {
+            json_tags = JSON.parse(texto); 
+            //console.log(json_tags);
+            let select = json_tags.map(function(dataTag) 
+            {
+                return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
+            });
+            document.getElementById("product_label_id").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
+        
+        })
+        .catch(function(error) 
+        {
+            console.log(error);
+        })
+    };
+
+    function_tags();
+    
+    let form_upload_add_product = document.getElementById('form_upload_add_product_id');
+    
+    form_upload_add_product.addEventListener('submit', function(event_of_submit_for_default)
+    {
+        event_of_submit_for_default.preventDefault();
+    
+        let data = new FormData(form_upload_add_product);
+        console.log(data)
+        fetch('/add_product_process', 
+        {
+            method: 'POST',
+            body:   data,
+        })
+        .then(function(response) 
+        {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada";
+            }
+        })
+        .then(function(texto) 
+        {
+            //console.log(texto);
+            //document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+            document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+            //form_upload_add_product.reset();
+            function_tags();
+
+            /*document.getElementById("result_message").innerHTML = JSON.parse(texto) 
+                ? 'El producto fué registrado con éxito.' 
+                : 'El producto no pudo ser registrado, comunícate con soporte.';*/
+    
+            // document.getElementById("escribir_curso").innerHTML = texto;
+        })
+        .catch(function(error) 
+        {
+            console.log(error);
+        })
+    
+    });
+    
+    
+    

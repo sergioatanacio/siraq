@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+
+html(lang="es")
+    head#headId
+    body#bodyId
+    script.
+        fetch("/resourses/templates/template_body_administrative_panel.html")
+        .then(response=>response.text())
+        .then(data=>{
+            document.getElementById('headId').innerHTML = data;
+
+            fetch("/resourses/templates/template_body_login.html")
+            .then(response=>response.text())
+            .then(data=>{
+                document.getElementById('bodyId').innerHTML = data;
+            })
+            .catch(err=>console.log(err))
+            
+        })
+        .catch(err=>console.log(err))

@@ -1,0 +1,447 @@
+/* 
+En los estilos debe separarse los colores de los tamaños. 
+Se diseña con atomic design.
+Primitivos
+    Colores
+    tamaños
+    Espaciados
+Atomos
+    botones
+    Cajas de texto
+    Inputs
+    Iconos
+Organismos
+    Elementos de interfaz que se pueden reusar.
+    Barra de busqueda con botones
+Molecular o cards
+    Formularios
+    Barra de navegación principal
+Secciones o templastes
+    Heder
+    Seciones o pestañas de una página
+    Footer
+Paginas
+    Inicio
+    Carga de archivos
+    Panel administrativo
+    Panel de perfil
+*/
+/* Este css se debe compilar en la carpeta css de public */
+:root {
+/* Colores */
+  --siraq-gris-fondo: #111e27;
+  --texto-botones: #999a9a;
+  --verde-botones: #02af9c;
+  --plataforma-de-fondo: #202d36;
+/* Tamaños */
+  --ancho-nav: 850px;
+  --ancho-wrapper: 750px;
+}
+html body {
+  margin: 0;
+  padding: 0;
+  background: var(--siraq-gris-fondo);
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
+html body nav {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-nav);
+  margin-top: 2em;
+  padding-bottom: 2em;
+}
+html body nav a img {
+  width: 100%;
+}
+html body nav div {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: end;
+  text-align: right;
+  grid-gap: 2em;
+}
+html body nav div a {
+  text-decoration: none;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  color: var(--texto-botones);
+}
+html body .wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-wrapper);
+}
+html body .wrapper section {
+  width: 100%;
+}
+html body .wrapper section h2 {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0 0 1.2em;
+}
+html body .wrapper section p {
+  text-align: center;
+/* margin-bottom 2.8em */
+}
+html body .wrapper section .tipos_estampados {
+  display: grid;
+/* grid-column repeat(4, minmax(10em, 12em)) */
+/* grid-auto-columns 10em
+                    grid-auto-flow column */
+  grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
+  row-gap: 3.65em;
+  column-gap: 2.5em;
+/* grid-auto-rows minmax(10em, auto)  */
+  justify-content: center;
+/* grid-auto-rows auto */
+  height: auto;
+  margin-bottom: 3.8em;
+}
+html body .wrapper section .tipos_estampados div div {
+  height: 10em;
+  position: relative;
+  margin: 0 0 2em;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+html body .wrapper section .tipos_estampados div div img {
+  min-height: 100%;
+  position: relative;
+  height: 100%;
+}
+html body .wrapper .boton_ver_precio {
+  display: grid;
+  grid-template-columns: repeat(2, 16.6em);
+  grid-template-rows: 2.5em;
+  gap: 6.2em;
+  justify-content: center;
+  margin-bottom: 3.8em;
+}
+html body .wrapper .boton_ver_precio a button {
+  font-size: 0.8em;
+  width: 100%;
+  height: 100%;
+  background: var(--verde-botones);
+  color: #fff;
+  border: none;
+  border-radius: 3em;
+}
+html body footer {
+  background: var(--plataforma-de-fondo);
+  font-size: 16px;
+  height: 19.5em;
+}
+html body footer .footer_contend {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--ancho-wrapper);
+  height: 100%;
+  display: grid;
+  grid-template-rows: 12.5em;
+  grid-template-columns: 18em 24em;
+  gap: minmax(3em, 6.5em);
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: calc(3.75px * 16px);
+  line-height: 20px;
+}
+html body footer .footer_contend div {
+  font-size: 12px;
+}
+html body footer .footer_contend p,
+html body footer .footer_contend ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html body .footer_botton {
+  height: 3.5rem;
+  min-height: 3.5rem;
+  background: var(--siraq-gris-fondo);
+}
+.login_section {
+  display: grid;
+  grid-template-rows: 1fr 2em 18em 2em 1.5fr;
+  grid-template-columns: 1fr 5fr 1fr;
+  font-size: 1em;
+  grid-row-gap: 4em;
+  background-color: #111e27;
+  height: 100vh;
+}
+.title_login {
+  grid-column-start: 2;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  grid-area: 2/2;
+}
+.title_login h1 {
+  margin: 0;
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  color: #c4c4c4;
+}
+.login_section form {
+  grid-area: 3/2;
+  display: grid;
+  grid-template-rows: 1fr 1fr 0.5fr 1fr;
+  grid-gap: 1em;
+  font-size: 2em;
+}
+.login_section form div {
+  border-radius: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: 0.65em;
+  color: #d7d7e1;
+  display: flex;
+  align-items: center;
+}
+.login_section form div input {
+  height: 1.4em;
+  width: 1.4em;
+}
+.login_section form div label {
+  font-size: 0.7em;
+  font-family: 'Roboto', sans-serif;
+  color: #35a9f2;
+  margin-left: 0.5em;
+}
+.login_section form .element {
+  border-radius: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: 0.65em;
+  color: #d7d7e1;
+  border: none;
+}
+.inputs_login {
+  background-color: #2b383e;
+}
+.boton_login {
+  background-color: #02af9c;
+}
+.opciones_login {
+  text-align: center;
+  grid-area: 4/2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.opciones_login a {
+  color: #35a9f2;
+  font-size: 1.2em;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  justify-content: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background: #111e27;
+}
+/* Esto es para la navegación por pestañas. */
+[data-content] {
+  display: none;
+}
+.active_button[data-target] {
+  background-color: rgba(127,255,212,0.418);
+}
+.active[data-content] {
+  display: grid;
+}
+.sidebar {
+  background-color: #202d36;
+  height: 100vh;
+}
+.sidebar_contend {
+  height: 100vh;
+  padding: 0 2em;
+}
+.horizontal_line {
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+  min-height: 0.1em;
+  background-color: rgba(255,255,255,0.178);
+}
+.a_button {
+  justify-content: center;
+  display: grid;
+}
+.a_button img {
+  max-height: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.ul_button {
+  display: grid;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+.ul_button button {
+  display: flex;
+  background: rgba(0,0,0,0);
+  border: none;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 1em;
+  color: rgba(240,248,255,0.555);
+}
+.label_form {
+  align-self: start;
+  color: #999a9a;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+}
+.section_add_product {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 3em 25em;
+  height: 90vh;
+  align-content: center;
+  grid-row-gap: 1em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1;
+}
+.form_add_product {
+  grid-area: 2/2;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-row-gap: 1.1em;
+  grid-column-gap: 1em;
+  grid-template-rows: 1fr 3fr repeat(6, 1fr);
+}
+.section_add_product h1 {
+  grid-area: 1/2;
+  text-align: center;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  align-self: baseline;
+  color: #d7d7e1;
+  font-size: 1.5em;
+}
+.form_add_product_input {
+  border-radius: 1em;
+  border-width: 0;
+  background-color: #2b383e;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 1em;
+  padding-right: 1em;
+  color: #d7d7e1;
+}
+.form_add_product #upload_add_product {
+  background-color: #02af9c;
+  color: #fffbfa;
+  border-radius: 1em;
+  border-width: 0;
+  font-size: 1.3em;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 1.6em;
+}
+.form_add_product div {
+  border-radius: 1em;
+  border-width: 0;
+  background-color: #d7d7e1;
+  display: grid;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  grid-template-areas: 1fr;
+}
+.form_add_product div input {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0;
+}
+.form_add_product div label {
+  align-self: center;
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+.form_add_product textarea {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.section_tag {
+  display: flex;
+  justify-content: center;
+  background-color: #0ff;
+  min-width: 55rem;
+}
+.form_tag {
+  min-width: 5rem;
+  max-width: 55rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+.label_tag {
+  display: block;
+  min-width: 50rem;
+  margin-bottom: 0.5rem;
+  min-height: 1rem;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+.label_tag {
+  display: block;
+  min-width: 50rem;
+  margin-bottom: 0.5rem;
+  min-height: 1rem;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}
+.input_tag {
+  display: block;
+  min-width: 50rem;
+  margin-bottom: 2rem;
+  min-height: 2rem;
+  border-radius: 0.6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+}
+.input_file_tag {
+  display: block;
+  min-width: 50rem;
+  margin-bottom: 2rem;
+  min-height: 2rem;
+  font-size: 1.2rem;
+}
+.input_submit_tag {
+  display: block;
+  min-width: 50rem;
+  margin-bottom: 2rem;
+  min-height: 2.5rem;
+  border-radius: 0.6rem;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+}

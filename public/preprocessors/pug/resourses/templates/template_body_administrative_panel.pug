@@ -1,0 +1,38 @@
+.wrapper
+    section.sidebar.
+        <?php response_require('temporary_siraq/templatesAdmin/sidebar.html')?>
+    section.sidebar_contend.
+        <?php response_require('temporary_siraq/templatesAdmin/tabs_templatesAdmin.html')?>
+
+
+script.
+    const targets = document.querySelectorAll('[data-target]');
+    const content = document.querySelectorAll('[data-content]');
+
+    document.querySelector('#add_product').classList.add('active_button');
+    document.querySelector('#tab_add_product').classList.add('active');
+
+    console.log(targets);
+    targets.forEach(target=>{
+        target.addEventListener('click', ()=>{
+            content.forEach(c=>{
+                c.classList.remove('active')
+            });  
+
+            const t = document.querySelector(target.dataset.target);
+            t.classList.add('active')
+
+            targets.forEach(t=>{
+                t.classList.remove('active_button')
+            });
+
+            const b = document.getElementById(target.id);
+            b.classList.add('active_button');
+
+        })
+
+    });
+
+
+<!-- End of Page Wrapper -->
+script(src="/scripts/temporaryAdmin.js")
