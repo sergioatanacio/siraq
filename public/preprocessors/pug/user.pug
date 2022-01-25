@@ -9,7 +9,7 @@ html(lang="es")
         .then(data=>{
             document.getElementById('headId').innerHTML = data;
 
-            fetch("/resourses/templates/template_body_index.html")
+            fetch("/resourses/templates/template_body_login.html")
             .then(response=>response.text())
             .then(data=>{
                 document.getElementById('bodyId').innerHTML = data;
