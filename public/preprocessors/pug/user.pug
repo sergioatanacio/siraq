@@ -2,8 +2,7 @@
 
 html(lang="es")
     include resourses/templates/template_head_index.pug
-    body
-        section.login_section
+    body: section.login_section
         .title_login: h1 Bienvenido a Siraq
         form(action="/login_controller" method="post")
             input.inputs_login.element(type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email")
@@ -11,7 +10,7 @@ html(lang="es")
             div
                 <input type="checkbox" id="customCheck">
                 <label for="customCheck">Recuérdame</label>
-            input.boton_login.element(type="submit" value="Iniciar sesión")
+            input.color_main_button.element(type="submit" value="Iniciar sesión")
         .opciones_login
             a(href="forgot-password.html") ¿Has olvidado tu contraseña?
             a(href="register.html") ¡Crea una cuenta!

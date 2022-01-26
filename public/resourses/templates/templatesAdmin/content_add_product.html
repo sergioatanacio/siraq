@@ -3,28 +3,27 @@
   <h1>Agregar producto</h1>
   <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
     <label class="label_form" for="">Nombre</label>
-    <input class="form_add_product_input" type="" name="name_of_product" required="required"/>
+    <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
     <label class="label_form" for="">Descripción</label>
-    <textarea class="form_add_product_input" type="description_product" name="" cols="30" rows="10"></textarea>
+    <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
     <label class="label_form" for="">Tamaño</label>
-    <input class="form_add_product_input" type="" name="product_size"/>
+    <input class="form_add_product_input common_form_inputs" type="" name="product_size"/>
     <label class="label_form" for="">Precio en soles</label>
-    <input class="form_add_product_input" type="number" name="product_price_in_soles"/>
+    <input class="form_add_product_input common_form_inputs" type="number" name="product_price_in_soles"/>
     <label class="label_form" for="">Cantidad</label>
-    <input class="form_add_product_input" type="number" name="product_quantity"/>
+    <input class="form_add_product_input common_form_inputs" type="number" name="product_quantity"/>
     <label class="label_form" for="">Etiqueta</label>
-    <select class="form_add_product_input" id="product_label_id" type="" name="product_label">
+    <select class="form_add_product_input common_form_inputs" id="product_label_id" type="" name="product_label">
       <option disabled="" selected="selected">Selecciona una etiqueta</option>
       <option>Ingles</option>
       <option>Frances</option>
       <option>Italiano</option>
     </select>
-    <label class="label_form" for="">Archivo
-      <div> 
-        <input name="upload_file" type="file"/>
-        <label for="">Subir archivo</label>
-      </div>
-    </label>
+    <label class="label_form" for="">Archivo</label>
+    <div> 
+      <input name="upload_file" type="file"/>
+      <label for="">Subir archivo</label>
+    </div>
     <input id="upload_add_product" type="submit" value="Subir producto"/>
   </form>
   <div id="result_message"></div>

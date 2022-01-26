@@ -33,6 +33,12 @@ Paginas
   --texto-botones: #999a9a;
   --verde-botones: #02af9c;
   --plataforma-de-fondo: #202d36;
+  --celeste-comun: #35a9f2;
+  --color-agua-sistema: #0ff;
+  --color-background-input: #2b383e;
+  --color-font-input: #d7d7e1;
+/* Tipografía */
+  --font-size-common: 'Roboto', sans-serif;
 /* Tamaños */
   --ancho-nav: 850px;
   --ancho-wrapper: 750px;
@@ -43,16 +49,30 @@ Paginas
   box-sizing: border-box;
   font-family: sans-serif;
 }
-html body {
-  margin: 0;
-  padding: 0;
+.wrapper_admin {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background-color: #111e27;
+}
+.color_main_button {
+  background-color: var(--verde-botones);
+  color: #fff;
+  border: none;
+  font-family: var(--font-size-common);
+}
+.common_form_inputs {
+  background-color: var(--color-background-input);
+  font-family: var(--font-size-common);
+  color: var(--color-font-input);
+}
+body {
   background: var(--siraq-gris-fondo);
   text-decoration: none;
   font-size: 0.8em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   color: var(--texto-botones);
 }
-html body nav {
+body nav {
   display: grid;
   grid-template-columns: 7em 1fr;
   align-items: center;
@@ -63,45 +83,41 @@ html body nav {
   margin-top: 2em;
   padding-bottom: 2em;
 }
-html body nav a img {
+body nav a img {
   width: 100%;
 }
-html body nav div {
+body nav div {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: end;
   text-align: right;
   grid-gap: 2em;
 }
-html body nav div a {
+body nav div a {
   text-decoration: none;
   font-size: 0.8em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   color: var(--texto-botones);
 }
-html body .wrapper {
+body .wrapper {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--ancho-wrapper);
 }
-html body .wrapper section {
+body .wrapper section {
   width: 100%;
 }
-html body .wrapper section h2 {
+body .wrapper section h2 {
   text-align: center;
   font-size: 1.1em;
   font-weight: 700;
   margin: 0 0 1.2em;
 }
-html body .wrapper section p {
+body .wrapper section p {
   text-align: center;
-/* margin-bottom 2.8em */
 }
-html body .wrapper section .tipos_estampados {
+body .wrapper section .tipos_estampados {
   display: grid;
-/* grid-column repeat(4, minmax(10em, 12em)) */
-/* grid-auto-columns 10em
-                    grid-auto-flow column */
   grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
   row-gap: 3.65em;
   column-gap: 2.5em;
@@ -111,7 +127,7 @@ html body .wrapper section .tipos_estampados {
   height: auto;
   margin-bottom: 3.8em;
 }
-html body .wrapper section .tipos_estampados div div {
+body .wrapper section .tipos_estampados div div {
   height: 10em;
   position: relative;
   margin: 0 0 2em;
@@ -120,12 +136,12 @@ html body .wrapper section .tipos_estampados div div {
   justify-content: center;
   overflow: hidden;
 }
-html body .wrapper section .tipos_estampados div div img {
+body .wrapper section .tipos_estampados div div img {
   min-height: 100%;
   position: relative;
   height: 100%;
 }
-html body .wrapper .boton_ver_precio {
+body .wrapper .boton_ver_precio {
   display: grid;
   grid-template-columns: repeat(2, 16.6em);
   grid-template-rows: 2.5em;
@@ -133,21 +149,18 @@ html body .wrapper .boton_ver_precio {
   justify-content: center;
   margin-bottom: 3.8em;
 }
-html body .wrapper .boton_ver_precio a button {
+body .wrapper .boton_ver_precio a button {
   font-size: 0.8em;
   width: 100%;
   height: 100%;
-  background: var(--verde-botones);
-  color: #fff;
-  border: none;
   border-radius: 3em;
 }
-html body footer {
+body footer {
   background: var(--plataforma-de-fondo);
   font-size: 16px;
   height: 19.5em;
 }
-html body footer .footer_contend {
+body footer .footer_contend {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--ancho-wrapper);
@@ -161,20 +174,21 @@ html body footer .footer_contend {
   margin-bottom: calc(3.75px * 16px);
   line-height: 20px;
 }
-html body footer .footer_contend div {
+body footer .footer_contend div {
   font-size: 12px;
 }
-html body footer .footer_contend p,
-html body footer .footer_contend ul {
+body footer .footer_contend p,
+body footer .footer_contend ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-html body .footer_botton {
+body .footer_botton {
   height: 3.5rem;
   min-height: 3.5rem;
   background: var(--siraq-gris-fondo);
 }
+/* Panel administrativo */
 .login_section {
   display: grid;
   grid-template-rows: 1fr 2em 18em 2em 1.5fr;
@@ -194,7 +208,7 @@ html body .footer_botton {
 .title_login h1 {
   margin: 0;
   font-size: 2em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   color: #c4c4c4;
 }
 .login_section form {
@@ -219,7 +233,7 @@ html body .footer_botton {
 }
 .login_section form div label {
   font-size: 0.7em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   color: #35a9f2;
   margin-left: 0.5em;
 }
@@ -232,10 +246,7 @@ html body .footer_botton {
   border: none;
 }
 .inputs_login {
-  background-color: #2b383e;
-}
-.boton_login {
-  background-color: #02af9c;
+  background-color: var(--plataforma-de-fondo);
 }
 .opciones_login {
   text-align: center;
@@ -244,18 +255,12 @@ html body .footer_botton {
   grid-template-columns: 1fr 1fr;
 }
 .opciones_login a {
-  color: #35a9f2;
+  color: var(--celeste-comun);
   font-size: 1.2em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   align-items: center;
   justify-content: center;
 }
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-  background: #111e27;
-}
-/* Esto es para la navegación por pestañas. */
 [data-content] {
   display: none;
 }
@@ -266,7 +271,7 @@ html body .footer_botton {
   display: grid;
 }
 .sidebar {
-  background-color: #202d36;
+  background-color: var(--plataforma-de-fondo);
   height: 100vh;
 }
 .sidebar_contend {
@@ -301,14 +306,14 @@ html body .footer_botton {
   background: rgba(0,0,0,0);
   border: none;
   font-size: 1em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   margin-top: 1em;
   color: rgba(240,248,255,0.555);
 }
 .label_form {
   align-self: start;
   color: #999a9a;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   font-size: 1em;
 }
 .section_add_product {
@@ -318,7 +323,7 @@ html body .footer_botton {
   height: 90vh;
   align-content: center;
   grid-row-gap: 1em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
   margin-bottom: 1;
 }
 .form_add_product {
@@ -342,15 +347,12 @@ html body .footer_botton {
 .form_add_product_input {
   border-radius: 1em;
   border-width: 0;
-  background-color: #2b383e;
   font-size: 1em;
-  font-family: 'Roboto', sans-serif;
   padding-left: 1em;
   padding-right: 1em;
-  color: #d7d7e1;
 }
 .form_add_product #upload_add_product {
-  background-color: #02af9c;
+  background-color: var(--verde-botones);
   color: #fffbfa;
   border-radius: 1em;
   border-width: 0;
@@ -379,7 +381,7 @@ html body .footer_botton {
   align-self: center;
   text-align: center;
   font-size: 1em;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
 }
 .form_add_product textarea {
   padding-top: 0.5em;
@@ -388,7 +390,7 @@ html body .footer_botton {
 .section_tag {
   display: flex;
   justify-content: center;
-  background-color: #0ff;
+  background-color: var(--color-agua-sistema);
   min-width: 55rem;
 }
 .form_tag {
@@ -405,7 +407,7 @@ html body .footer_botton {
   min-height: 1rem;
   border-radius: 0.6rem;
   font-size: 1.5rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
 }
 .label_tag {
   display: block;
@@ -414,7 +416,7 @@ html body .footer_botton {
   min-height: 1rem;
   border-radius: 0.6rem;
   font-size: 1.5rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
 }
 .input_tag {
   display: block;
@@ -440,5 +442,5 @@ html body .footer_botton {
   min-height: 2.5rem;
   border-radius: 0.6rem;
   font-size: 1.5rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-size-common);
 }

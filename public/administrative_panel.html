@@ -1,23 +1,180 @@
 <!DOCTYPE html> 
 <html lang="es">
-  <head></head>
-  <body></body>
-  <script>
-    let admin_panel = 'Esto es el principal';
-    
-    fetch("/resourses/templates/template_head_index.html")
-    .then(response=>response.text())
-    .then(data=>{
-        document.querySelector('head').innerHTML = data;
-    
-        fetch("/resourses/templates/template_body_administrative_panel.html")
-        .then(response=>response.text())
-        .then(data=>{
-            document.querySelector('body').innerHTML = data;
-        })
-        .catch(err=>console.log(err))
-        
-    })
-    .catch(err=>console.log(err))
-  </script>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>New page     </title>
+    <link href="css/first.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="wrapper_admin">
+      <section class="sidebar"><a class="a_button" name="anchor" href="/temporary_administrative_panel"><img src="/images/logo.svg"/></a>
+        <hr class="horizontal_line"/>
+        <ul class="ul_button">
+          <button id="add_product" data-target="#tab_add_product">Agregar producto</button>
+          <button id="add_tag" data-target="#tab_add_tag">Etiquetas</button>
+          <button id="my_profile" data-target="#tab_my_profile">Mi perfil</button>
+        </ul>
+        <hr class="horizontal_line"/>
+      </section>
+      <section class="sidebar_contend">
+        <section id="tabs">
+          <section id="tab_add_product" data-content="data-content">
+            <section class="section_add_product">
+              <h1>Agregar producto</h1>
+              <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
+                <label class="label_form" for="">Nombre</label>
+                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
+                <label class="label_form" for="">Descripción</label>
+                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label class="label_form" for="">Tamaño</label>
+                <input class="form_add_product_input common_form_inputs" type="" name="product_size"/>
+                <label class="label_form" for="">Precio en soles</label>
+                <input class="form_add_product_input common_form_inputs" type="number" name="product_price_in_soles"/>
+                <label class="label_form" for="">Cantidad</label>
+                <input class="form_add_product_input common_form_inputs" type="number" name="product_quantity"/>
+                <label class="label_form" for="">Etiqueta</label>
+                <select class="form_add_product_input common_form_inputs" id="product_label_id" type="" name="product_label">
+                  <option disabled="" selected="selected">Selecciona una etiqueta</option>
+                  <option>Ingles</option>
+                  <option>Frances</option>
+                  <option>Italiano</option>
+                </select>
+                <label class="label_form" for="">Archivo</label>
+                <div> 
+                  <input name="upload_file" type="file"/>
+                  <label for="">Subir archivo</label>
+                </div>
+                <input id="upload_add_product" type="submit" value="Subir producto"/>
+              </form>
+              <div id="result_message"></div>
+            </section>
+            <script>
+              let function_tags = () =>
+              {
+                  fetch("/tags")
+                  .then(function(response) 
+                  {
+                      if (response.ok) {
+                          return response.text();
+                      } else {
+                          throw "Error en la llamada";
+                      }
+                  })
+                  .then(function(texto) 
+                  {
+                      json_tags = JSON.parse(texto); 
+                      //console.log(json_tags);
+                      let select = json_tags.map(function(dataTag) 
+                      {
+                          return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
+                      });
+                      document.getElementById("product_label_id").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
+                  
+                  })
+                  .catch(function(error) 
+                  {
+                      console.log(error);
+                  })
+              };
+              
+              function_tags();
+              
+              let form_upload_add_product = document.getElementById('form_upload_add_product_id');
+              
+              form_upload_add_product.addEventListener('submit', function(event_of_submit_for_default)
+              {
+                  event_of_submit_for_default.preventDefault();
+              
+                  let data = new FormData(form_upload_add_product);
+                  console.log(data)
+                  fetch('/add_product_process', 
+                  {
+                      method: 'POST',
+                      body:   data,
+                  })
+                  .then(function(response) 
+                  {
+                      if (response.ok) {
+                          return response.text();
+                      } else {
+                          throw "Error en la llamada";
+                      }
+                  })
+                  .then(function(texto) 
+                  {
+                      //console.log(texto);
+                      //document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+                      document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+                      //form_upload_add_product.reset();
+                      function_tags();
+              
+                      /*document.getElementById("result_message").innerHTML = JSON.parse(texto) 
+                          ? 'El producto fué registrado con éxito.' 
+                          : 'El producto no pudo ser registrado, comunícate con soporte.';*/
+              
+                      // document.getElementById("escribir_curso").innerHTML = texto;
+                  })
+                  .catch(function(error) 
+                  {
+                      console.log(error);
+                  })
+              
+              });
+            </script>
+          </section>
+          <section id="tab_add_tag" data-content="data-content">
+            <section class="section_tag"> 
+              <form class="form_tag">
+                <label class="label_tag">Nombre de etiqueta&nbsp;</label>
+                <input class="input_tag"/>
+                <label class="label_tag">Descripción</label>
+                <input class="input_tag"/>
+                <label class="label_tag">Portada de etiqueta</label>
+                <input class="input_file_tag" type="file"/>
+                <button class="input_submit_tag">Click me!</button>
+              </form>
+            </section>
+          </section>
+          <section id="tab_my_profile" data-content="data-content">
+            <p>Mi perfil</p>
+          </section>
+        </section>
+      </section>
+    </div>
+    <script>
+      const targets = document.querySelectorAll('[data-target]');
+      const content = document.querySelectorAll('[data-content]');
+      
+      document.querySelector('#add_product').classList.add('active_button');
+      document.querySelector('#tab_add_product').classList.add('active');
+      
+      console.log(targets);
+      targets.forEach(target=>{
+          target.addEventListener('click', ()=>{
+              content.forEach(c=>{
+                  c.classList.remove('active')
+              });  
+      
+              const t = document.querySelector(target.dataset.target);
+              t.classList.add('active')
+      
+              targets.forEach(t=>{
+                  t.classList.remove('active_button')
+              });
+      
+              const b = document.getElementById(target.id);
+              b.classList.add('active_button');
+      
+          })
+      
+      });
+      
+      
+    </script><!-- End of Page Wrapper -->
+    <script src="/scripts/temporaryAdmin.js"></script>
+  </body>
 </html>

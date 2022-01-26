@@ -4,22 +4,11 @@ a.a_button(name="anchor" href="/temporary_administrative_panel")
 hr.horizontal_line
 
 ul.ul_button
-    button(
-        data-target="#tab_add_product" 
-        id="add_product"
-    ) Agregar producto
-    button(
-        data-target="#tab_add_tag" 
-        id="add_tag"
-    ) Etiquetas
-    button(
-        data-target="#tab_my_profile" 
-        id="my_profile"
-    ) Mi perfil
-
+    button#add_product(data-target="#tab_add_product") Agregar producto
+    button#add_tag(data-target="#tab_add_tag") Etiquetas
+    button#my_profile(data-target="#tab_my_profile") Mi perfil
 hr.horizontal_line
-script.
-    alert('Hola mundo');
+
 
 
 
