@@ -32,6 +32,7 @@ Primitive
 - size-
 - layout-
 - space-
+Space es un margin bottom
  */
 /* Este css se debe compilar en la carpeta css de public */
 :root {
@@ -50,12 +51,6 @@ Primitive
 /* Tamaños */
   --ancho-nav: 850px;
   --ancho-wrapper: 750px;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
 }
 :root {
   --color-primario: #181818;
@@ -477,15 +472,6 @@ body .footer_botton {
   font-family: var(--font-size-common);
   align-items: center;
   justify-content: center;
-}
-[data-content] {
-  display: none;
-}
-.active_button[data-target] {
-  background-color: rgba(127,255,212,0.418);
-}
-.active[data-content] {
-  display: grid;
 }
 .sidebar {
   background-color: var(--plataforma-de-fondo);

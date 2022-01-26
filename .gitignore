@@ -3,7 +3,8 @@
 libraries/puff
 *.zip
 *.rar
-
+*.html
+*.css
 vendor/
 node_modules/
 

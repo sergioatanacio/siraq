@@ -2,5 +2,64 @@
 
 html(lang="es")
     include resourses/templates/template_head_index.pug
+    style. 
+        [data-content]{
+            display: none;
+        }
+
+        .active_button[data-target]{
+            background-color: rgba(127, 255, 212, 0.418);
+        }
+
+        .active[data-content]{
+            display: grid;
+        }
+
+
     body
-        include resourses/templates/template_body_administrative_panel.pug
+        .wrapper_admin
+            section.sidebar
+                a.a_button(name="anchor" href="administrative_panel.html")
+                    img(src="/images/logo.svg")
+                hr.horizontal_line
+                ul.ul_button
+                    button#add_product(data-target="#tab_add_product") Agregar producto
+                    button#add_tag(data-target="#tab_add_tag") Etiquetas
+                    button#my_profile(data-target="#tab_my_profile") Mi perfil
+                hr.horizontal_line
+
+            section.sidebar_contend
+                include resourses/templatesAdmin/tabs_templatesAdmin.pug
+
+
+        script.
+            const targets = document.querySelectorAll('[data-target]');
+            const content = document.querySelectorAll('[data-content]');
+
+            document.querySelector('#add_product').classList.add('active_button');
+            document.querySelector('#tab_add_product').classList.add('active');
+
+            console.log(targets);
+            targets.forEach(target=>{
+                target.addEventListener('click', ()=>{
+                    content.forEach(c=>{
+                        c.classList.remove('active')
+                    });  
+
+                    const t = document.querySelector(target.dataset.target);
+                    t.classList.add('active')
+
+                    targets.forEach(t=>{
+                        t.classList.remove('active_button')
+                    });
+
+                    const b = document.getElementById(target.id);
+                    b.classList.add('active_button');
+
+                })
+
+            });
+
+
+        <!-- End of Page Wrapper -->
+        script(src="/scripts/temporaryAdmin.js")
