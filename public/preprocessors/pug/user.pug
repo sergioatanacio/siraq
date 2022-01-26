@@ -5,11 +5,11 @@ html(lang="es")
     body: section.login_section
         .title_login: h1 Bienvenido a Siraq
         form(action="/login_controller" method="post")
-            input.inputs_login.element(type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email")
-            input.inputs_login.element(type="password" id="exampleInputPassword" placeholder="Password" name="password")
+            input.common_form_inputs.element(type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email")
+            input.common_form_inputs.element(type="password" id="exampleInputPassword" placeholder="Password" name="password")
             div
-                <input type="checkbox" id="customCheck">
-                <label for="customCheck">Recuérdame</label>
+                input#customCheck(type="checkbox")
+                label(for="customCheck") Recuérdame
             input.color_main_button.element(type="submit" value="Iniciar sesión")
         .opciones_login
             a(href="forgot-password.html") ¿Has olvidado tu contraseña?

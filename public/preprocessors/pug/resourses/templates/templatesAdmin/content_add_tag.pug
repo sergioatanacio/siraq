@@ -1,9 +1,9 @@
-section.section_tag 
-    form.form_tag
-        label.label_tag Nombre de etiqueta&nbsp;
-        input.input_tag
-        label.label_tag Descripción
-        input.input_tag
-        label.label_tag Portada de etiqueta
+section.section_add_product 
+    form#form_upload_add_product_id.form_add_product
+        label.label_form Nombre de etiqueta&nbsp;
+        input.form_add_product_input.common_form_inputs
+        label.label_form Descripción
+        input.form_add_product_input.common_form_inputs
+        label.label_form Portada de etiqueta
         input.input_file_tag(type="file")
-        button.input_submit_tag Click me!
+        input#upload_add_product(type="submit" value="Subir Etiqueta")

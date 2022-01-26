@@ -26,6 +26,13 @@ Paginas
     Panel administrativo
     Panel de perfil
 */
+/* 
+Primitive
+- color-
+- size-
+- layout-
+- space-
+ */
 
 /* Este css se debe compilar en la carpeta css de public */
 :root 
@@ -38,6 +45,7 @@ Paginas
     --color-agua-sistema aqua
     --color-background-input #2B383E
     --color-font-input #D7D7E1
+    --color-white-font white;
     /* Tipografía */
     --font-size-common 'Roboto', sans-serif
     /* Tamaños */
@@ -49,7 +57,7 @@ Paginas
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
+@require 'normalize_css'
 
 common_text()
     text-decoration none
@@ -62,15 +70,14 @@ width_section(var_width)
     margin-right auto
     max-width var_width
 
-
 .wrapper_admin
     display grid
     grid-template-columns 1fr 6fr
-    background-color #111E27
+    background-color var(--siraq-gris-fondo)
 
 .color_main_button
     background-color var(--verde-botones)
-    color white
+    color var(--color-white-font)
     border none
     font-family: var(--font-size-common);
     
@@ -80,93 +87,6 @@ width_section(var_width)
     color: var(--color-font-input);
 
 @require 'main_page'
-/* Panel administrativo */
-
-.login_section {
-    display: grid;
-    grid-template-rows: 1fr 2em 18em 2em 1.5fr;
-    grid-template-columns: 1fr 5fr 1fr;
-    font-size: 1em;
-    grid-row-gap: 4em;
-    background-color: rgba(17, 30, 39, 1);
-    height: 100vh;
-}
-
-.title_login {
-    grid-column-start: 2;
-    text-align: center;
-    display: grid;
-    align-items: center;
-    grid-area: 2/2;
-}
-
-.title_login h1 {
-    margin: 0;
-    font-size: 2em;
-    font-family: var(--font-size-common);
-    color: #C4C4C4;
-}
-
-.login_section form {
-    grid-area: 3 / 2;
-    display: grid;
-    grid-template-rows: 1fr 1fr 0.5fr 1fr;
-    grid-gap: 1em;
-    font-size: 2em;
-}
-
-.login_section form div {
-    border-radius: 2em; 
-    padding-left: 1em; 
-    padding-right: 1em; 
-    font-size: 0.65em; 
-    color: rgba(215, 215, 225, 1); 
-    display: flex; 
-    align-items: center;
-}
-
-.login_section form div input {
-    height: 1.4em;
-    width: 1.4em;
-}
-
-.login_section form div label {
-    font-size: 0.7em;
-    font-family: var(--font-size-common);
-    color: rgba(53, 169, 242, 1);
-    margin-left: 0.5em;
-
-}
-
-.login_section form .element {
-    border-radius: 2em;
-    padding-left: 2em;
-    padding-right: 2em;
-    font-size: 0.65em;
-    color: rgba(215, 215, 225, 1);
-    border: none;
-
-}
-
-.inputs_login {
-    background-color: var(--plataforma-de-fondo);
-}
-
-.opciones_login {
-    text-align: center;
-    grid-area: 4 / 2; 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-}
-
-.opciones_login a{
-    color: var(--celeste-comun);
-    font-size: 1.2em;
-    font-family: var(--font-size-common);
-    align-items: center; 
-    justify-content: center;
-
-}
-
+@require 'login'
 @require 'administrative_panel'
 

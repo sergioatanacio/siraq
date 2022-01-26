@@ -26,6 +26,13 @@ Paginas
     Panel administrativo
     Panel de perfil
 */
+/* 
+Primitive
+- color-
+- size-
+- layout-
+- space-
+ */
 /* Este css se debe compilar en la carpeta css de public */
 :root {
 /* Colores */
@@ -37,6 +44,7 @@ Paginas
   --color-agua-sistema: #0ff;
   --color-background-input: #2b383e;
   --color-font-input: #d7d7e1;
+  --color-white-font: #fff;
 /* Tipografía */
   --font-size-common: 'Roboto', sans-serif;
 /* Tamaños */
@@ -49,14 +57,227 @@ Paginas
   box-sizing: border-box;
   font-family: sans-serif;
 }
+:root {
+  --color-primario: #181818;
+  --color-secundario: #f0f0f0;
+/* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primario: #f0f0f0;
+    --color-secundario: #181818;
+  }
+}
+@media (prefers-contrast: high) {
+  :root {
+    --color-primario: #000;
+    --color-secundario: #fff;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+/* opcional */
+  object-fit: cover;
+/* opcional */
+  object-position: center center;
+}
+a {
+  display: block;
+}
+p a {
+  display: inline;
+}
+li {
+  list-style-type: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+::selection {
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+}
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  display: block;
+  color: inherit;
+/* opcional */
+  appearance: none;
+}
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--color-primario);
+  background-color: var(--color-secundario);
+/* opcional */
+  line-height: 1.4em;
+/* opcional */
+  hyphens: auto;
+/* opcional */
+  font-smooth: always;
+/* opcional */
+  -webkit-font-smoothing: antialiased;
+/* opcional */
+  -moz-osx-font-smoothing: grayscale;
+}
 .wrapper_admin {
   display: grid;
   grid-template-columns: 1fr 6fr;
-  background-color: #111e27;
+  background-color: var(--siraq-gris-fondo);
 }
 .color_main_button {
   background-color: var(--verde-botones);
-  color: #fff;
+  color: var(--color-white-font);
   border: none;
   font-family: var(--font-size-common);
 }
@@ -188,16 +409,6 @@ body .footer_botton {
   min-height: 3.5rem;
   background: var(--siraq-gris-fondo);
 }
-/* Panel administrativo */
-.login_section {
-  display: grid;
-  grid-template-rows: 1fr 2em 18em 2em 1.5fr;
-  grid-template-columns: 1fr 5fr 1fr;
-  font-size: 1em;
-  grid-row-gap: 4em;
-  background-color: #111e27;
-  height: 100vh;
-}
 .title_login {
   grid-column-start: 2;
   text-align: center;
@@ -209,7 +420,16 @@ body .footer_botton {
   margin: 0;
   font-size: 2em;
   font-family: var(--font-size-common);
-  color: #c4c4c4;
+  color: var(--color-font-input);
+}
+.login_section {
+  display: grid;
+  grid-template-rows: 1fr 2em 18em 2em 1.5fr;
+  grid-template-columns: 1fr 5fr 1fr;
+  font-size: 1em;
+  grid-row-gap: 4em;
+  background-color: var(--siraq-gris-fondo);
+  height: 100vh;
 }
 .login_section form {
   grid-area: 3/2;
@@ -223,7 +443,7 @@ body .footer_botton {
   padding-left: 1em;
   padding-right: 1em;
   font-size: 0.65em;
-  color: #d7d7e1;
+  color: var(--color-font-input);
   display: flex;
   align-items: center;
 }
@@ -234,7 +454,7 @@ body .footer_botton {
 .login_section form div label {
   font-size: 0.7em;
   font-family: var(--font-size-common);
-  color: #35a9f2;
+  color: var(--celeste-comun);
   margin-left: 0.5em;
 }
 .login_section form .element {
@@ -242,11 +462,8 @@ body .footer_botton {
   padding-left: 2em;
   padding-right: 2em;
   font-size: 0.65em;
-  color: #d7d7e1;
+  color: var(--color-font-input);
   border: none;
-}
-.inputs_login {
-  background-color: var(--plataforma-de-fondo);
 }
 .opciones_login {
   text-align: center;
@@ -326,14 +543,6 @@ body .footer_botton {
   font-family: var(--font-size-common);
   margin-bottom: 1;
 }
-.form_add_product {
-  grid-area: 2/2;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-row-gap: 1.1em;
-  grid-column-gap: 1em;
-  grid-template-rows: 1fr 3fr repeat(6, 1fr);
-}
 .section_add_product h1 {
   grid-area: 1/2;
   text-align: center;
@@ -350,6 +559,14 @@ body .footer_botton {
   font-size: 1em;
   padding-left: 1em;
   padding-right: 1em;
+}
+.form_add_product {
+  grid-area: 2/2;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-row-gap: 1.1em;
+  grid-column-gap: 1em;
+  grid-template-rows: 1fr 3fr repeat(6, 1fr);
 }
 .form_add_product #upload_add_product {
   background-color: var(--verde-botones);
@@ -383,7 +600,7 @@ body .footer_botton {
   font-size: 1em;
   font-family: var(--font-size-common);
 }
-.form_add_product textarea {
+.form_add_product div textarea {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
@@ -399,15 +616,6 @@ body .footer_botton {
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
-}
-.label_tag {
-  display: block;
-  min-width: 50rem;
-  margin-bottom: 0.5rem;
-  min-height: 1rem;
-  border-radius: 0.6rem;
-  font-size: 1.5rem;
-  font-family: var(--font-size-common);
 }
 .label_tag {
   display: block;

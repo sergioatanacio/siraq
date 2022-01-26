@@ -1,0 +1,63 @@
+.title_login 
+    grid-column-start 2
+    text-align center
+    display grid
+    align-items center
+    grid-area 2/2
+    h1
+        margin 0
+        font-size 2em
+        font-family var(--font-size-common)
+        color var(--color-font-input)
+
+.login_section 
+    display grid
+    grid-template-rows 1fr 2em 18em 2em 1.5fr
+    grid-template-columns 1fr 5fr 1fr
+    font-size 1em
+    grid-row-gap 4em
+    background-color var(--siraq-gris-fondo)
+    height 100vh
+    form 
+        grid-area 3 / 2
+        display grid
+        grid-template-rows 1fr 1fr 0.5fr 1fr
+        grid-gap 1em
+        font-size 2em
+        div 
+            border-radius 2em 
+            padding-left 1em 
+            padding-right 1em 
+            font-size 0.65em 
+            color var(--color-font-input) 
+            display flex 
+            align-items center
+            input
+                height 1.4em
+                width 1.4em
+            label 
+                font-size 0.7em
+                font-family var(--font-size-common)
+                color var(--celeste-comun)
+                margin-left 0.5em
+        .element
+            border-radius 2em
+            padding-left 2em
+            padding-right 2em
+            font-size 0.65em
+            color var(--color-font-input)
+            border none
+
+.opciones_login 
+    text-align center
+    grid-area 4 / 2 
+    display grid 
+    grid-template-columns 1fr 1fr
+    a
+        color var(--celeste-comun)
+        font-size 1.2em
+        font-family var(--font-size-common)
+        align-items center 
+        justify-content center
+
+    
