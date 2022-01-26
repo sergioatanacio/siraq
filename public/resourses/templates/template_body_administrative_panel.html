@@ -1,13 +1,26 @@
 
 <div class="wrapper">
-  <section class="sidebar"><?php response_require('temporary_siraq/templatesAdmin/sidebar.html')?></section>
-  <section class="sidebar_contend">
-    <?php response_require('temporary_siraq/templatesAdmin/tabs_templatesAdmin.html')?>
-    
-    
-  </section>
+  <section class="sidebar" id="sidebar_id"></section>
+  <section class="sidebar_contend" id="sidebar_contend_id"></section>
 </div>
 <script>
+  let hey = 'Esto es el sidebar';
+  fetch("/resourses/templates/templatesAdmin/sidebar.html")
+  .then(response=>response.text())
+  .then(data=>{
+      document.querySelector('#sidebar_id').appendChild = data;
+  })
+  .catch(err=>console.log(err))
+  
+  fetch("/resourses/templates/templatesAdmin/tabs_templatesAdmin.html")
+  .then(response=>response.text())
+  .then(data=>{
+      document.querySelector('#sidebar_contend_id').appendChild = data;
+  })
+  .catch(err=>console.log(err))
+  
+  
+  
   const targets = document.querySelectorAll('[data-target]');
   const content = document.querySelectorAll('[data-content]');
   

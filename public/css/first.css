@@ -37,6 +37,12 @@ Paginas
   --ancho-nav: 850px;
   --ancho-wrapper: 750px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 html body {
   margin: 0;
   padding: 0;
@@ -243,15 +249,6 @@ html body .footer_botton {
   font-family: 'Roboto', sans-serif;
   align-items: center;
   justify-content: center;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-body {
-  margin: 0;
 }
 .wrapper {
   display: grid;

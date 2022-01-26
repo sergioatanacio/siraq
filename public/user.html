@@ -1,21 +1,27 @@
 <!DOCTYPE html> 
 <html lang="es">
-  <head id="headId"></head>
-  <body id="bodyId"></body>
-  <script>
-    fetch("/resourses/templates/template_head_index.html")
-    .then(response=>response.text())
-    .then(data=>{
-        document.getElementById('headId').innerHTML = data;
-    
-        fetch("/resourses/templates/template_body_login.html")
-        .then(response=>response.text())
-        .then(data=>{
-            document.getElementById('bodyId').innerHTML = data;
-        })
-        .catch(err=>console.log(err))
-        
-    })
-    .catch(err=>console.log(err))
-  </script>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>New page     </title>
+    <link href="css/first.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <section class="login_section"></section>
+    <div class="title_login">
+      <h1>Bienvenido a Siraq</h1>
+    </div>
+    <form action="/login_controller" method="post">
+      <input class="inputs_login element" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"/>
+      <input class="inputs_login element" type="password" id="exampleInputPassword" placeholder="Password" name="password"/>
+      <div><input type="checkbox" id="customCheck">
+<label for="customCheck">Recuérdame</label>
+      </div>
+      <input class="boton_login element" type="submit" value="Iniciar sesión"/>
+    </form>
+    <div class="opciones_login"><a href="forgot-password.html">¿Has olvidado tu contraseña?</a><a href="register.html">¡Crea una cuenta!</a></div>
+  </body>
 </html>
