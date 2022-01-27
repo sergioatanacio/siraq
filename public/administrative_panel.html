@@ -31,6 +31,8 @@
         <ul class="ul_button">
           <button id="add_product" data-target="#tab_add_product">Agregar producto</button>
           <button id="add_tag" data-target="#tab_add_tag">Etiquetas</button>
+          <button id="add_stamping_materials" data-target="#tab_add_stamping_materials">Materiales de estampados</button>
+          <button id="add_quantity_pricing_table" data-target="#tab_add_quantity_pricing_table">Tabla de precios</button>
           <button id="my_profile" data-target="#tab_my_profile">Mi perfil</button>
         </ul>
         <hr class="horizontal_line"/>
@@ -60,7 +62,7 @@
                 </select>
                 <label class="label_form" for="">Archivo</label>
                 <div> 
-                  <input name="upload_file" type="file"/>
+                  <input name="upload_file[]" type="file" multiple=""/>
                   <label for="">Subir archivo</label>
                 </div>
                 <input id="upload_add_product" type="submit" value="Subir producto"/>
@@ -154,6 +156,50 @@
               </form>
             </section>
           </section>
+          <section id="tab_add_stamping_materials" data-content="data-content">
+            <section class="section_add_product">
+              <h1>Materiales de estampados</h1>
+              <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
+                <label class="label_form" for="">Nombre de material</label>
+                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
+                <label class="label_form" for="">Descripción</label>
+                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label class="label_form" for="">Archivo</label>
+                <div> 
+                  <input name="upload_file[]" type="file" multiple=""/>
+                  <label for="">Subir archivo</label>
+                </div>
+                <input id="upload_add_product" type="submit" value="Subir materiales de estampados"/>
+              </form>
+              <div id="result_message"></div>
+            </section>
+          </section>
+          <section id="tab_add_quantity_pricing_table" data-content="data-content">
+            <section class="section_add_product">
+              <h1>Tabla de precios</h1>
+              <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
+                <label class="label_form" for="">Materiales de estampados</label>
+                <select class="form_add_product_input common_form_inputs" id="product_label_id" type="" name="product_label">
+                  <option disabled="" selected="selected">Selecciona una etiqueta</option>
+                  <option>Ingles</option>
+                  <option>Frances</option>
+                  <option>Italiano</option>
+                </select>
+                <label class="label_form" for="">1-11</label>
+                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
+                <label class="label_form" for="">12-24</label>
+                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label class="label_form" for="">25-49</label>
+                <input class="form_add_product_input common_form_inputs" type="" name="product_size"/>
+                <label class="label_form" for="">50-99</label>
+                <input class="form_add_product_input common_form_inputs" type="number" name="product_price_in_soles"/>
+                <label class="label_form" for="">100-+</label>
+                <input class="form_add_product_input common_form_inputs" type="number" name="product_quantity"/>
+                <input id="upload_add_product" type="submit" value="Subir tabla de precios"/>
+              </form>
+              <div id="result_message"></div>
+            </section>
+          </section>
           <section id="tab_my_profile" data-content="data-content">
             <p>Mi perfil</p>
           </section>
@@ -189,7 +235,7 @@
       });
       
       
-    </script><!-- End of Page Wrapper -->
+    </script>
     <script src="/scripts/temporaryAdmin.js"></script>
   </body>
 </html>

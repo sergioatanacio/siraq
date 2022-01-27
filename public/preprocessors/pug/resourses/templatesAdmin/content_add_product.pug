@@ -19,7 +19,7 @@ section.section_add_product
             option Italiano
         label.label_form(for="") Archivo
         div 
-            input(name="upload_file" type="file")
+            input(name="upload_file[]" type="file" multiple="")
             label(for="") Subir archivo
         input#upload_add_product(type="submit" value="Subir producto")
     #result_message

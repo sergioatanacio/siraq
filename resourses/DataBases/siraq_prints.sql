@@ -51,7 +51,7 @@ CREATE TABLE `stamping_materials` (
 
 CREATE TABLE `material_images` (
   `id_material_images` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `id_material` int NOT NULL,
+  `id_stamping_materials` int NOT NULL,/* Llave de stamping material */
   `linck_material`text NOT NULL,
   `description_material`text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -59,6 +59,7 @@ CREATE TABLE `material_images` (
 
 CREATE TABLE `quantity_pricing_table` (
   `id_quantity_pricing_table` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_stamping_materials` int NOT NULL,/* Llave de stamping material */
   `1-11` int NOT NULL,
   `12-24` int NOT NULL,
   `25-49` int NOT NULL,
