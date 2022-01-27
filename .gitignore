@@ -5,6 +5,7 @@ libraries/puff
 *.rar
 *.html
 *.css
+*.swp
 vendor/
 node_modules/
 
