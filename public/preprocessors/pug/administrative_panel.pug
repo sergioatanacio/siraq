@@ -41,7 +41,7 @@ html(lang="es")
                                 label.label_form Nombre de etiqueta&nbsp;
                                 input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
                                 label.label_form Descripción
-                                input.form_add_product_input.common_form_inputs
+                                textarea.common_form_inputs
                                 label.label_form Portada de etiqueta
                                 div 
                                     input(name="upload_file[]" type="file" multiple="")
@@ -54,7 +54,7 @@ html(lang="es")
                                 label.label_form(for="") Nombre de material
                                 input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
                                 label.label_form(for="") Descripción
-                                textarea.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
+                                textarea.common_form_inputs(type="description_product" name="" cols="30" rows="10")
                                 label.label_form(for="") Archivo
                                 div 
                                     input(name="upload_file[]" type="file" multiple="")
@@ -68,14 +68,14 @@ html(lang="es")
                             form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
                                 label.label_form(for="") Materiales de estampados
                                 select.form_add_product_input.common_form_inputs#product_label_id(type="" name="product_label")
-                                    option(disabled="" selected) Selecciona una etiqueta
+                                    option(disabled="" selected) Selecciona un material
                                     option Ingles
                                     option Frances
                                     option Italiano
                                 label.label_form(for="") 1-11
                                 input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
                                 label.label_form(for="") 12-24
-                                textarea.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
+                                input.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
                                 label.label_form(for="") 25-49
                                 input.form_add_product_input.common_form_inputs(type="" name="product_size")
                                 label.label_form(for="") 50-99
