@@ -35,7 +35,18 @@ html(lang="es")
                     section#tab_add_product(data-content)
                         include resourses/templatesAdmin/content_add_product.pug
                     section#tab_add_tag(data-content)
-                        include resourses/templatesAdmin/content_add_tag.pug
+                        section.section_add_product
+                            h1 Etiquetas
+                            form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
+                                label.label_form Nombre de etiqueta&nbsp;
+                                input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
+                                label.label_form Descripción
+                                input.form_add_product_input.common_form_inputs
+                                label.label_form Portada de etiqueta
+                                div 
+                                    input(name="upload_file[]" type="file" multiple="")
+                                    label(for="") Subir archivo
+                                input#upload_add_product(type="submit" value="Subir Etiqueta")
                     section#tab_add_stamping_materials(data-content)
                         section.section_add_product
                             h1 Materiales de estampados

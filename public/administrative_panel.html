@@ -144,14 +144,18 @@
             </script>
           </section>
           <section id="tab_add_tag" data-content="data-content">
-            <section class="section_add_product"> 
-              <form class="form_add_product" id="form_upload_add_product_id">
+            <section class="section_add_product">
+              <h1>Etiquetas</h1>
+              <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
                 <label class="label_form">Nombre de etiqueta&nbsp;</label>
-                <input class="form_add_product_input common_form_inputs"/>
+                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
                 <label class="label_form">Descripción</label>
                 <input class="form_add_product_input common_form_inputs"/>
                 <label class="label_form">Portada de etiqueta</label>
-                <input class="input_file_tag" type="file"/>
+                <div> 
+                  <input name="upload_file[]" type="file" multiple=""/>
+                  <label for="">Subir archivo</label>
+                </div>
                 <input id="upload_add_product" type="submit" value="Subir Etiqueta"/>
               </form>
             </section>
