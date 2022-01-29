@@ -28,11 +28,15 @@ Paginas
 */
 /* 
 Primitive
-- color-
-- size-
-- layout-
-- space-
+- library-color-
+- library-sizeAndStyle-
+- library-layout-
+- library-space-
 Space es un margin bottom
+ */
+/* 
+- library-primitive-elementToApply
+- specific-pageWhereToApply-elementToApply
  */
 /* Este css se debe compilar en la carpeta css de public */
 :root {
@@ -265,21 +269,28 @@ body {
 /* opcional */
   -moz-osx-font-smoothing: grayscale;
 }
-.wrapper_admin {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-  background-color: var(--siraq-gris-fondo);
+.library-color-commonFormInputs {
+  background-color: var(--color-background-input);
+  font-family: var(--font-size-common);
+  color: var(--color-font-input);
 }
-.color_main_button {
+.library-sizeAndStyle-inputOfAForm {
+  border-radius: 1em;
+  border-width: 0;
+  font-size: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.library-color-mainButton {
   background-color: var(--verde-botones);
   color: var(--color-white-font);
   border: none;
   font-family: var(--font-size-common);
 }
-.common_form_inputs {
-  background-color: var(--color-background-input);
-  font-family: var(--font-size-common);
-  color: var(--color-font-input);
+.wrapper_admin {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background-color: var(--siraq-gris-fondo);
 }
 body {
   background: var(--siraq-gris-fondo);
@@ -513,12 +524,6 @@ body .footer_botton {
   margin-top: 1em;
   color: rgba(240,248,255,0.555);
 }
-.label_form {
-  align-self: start;
-  color: #999a9a;
-  font-family: var(--font-size-common);
-  font-size: 1em;
-}
 .section_add_product {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -538,13 +543,6 @@ body .footer_botton {
   align-self: baseline;
   color: #d7d7e1;
   font-size: 1.5em;
-}
-.form_add_product_input {
-  border-radius: 1em;
-  border-width: 0;
-  font-size: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
 }
 .form_add_product {
   grid-area: 2/2;

@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="shortcut icon" href="images/favicon.svg" type=""/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>New page     </title>
+    <title>Siraq</title>
     <link href="css/first.css" rel="stylesheet"/>
   </head>
   <style>
@@ -43,24 +44,25 @@
             <section class="section_add_product">
               <h1>Agregar producto</h1>
               <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
-                <label class="label_form" for="">Nombre</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
-                <label class="label_form" for="">Descripción</label>
-                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
-                <label class="label_form" for="">Tamaño</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="product_size"/>
-                <label class="label_form" for="">Precio en soles</label>
-                <input class="form_add_product_input common_form_inputs" type="number" name="product_price_in_soles"/>
-                <label class="label_form" for="">Cantidad</label>
-                <input class="form_add_product_input common_form_inputs" type="number" name="product_quantity"/>
-                <label class="label_form" for="">Etiqueta</label>
-                <select class="form_add_product_input common_form_inputs" id="product_label_id" type="" name="product_label">
+                <input type="hidden" value="tab_add_product"/>
+                <label for="">Nombre</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_product" required="required"/>
+                <label for="">Descripción</label>
+                <textarea class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label for="">Tamaño</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="product_size"/>
+                <label for="">Precio en soles</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="number" name="product_price_in_soles"/>
+                <label for="">Cantidad</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="number" name="product_quantity"/>
+                <label for="">Etiqueta</label>
+                <select class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" id="product_label_id" type="" name="product_label">
                   <option disabled="" selected="selected">Selecciona una etiqueta</option>
                   <option>Ingles</option>
                   <option>Frances</option>
                   <option>Italiano</option>
                 </select>
-                <label class="label_form" for="">Archivo</label>
+                <label for="">Archivo</label>
                 <div> 
                   <input name="upload_file[]" type="file" multiple=""/>
                   <label for="">Subir archivo</label>
@@ -147,11 +149,11 @@
             <section class="section_add_product">
               <h1>Etiquetas</h1>
               <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
-                <label class="label_form">Nombre de etiqueta&nbsp;</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
-                <label class="label_form">Descripción</label>
-                <input class="form_add_product_input common_form_inputs"/>
-                <label class="label_form">Portada de etiqueta</label>
+                <label>Nombre de etiqueta&nbsp;</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_product" required="required"/>
+                <label>Descripción</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs"/>
+                <label>Portada de etiqueta</label>
                 <div> 
                   <input name="upload_file[]" type="file" multiple=""/>
                   <label for="">Subir archivo</label>
@@ -164,11 +166,11 @@
             <section class="section_add_product">
               <h1>Materiales de estampados</h1>
               <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
-                <label class="label_form" for="">Nombre de material</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
-                <label class="label_form" for="">Descripción</label>
-                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
-                <label class="label_form" for="">Archivo</label>
+                <label for="">Nombre de material</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_product" required="required"/>
+                <label for="">Descripción</label>
+                <textarea class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label for="">Archivo</label>
                 <div> 
                   <input name="upload_file[]" type="file" multiple=""/>
                   <label for="">Subir archivo</label>
@@ -182,23 +184,23 @@
             <section class="section_add_product">
               <h1>Tabla de precios</h1>
               <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
-                <label class="label_form" for="">Materiales de estampados</label>
-                <select class="form_add_product_input common_form_inputs" id="product_label_id" type="" name="product_label">
+                <label for="">Materiales de estampados</label>
+                <select class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" id="product_label_id" type="" name="product_label">
                   <option disabled="" selected="selected">Selecciona una etiqueta</option>
                   <option>Ingles</option>
                   <option>Frances</option>
                   <option>Italiano</option>
                 </select>
-                <label class="label_form" for="">1-11</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="name_of_product" required="required"/>
-                <label class="label_form" for="">12-24</label>
-                <textarea class="form_add_product_input common_form_inputs" type="description_product" name="" cols="30" rows="10"></textarea>
-                <label class="label_form" for="">25-49</label>
-                <input class="form_add_product_input common_form_inputs" type="" name="product_size"/>
-                <label class="label_form" for="">50-99</label>
-                <input class="form_add_product_input common_form_inputs" type="number" name="product_price_in_soles"/>
-                <label class="label_form" for="">100-+</label>
-                <input class="form_add_product_input common_form_inputs" type="number" name="product_quantity"/>
+                <label for="">1-11</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_product" required="required"/>
+                <label for="">12-24</label>
+                <textarea class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="description_product" name="" cols="30" rows="10"></textarea>
+                <label for="">25-49</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="product_size"/>
+                <label for="">50-99</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="number" name="product_price_in_soles"/>
+                <label for="">100-+</label>
+                <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="number" name="product_quantity"/>
                 <input id="upload_add_product" type="submit" value="Subir tabla de precios"/>
               </form>
               <div id="result_message"></div>

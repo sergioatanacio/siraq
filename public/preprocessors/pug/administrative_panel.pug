@@ -38,11 +38,11 @@ html(lang="es")
                         section.section_add_product
                             h1 Etiquetas
                             form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
-                                label.label_form Nombre de etiqueta&nbsp;
-                                input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
-                                label.label_form Descripción
-                                input.form_add_product_input.common_form_inputs
-                                label.label_form Portada de etiqueta
+                                label Nombre de etiqueta&nbsp;
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
+                                label Descripción
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs
+                                label Portada de etiqueta
                                 div 
                                     input(name="upload_file[]" type="file" multiple="")
                                     label(for="") Subir archivo
@@ -51,11 +51,11 @@ html(lang="es")
                         section.section_add_product
                             h1 Materiales de estampados
                             form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
-                                label.label_form(for="") Nombre de material
-                                input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
-                                label.label_form(for="") Descripción
-                                textarea.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
-                                label.label_form(for="") Archivo
+                                label(for="") Nombre de material
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
+                                label(for="") Descripción
+                                textarea.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="description_product" name="" cols="30" rows="10")
+                                label(for="") Archivo
                                 div 
                                     input(name="upload_file[]" type="file" multiple="")
                                     label(for="") Subir archivo
@@ -66,22 +66,22 @@ html(lang="es")
                         section.section_add_product
                             h1 Tabla de precios
                             form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
-                                label.label_form(for="") Materiales de estampados
-                                select.form_add_product_input.common_form_inputs#product_label_id(type="" name="product_label")
+                                label(for="") Materiales de estampados
+                                select.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs#product_label_id(type="" name="product_label")
                                     option(disabled="" selected) Selecciona una etiqueta
                                     option Ingles
                                     option Frances
                                     option Italiano
-                                label.label_form(for="") 1-11
-                                input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
-                                label.label_form(for="") 12-24
-                                textarea.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
-                                label.label_form(for="") 25-49
-                                input.form_add_product_input.common_form_inputs(type="" name="product_size")
-                                label.label_form(for="") 50-99
-                                input.form_add_product_input.common_form_inputs(type="number" name="product_price_in_soles")
-                                label.label_form(for="") 100-+
-                                input.form_add_product_input.common_form_inputs(type="number" name="product_quantity")
+                                label(for="") 1-11
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
+                                label(for="") 12-24
+                                textarea.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="description_product" name="" cols="30" rows="10")
+                                label(for="") 25-49
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="product_size")
+                                label(for="") 50-99
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="number" name="product_price_in_soles")
+                                label(for="") 100-+
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="number" name="product_quantity")
                                 input#upload_add_product(type="submit" value="Subir tabla de precios")
                             #result_message
 

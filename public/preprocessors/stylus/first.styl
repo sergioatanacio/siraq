@@ -28,13 +28,16 @@ Paginas
 */
 /* 
 Primitive
-- color-
-- size-
-- layout-
-- space-
+- library-color-
+- library-sizeAndStyle-
+- library-layout-
+- library-space-
 Space es un margin bottom
  */
-
+/* 
+- library-primitive-elementToApply
+- specific-pageWhereToApply-elementToApply
+ */
 /* Este css se debe compilar en la carpeta css de public */
 :root 
     /* Colores */
@@ -53,7 +56,8 @@ Space es un margin bottom
     --ancho-nav 850px
     --ancho-wrapper 750px
 
-@require 'normalize_css'
+@require 'library/normalize_css'
+@require 'library/library-first'
 
 common_text()
     text-decoration none
@@ -71,18 +75,11 @@ width_section(var_width)
     grid-template-columns 1fr 6fr
     background-color var(--siraq-gris-fondo)
 
-.color_main_button
-    background-color var(--verde-botones)
-    color var(--color-white-font)
-    border none
-    font-family var(--font-size-common)
-    
-.common_form_inputs
-    background-color var(--color-background-input)
-    font-family var(--font-size-common)
-    color var(--color-font-input)
 
-@require 'main_page'
-@require 'login'
-@require 'administrative_panel'
+    
+
+
+@require 'specific/main_page'
+@require 'specific/login'
+@require 'specific/administrative_panel'
 

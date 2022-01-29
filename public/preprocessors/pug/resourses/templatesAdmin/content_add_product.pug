@@ -1,23 +1,24 @@
 section.section_add_product
     h1 Agregar producto
     form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
-        label.label_form(for="") Nombre
-        input.form_add_product_input.common_form_inputs(type="" name="name_of_product" required)
-        label.label_form(for="") Descripción
-        textarea.form_add_product_input.common_form_inputs(type="description_product" name="" cols="30" rows="10")
-        label.label_form(for="") Tamaño
-        input.form_add_product_input.common_form_inputs(type="" name="product_size")
-        label.label_form(for="") Precio en soles
-        input.form_add_product_input.common_form_inputs(type="number" name="product_price_in_soles")
-        label.label_form(for="") Cantidad
-        input.form_add_product_input.common_form_inputs(type="number" name="product_quantity")
-        label.label_form(for="") Etiqueta
-        select.form_add_product_input.common_form_inputs#product_label_id(type="" name="product_label")
+        input(type="hidden" value="tab_add_product")
+        label(for="") Nombre
+        input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
+        label(for="") Descripción
+        textarea.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="description_product" name="" cols="30" rows="10")
+        label(for="") Tamaño
+        input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="product_size")
+        label(for="") Precio en soles
+        input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="number" name="product_price_in_soles")
+        label(for="") Cantidad
+        input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="number" name="product_quantity")
+        label(for="") Etiqueta
+        select.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs#product_label_id(type="" name="product_label")
             option(disabled="" selected) Selecciona una etiqueta
             option Ingles
             option Frances
             option Italiano
-        label.label_form(for="") Archivo
+        label(for="") Archivo
         div 
             input(name="upload_file[]" type="file" multiple="")
             label(for="") Subir archivo
