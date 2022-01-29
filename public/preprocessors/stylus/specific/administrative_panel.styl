@@ -61,11 +61,24 @@
         margin 0
         padding 0
         align-self baseline
-        color #D7D7E1
+        color var(--color-font-input)
         font-size 1.5em
 
 
+<<<<<<< HEAD:public/preprocessors/stylus/specific/administrative_panel.styl
 
+=======
+estilos_de_los_imputs()
+    border-radius 1em
+    border-width 0
+    font-size 1em
+    padding-left 1em
+    padding-right 1em
+>>>>>>> 904d0543b49acf0c8a6b9bff733bca472297a0ef:public/preprocessors/stylus/administrative_panel.styl
+
+.form_add_product_input 
+    estilos_de_los_imputs()
+    max-height 2em
 
 .form_add_product 
     grid-area 2/2
@@ -73,10 +86,13 @@
     grid-template-columns 1fr 4fr
     grid-row-gap 1.1em
     grid-column-gap 1em
-    grid-template-rows 1fr 3fr repeat(6, 1fr)
+    /* grid-template-rows 1fr 3fr repeat(6, 1fr) */
+    grid-auto-rows auto
+    textarea
+        estilos_de_los_imputs()
     #upload_add_product 
         background-color var(--verde-botones)
-        color #FFFBFA
+        color var(--color-font-input)
         border-radius 1em
         border-width 0
         font-size 1.3em
@@ -86,16 +102,18 @@
     div 
         border-radius 1em
         border-width 0
-        background-color #D7D7E1
+        background-color var(--color-font-input)
         display grid
         position relative
         align-items center
         align-content center
         grid-template-areas 1fr
+        estilos_de_los_imputs()
+        max-height 2em
         input 
             position absolute
             min-width 100%
-            min-height 100%
+            min-height 1em
             opacity 0
         label 
             align-self center 
