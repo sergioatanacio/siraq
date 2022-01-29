@@ -14,4 +14,80 @@ html(lang="es")
         .opciones_login
             a(href="forgot-password.html") ¿Has olvidado tu contraseña?
             a(href="register.html") ¡Crea una cuenta!
+        script.
+            function redirection() {
+                location.href = "administrative_panel.html";
+            }
 
+            let function_tags = () =>
+            {
+                fetch("/tags")
+                .then(function(response) 
+                {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw "Error en la llamada";
+                    }
+                })
+                .then(function(texto) 
+                {
+                    json_tags = JSON.parse(texto); 
+                    //console.log(json_tags);
+                    let select = json_tags.map(function(dataTag) 
+                    {
+                        return `<option value="${dataTag.id_tag}">${dataTag.name_tag}</option>`;
+                    });
+                    document.getElementById("product_label_id").innerHTML = '<option disabled="" selected >Selecciona una etiqueta</option>' + select; 
+                
+                })
+                .catch(function(error) 
+                {
+                    console.log(error);
+                })
+            };
+
+            function_tags();
+            
+            let form_upload_add_product = document.getElementById('form_upload_add_product_id');
+            
+            form_upload_add_product.addEventListener('submit', function(event_of_submit_for_default)
+            {
+                event_of_submit_for_default.preventDefault();
+            
+                let data = new FormData(form_upload_add_product);
+                console.log(data)
+                fetch('/add_product_process', 
+                {
+                    method: 'POST',
+                    body:   data,
+                })
+                .then(function(response) 
+                {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw "Error en la llamada";
+                    }
+                })
+                .then(function(texto) 
+                {
+                    //console.log(texto);
+                    //document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+                    document.getElementById("result_message").innerHTML = JSON.stringify(texto);  
+                    //form_upload_add_product.reset();
+                    function_tags();
+
+                    /*document.getElementById("result_message").innerHTML = JSON.parse(texto) 
+                        ? 'El producto fué registrado con éxito.' 
+                        : 'El producto no pudo ser registrado, comunícate con soporte.';*/
+            
+                    // document.getElementById("escribir_curso").innerHTML = texto;
+                })
+                .catch(function(error) 
+                {
+                    console.log(error);
+                })
+            
+            });
+            

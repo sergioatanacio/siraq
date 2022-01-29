@@ -57,7 +57,7 @@ Space es un margin bottom
     --ancho-wrapper 750px
 
 @require 'library/normalize_css'
-@require 'library/library-first'
+
 
 common_text()
     text-decoration none
@@ -70,15 +70,19 @@ width_section(var_width)
     margin-right auto
     max-width var_width
 
-.wrapper_admin
-    display grid
-    grid-template-columns 1fr 6fr
-    background-color var(--siraq-gris-fondo)
+library-sizeAndStyle-inputOfAFormAndTextArea()
+    border-radius 1em
+    border-width 0
+    font-size 1em
+    padding-left 1em
+    padding-right 1em
 
 
-    
 
 
+
+
+@require 'library/library-first'
 @require 'specific/main_page'
 @require 'specific/login'
 @require 'specific/administrative_panel'
