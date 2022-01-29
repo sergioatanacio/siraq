@@ -11,7 +11,7 @@
 $user_siraq     = function($method, $connection, array $petition)
 {
     $methodsToReturn = [
-        'users_login'  => function(/*$name_course, $teacher*/) use ($connection, $petition)
+        'users_login'  => function() use ($connection, $petition)
             {
                 def($consultation ,"SELECT * FROM `users` WHERE `email` = '".$petition['email']."' AND `password` = '".$petition['password']."' ");
                 return assocQuery($connection->query($consultation));
@@ -38,7 +38,7 @@ $user_siraq     = function($method, $connection, array $petition)
 $tags_siraq     = function($method, $connection, array $petition)
 {
     $methodsToReturn = [
-        'tags_of_products' => function(/*$name_course, $teacher*/) use ($connection, $petition)
+        'tags_of_products' => function() use ($connection, $petition)
             {
                 def($consultation ,"SELECT * FROM `tags`");
                 return assocQuery($connection->query($consultation));
@@ -66,7 +66,7 @@ $products_siraq     = function($method, $connection, array $petition)
 $courses        = function($method, $connection, array $petition)#: bool
 {
     $methodsToReturn = [
-        'courses_insert'  => function(/*$name_course, $teacher*/) use ($connection, $petition)
+        'courses_insert'  => function() use ($connection, $petition)
             {
                 $sqlProducts = $connection->prepare("INSERT INTO `courses` (`name_course`, `teacher`) VALUES (?, ?)");
                 $boolReturn = $sqlProducts->execute(array($petition['name_course'], $petition['teacher'],));
