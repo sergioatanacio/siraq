@@ -71,6 +71,19 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                 fn()=> mkdir($path_to_create, 0777, true)
                             )
                         );
+                        return array_map(function($files)
+                            {
+                                def($image_name_in_code, '/file_store/img_products/'. time() . '_' . rand(1000000000, 9999999999));
+                                #def($nombre_imagen, '/file_store/img_products/'. $files['name']);
+                                def($destination_folder, $_SERVER['DOCUMENT_ROOT'] . $image_name_in_code);
+                                var_dump($files);
+                                echo(move_uploaded_file($files['upload_file']['tmp_name'], $destination_folder));
+
+
+                            }, 
+                            $_FILES
+                        );
+
                         def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
                         def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
                         def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
