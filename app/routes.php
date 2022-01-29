@@ -9,7 +9,6 @@ $routePrint('', 'generalController@temporary');
  */
 $routePrint('login_controller', 'generalController@login_controller');
 
-
 /**
  * Es una api que se trae todas las etiquetas que hay en la página.
  */
@@ -20,7 +19,10 @@ $routePrint('tags', 'generalController@tags');
  */
 $routePrint('add_product_process', 'generalController@add_product_process');
 
-
+/**
+ * Es una api que permite añadir los productos, se necesita estar logueado.
+ */
+$routePrint('administrative_panel', 'generalController@administrative_panel');
 
 /**
  * Es lo que se trae el error 404

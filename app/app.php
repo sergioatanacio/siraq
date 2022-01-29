@@ -56,69 +56,49 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                 ]);
                 return $arrayReturnLoginApi[$petition['login_type']]();
             },
-        'tags'=> function() use ($petition, $models, $connectionArg)
+        'administrative_panel'=> function() use ($petition, $models, $connectionArg)
             {
-                def($resultTags, 
-                    $models
-                    (
-                        'tags_siraq', 'tags_of_products', [], 
-                        $connectionArg
-                    )()
-                );
-                return json_encode($resultTags);
-            },
-        'add_product_process'=> function() use ($petition, $models, $connectionArg)
-            {
-                run(__DIR__ . './../public/file_store/img_products/', fn($path_to_create) => iffn(
-                        fn()=> !is_dir($path_to_create),
-                        fn()=> mkdir($path_to_create, 0777, true)
-                    )
-                );
-                def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
-                def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
-                def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
-                echo($carpeta_destino);
-                def($petition_more_upload_file, operation('+', $petition, ['upload_file' => $name_without_spaces]));
-                
-                def($resultTags, iffn(
-                    fn()=> isset($petition_more_upload_file['upload_file']),
-                    function() use ($petition_more_upload_file, $models, $connectionArg, $carpeta_destino)
-                    {
-                        $models
+                def($administrative_panel_api, [
+                    'tags'              => fn()=>json_encode($models
                         (
-                            'products_siraq', 'add_product_model', $petition_more_upload_file, 
+                            'tags_siraq', 'tags_of_products', [], 
                             $connectionArg
-                        )();
-                        move_uploaded_file($_FILES['upload_file']['tmp_name'], $carpeta_destino);
+                        )()),
+                    'add_product_process'=> function() use ($petition, $models, $connectionArg)
+                    {
+                        run(__DIR__ . './../public/file_store/img_products/', fn($path_to_create) => iffn(
+                                fn()=> !is_dir($path_to_create),
+                                fn()=> mkdir($path_to_create, 0777, true)
+                            )
+                        );
+                        def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
+                        def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
+                        def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
+                        echo($carpeta_destino);
+                        def($petition_more_upload_file, operation('+', $petition, ['upload_file' => $name_without_spaces]));
+                        
+                        def($resultTags, iffn(
+                            fn()=> isset($petition_more_upload_file['upload_file']),
+                            function() use ($petition_more_upload_file, $models, $connectionArg, $carpeta_destino)
+                            {
+                                $models
+                                (
+                                    'products_siraq', 'add_product_model', $petition_more_upload_file, 
+                                    $connectionArg
+                                )();
+                                move_uploaded_file($_FILES['upload_file']['tmp_name'], $carpeta_destino);
+                            },
+                            fn()=>[false]
+                        ));
+        
+                        return json_encode($petition_more_upload_file);
+                        //return json_encode($resultTags);
+                        /*return json_encode($petition);*/
                     },
-                    fn()=>[false]
-                ));
-
-                return json_encode($petition_more_upload_file);
-                //return json_encode($resultTags);
-                /*return json_encode($petition);*/
+                ]);
+                return $administrative_panel_api[$petition['administrative_panel_type']]();
             },
-        'administrative_panel'  => function() use ($petition, $models, $connectionArg)
-            {
-                def($resultUser,
-                    iffn(
-                        fn()=>isset($petition),
-                        fn()=>
-                            $models
-                            (
-                                'user_siraq', 'users_login', 
-                                [
-                                    'email'     => $petition['email'],    
-                                    'password'  => $petition['password'],
-                                ], 
-                                $connectionArg
-                            )()
-                    )
-                );
-
-                pre($resultUser);
-                return response_require('user/administrative_panel.html');
-            },
+        
     ]);
     return $methodsToReturn[$method];
 });
