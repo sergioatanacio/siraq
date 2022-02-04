@@ -66,11 +66,36 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                         )()),
                     'add_product_process'=> function() use ($petition, $models, $connectionArg)
                     {
-                        run(__DIR__ . './../public/file_store/img_products/', fn($path_to_create) => iffn(
+                        def($directorio, __DIR__ . './../public/file_store/img_products/');
+                        run($directorio, fn($path_to_create) => iffn(
                                 fn()=> !is_dir($path_to_create),
                                 fn()=> mkdir($path_to_create, 0777, true)
                             )
                         );
+                        var_dump($_FILES);
+                        $final = null;
+                        foreach ($_FILES['upload_file']['tmp_name'] as $key => $tmp_name) {
+                            if($_FILES['upload_file']['name'][$key])
+                            {
+                                $filename = $_FILES['upload_file']['name'][$key];
+                                $temporal = $_FILES['upload_file']['tmp_name'][$key];
+                                $image_name_in_code = $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.pathinfo($filename, PATHINFO_EXTENSION) ;
+                                #def($image_name_in_code, '/file_store/img_products/'. time() . '_' . rand(1000000000, 9999999999));
+                                var_dump($_FILES);
+                                $dir = opendir($directorio);
+                                if(move_uploaded_file($temporal, $image_name_in_code))
+                                {
+                                    $final = $final . ("El archivo se ha almacenado correctamente");
+                                } else
+                                {
+                                    $final = $final . ("El archivo no se ha almacenado");
+                                }
+                                closedir($dir);
+                            }
+                        }
+                        return $final;
+
+
                         return array_map(function($files)
                             {
                                 def($image_name_in_code, '/file_store/img_products/'. time() . '_' . rand(1000000000, 9999999999));

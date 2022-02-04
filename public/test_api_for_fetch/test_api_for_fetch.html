@@ -7,7 +7,11 @@
     <title>Document</title>
     <style>
         *{
-            color: white;
+            color: rgb(153, 153, 153);
+        }
+        input, textarea{
+            background-color: rgb(75, 75, 75);
+
         }
         body{
             background-color: rgb(37, 37, 37);
@@ -16,6 +20,33 @@
 </head>
 <body>
     <div id="inicio"></div>
+    <div id="result_message"></div>
+    <form class="form_add_product" id="form_upload_add_product_id" enctype="multipart/form-data">
+        <input type="hidden" name="administrative_panel_type" value="add_product_process"/><br>
+        <label for="">Nombre</label><br>
+        <input type="" name="name_of_product" required="required" value="serch"/>
+        <label for="">Descripción</label><br>
+        <textarea class="library-sizeAndStyle-TextAreaOfAForm library-color-commonFormInputs" type="description_product" name="description_of_product" cols="30" rows="10">Descripcion para test</textarea>
+        <label for="">Tamaño</label><br>
+        <input type="" name="product_size" value="Tamaño de el producto"/>
+        <label for="">Precio en soles</label><br>
+        <input type="number" name="product_price_in_soles" value="456"/>
+        <label for="">Cantidad</label><br>
+        <input type="number" name="product_quantity" value="987"/>
+        <label for="">Etiqueta</label><br>
+        <select id="product_label_id" type="" name="product_label">
+          <option disabled="" selected="selected">Selecciona una etiqueta</option>
+          <option>Ingles</option>
+          <option>Frances</option>
+          <option>Italiano</option>
+        </select>
+        <label for="">Archivo</label>
+        <div> 
+          <input name="upload_file[]" type="file" multiple=""/>
+          <label for="">Subir archivo</label>
+        </div>
+        <input id="upload_add_product" type="submit" value="Subir producto"/>
+    </form>
     <script src="query_first.js"></script>
 </body>
 </html>
