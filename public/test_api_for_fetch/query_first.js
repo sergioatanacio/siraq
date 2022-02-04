@@ -70,7 +70,7 @@ form_upload_add_product.addEventListener('submit', function(event_of_submit_for_
     .then(response => response.text())
     .then(function(texto) 
     {
-        document.getElementById("result_message").innerHTML = JSON.stringify(texto);
+        document.getElementById("result_message").innerHTML = '<pre>'+texto+'</pre>';
     })
     .catch(function(error) 
     {
