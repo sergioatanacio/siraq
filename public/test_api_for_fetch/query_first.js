@@ -25,7 +25,10 @@ fetch('http://localhost:8000/login_controller',
 .then(response=> response.text())
 .then(text =>
 {
-    document.querySelector('#inicio').append(document.createTextNode(text));
+    
+    const element = document.createElement('h1');
+    element.append(document.createTextNode(text));
+    document.querySelector('#inicio').append(element);
 })
 .catch(error => console.log(error));
 
@@ -42,7 +45,9 @@ fetch('http://localhost:8000/login_controller',
 .then(response=> response.text())
 .then(text =>
     {
-        document.querySelector('#inicio').append(document.createTextNode(text));
+        const element = document.createElement('h1');
+        element.append(document.createTextNode(text));
+        document.querySelector('#inicio').append(element);
     })
 .catch(tres=> console.log(tres) );
 
