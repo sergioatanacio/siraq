@@ -72,6 +72,30 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                 fn()=> mkdir($path_to_create, 0777, true)
                             )
                         );
+
+                        $carga_de_archivos = function($archivos, $result = 0) use (&$carga_de_archivos, $directorio)
+                        {
+                            def($filename, $archivos['name'][$result]);
+                            def($temporal, $archivos['tmp_name'][$result]);
+                            def($image_name_in_code, $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.pathinfo($filename, PATHINFO_EXTENSION));
+                            def($dir, opendir($directorio));
+                            iffn(
+                                fn()=> (move_uploaded_file($temporal, $image_name_in_code)),
+                                fn()=> "El archivo se ha almacenado correctamente",
+                                fn()=> "El archivo no se ha almacenado",
+                            );
+                            closedir($dir);
+
+
+                            return iffn(
+                                fn()=> (!isset($archivos['tmp_name'][$result + 1])),
+                                fn()=> $result + 1,
+                                fn()=> $carga_de_archivos($archivos, $result + 1),
+                            );
+                        };
+
+                        return $carga_de_archivos($_FILES['upload_file']);
+
                         var_dump($_FILES);
                         $final = null;
                         foreach ($_FILES['upload_file']['tmp_name'] as $key => $tmp_name) {
