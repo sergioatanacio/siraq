@@ -73,27 +73,29 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                 )
                             );
 
-                            def($carga_de_archivos, function($archivos, $result = 0) use (&$carga_de_archivos, $directorio)
+                            def($carga_de_archivos, function($archivos, $iterator = 0, $resulting_message = null) use (&$carga_de_archivos, $directorio, $petition, $models, $connectionArg)
                             {
-                                def($filename, $archivos['name'][$result]);
-                                def($temporal, $archivos['tmp_name'][$result]);
+                                def($filename, $archivos['name'][$iterator]);
+                                def($temporal, $archivos['tmp_name'][$iterator]);
                                 def($image_name_in_code, 
                                     $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.
                                     pathinfo($filename, PATHINFO_EXTENSION));
                                     
                                 def($dir, opendir($directorio));
-                                iffn(
+                                def($se_almaceno_o_no, iffn(
                                     fn()=> (move_uploaded_file($temporal, $image_name_in_code)),
-                                    fn()=> "El archivo se ha almacenado correctamente",
+                                    fn()=> "El archivo se ha".$filename." almacenado correctamente",
                                     fn()=> "El archivo no se ha almacenado",
-                                );
+                                ));
+
                                 closedir($dir);
+                                #def($result_db, $models('products_siraq', 'add_product_model', $petition, $connectionArg)());
 
 
                                 return iffn(
-                                    fn()=> (!isset($archivos['tmp_name'][$result + 1])),
-                                    fn()=> $result + 1,
-                                    fn()=> $carga_de_archivos($archivos, $result + 1),
+                                    fn()=> (!isset($archivos['tmp_name'][$iterator + 1])),
+                                    fn()=> $resulting_message,
+                                    fn()=> $carga_de_archivos($archivos, $iterator + 1, $se_almaceno_o_no . $result_db),
                                 );
                             });
 
