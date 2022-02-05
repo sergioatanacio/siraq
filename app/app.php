@@ -65,100 +65,42 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                             $connectionArg
                         )()),
                     'add_product_process'=> function() use ($petition, $models, $connectionArg)
-                    {
-                        def($directorio, __DIR__ . './../public/file_store/img_products/');
-                        run($directorio, fn($path_to_create) => iffn(
-                                fn()=> !is_dir($path_to_create),
-                                fn()=> mkdir($path_to_create, 0777, true)
-                            )
-                        );
-<<<<<<< HEAD
-
-                        $carga_de_archivos = function($archivos, $result = 0) use (&$carga_de_archivos, $directorio)
                         {
-                            def($filename, $archivos['name'][$result]);
-                            def($temporal, $archivos['tmp_name'][$result]);
-                            def($image_name_in_code, $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.pathinfo($filename, PATHINFO_EXTENSION));
-                            def($dir, opendir($directorio));
-                            iffn(
-                                fn()=> (move_uploaded_file($temporal, $image_name_in_code)),
-                                fn()=> "El archivo se ha almacenado correctamente",
-                                fn()=> "El archivo no se ha almacenado",
+                            def($directorio, __DIR__ . './../public/file_store/img_products/');
+                            run($directorio, fn($path_to_create) => iffn(
+                                    fn()=> !is_dir($path_to_create),
+                                    fn()=> mkdir($path_to_create, 0777, true)
+                                )
                             );
-                            closedir($dir);
 
-
-                            return iffn(
-                                fn()=> (!isset($archivos['tmp_name'][$result + 1])),
-                                fn()=> $result + 1,
-                                fn()=> $carga_de_archivos($archivos, $result + 1),
-                            );
-                        };
-
-                        return $carga_de_archivos($_FILES['upload_file']);
-
-                        var_dump($_FILES);
-=======
-                        echo(json_encode($_FILES));
->>>>>>> 7c76db6fe796cf30b415565dcbc157d2b80440b6
-                        $final = null;
-                        foreach ($_FILES['upload_file']['tmp_name'] as $key => $tmp_name) {
-                            if($_FILES['upload_file']['name'][$key])
+                            def($carga_de_archivos, function($archivos, $result = 0) use (&$carga_de_archivos, $directorio)
                             {
-                                $filename = $_FILES['upload_file']['name'][$key];
-                                $temporal = $_FILES['upload_file']['tmp_name'][$key];
-                                $image_name_in_code = $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.pathinfo($filename, PATHINFO_EXTENSION) ;
-                                $dir = opendir($directorio);
-                                if(move_uploaded_file($temporal, $image_name_in_code))
-                                {
-                                    $final = $final . ("El archivo se ha almacenado correctamente");
-                                } else
-                                {
-                                    $final = $final . ("El archivo no se ha almacenado");
-                                }
+                                def($filename, $archivos['name'][$result]);
+                                def($temporal, $archivos['tmp_name'][$result]);
+                                def($image_name_in_code, 
+                                    $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.
+                                    pathinfo($filename, PATHINFO_EXTENSION));
+                                    
+                                def($dir, opendir($directorio));
+                                iffn(
+                                    fn()=> (move_uploaded_file($temporal, $image_name_in_code)),
+                                    fn()=> "El archivo se ha almacenado correctamente",
+                                    fn()=> "El archivo no se ha almacenado",
+                                );
                                 closedir($dir);
-                            }
-                        }
-                        return $final;
 
 
-                        return array_map(function($files)
-                            {
-                                def($image_name_in_code, '/file_store/img_products/'. time() . '_' . rand(1000000000, 9999999999));
-                                #def($nombre_imagen, '/file_store/img_products/'. $files['name']);
-                                def($destination_folder, $_SERVER['DOCUMENT_ROOT'] . $image_name_in_code);
-                                var_dump($files);
-                                echo(move_uploaded_file($files['upload_file']['tmp_name'], $destination_folder));
+                                return iffn(
+                                    fn()=> (!isset($archivos['tmp_name'][$result + 1])),
+                                    fn()=> $result + 1,
+                                    fn()=> $carga_de_archivos($archivos, $result + 1),
+                                );
+                            });
 
 
-                            }, 
-                            $_FILES
-                        );
+                            return $carga_de_archivos($_FILES['upload_file']);
 
-                        def($nombre_imagen, '/file_store/img_products/'. $_FILES['upload_file']['name']);
-                        def($name_without_spaces, run($nombre_imagen, fn($name_image)=> str_replace(' ', '-', $name_image)));
-                        def($carpeta_destino, $_SERVER['DOCUMENT_ROOT'] . $name_without_spaces);
-                        echo($carpeta_destino);
-                        def($petition_more_upload_file, operation('+', $petition, ['upload_file' => $name_without_spaces]));
-                        
-                        def($resultTags, iffn(
-                            fn()=> isset($petition_more_upload_file['upload_file']),
-                            function() use ($petition_more_upload_file, $models, $connectionArg, $carpeta_destino)
-                            {
-                                $models
-                                (
-                                    'products_siraq', 'add_product_model', $petition_more_upload_file, 
-                                    $connectionArg
-                                )();
-                                move_uploaded_file($_FILES['upload_file']['tmp_name'], $carpeta_destino);
-                            },
-                            fn()=>[false]
-                        ));
-        
-                        return json_encode($petition_more_upload_file);
-                        //return json_encode($resultTags);
-                        /*return json_encode($petition);*/
-                    },
+                        },
                 ]);
                 return $administrative_panel_api[$petition['administrative_panel_type']]();
             },
