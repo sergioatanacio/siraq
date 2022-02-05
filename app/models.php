@@ -63,6 +63,31 @@ $products_siraq     = function($method, $connection, array $petition)
     return $methodsToReturn[$method];
 };
 
+$stamping_materials = function($method, $connection, array $petition)
+{
+    $methodsToReturn = [
+        'add_stamping_model' => function() use ($connection, $petition)
+            {
+                def($consultation_stamping_materials ,"INSERT INTO `stamping_materials` 
+                (`name_of_material`, `description_material`)
+                VALUES
+                ('".$petition['name_of_material']."', '".$petition['description_material']."');");
+                $connection->query($consultation_stamping_materials);
+                
+                $connection->query($consultation_stamping_materials);
+
+
+                def($consultation, "INSERT INTO `material_images` 
+                (`id_stamping_materials`, `id_resources_images`)
+                VALUES
+                ('".$petition['name_of_material']."', '".$petition['description_material']."');");
+                return true;
+            }
+    ];
+    
+    return $methodsToReturn[$method];
+};
+
 $courses        = function($method, $connection, array $petition)#: bool
 {
     $methodsToReturn = [
