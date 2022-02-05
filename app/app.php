@@ -72,6 +72,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                 fn()=> mkdir($path_to_create, 0777, true)
                             )
                         );
+<<<<<<< HEAD
 
                         $carga_de_archivos = function($archivos, $result = 0) use (&$carga_de_archivos, $directorio)
                         {
@@ -97,6 +98,9 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                         return $carga_de_archivos($_FILES['upload_file']);
 
                         var_dump($_FILES);
+=======
+                        echo(json_encode($_FILES));
+>>>>>>> 7c76db6fe796cf30b415565dcbc157d2b80440b6
                         $final = null;
                         foreach ($_FILES['upload_file']['tmp_name'] as $key => $tmp_name) {
                             if($_FILES['upload_file']['name'][$key])
@@ -104,8 +108,6 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                 $filename = $_FILES['upload_file']['name'][$key];
                                 $temporal = $_FILES['upload_file']['tmp_name'][$key];
                                 $image_name_in_code = $directorio. time() . '_' . rand(1000000000, 9999999999).'.'.pathinfo($filename, PATHINFO_EXTENSION) ;
-                                #def($image_name_in_code, '/file_store/img_products/'. time() . '_' . rand(1000000000, 9999999999));
-                                var_dump($_FILES);
                                 $dir = opendir($directorio);
                                 if(move_uploaded_file($temporal, $image_name_in_code))
                                 {
