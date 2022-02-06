@@ -47,13 +47,14 @@
         </div>
         <input id="upload_add_product" type="submit" value="Subir producto"/>
     </form>
+    <h1>Añadir materiales para estampado</h1>
     <form class="form_add_product" id="form_add_stamping_materials" enctype="multipart/form-data">
         <input type="hidden" name="administrative_panel_type" value="add_stamping_materials"/><br>
-        <label for="">Nombre de material</label>
-        <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_material" required="required"/>
-        <label for="">Descripción</label>
-        <textarea class="library-sizeAndStyle-TextAreaOfAForm library-color-commonFormInputs" type="description_product" name="description_material" cols="30" rows="10"></textarea>
-        <label for="">Archivo</label>
+        <label for="">Nombre de material</label><br>
+        <input class="library-sizeAndStyle-inputOfAForm library-color-commonFormInputs" type="" name="name_of_material" required="required" value="Nobre del material"/><br>
+        <label for="">Descripción</label><br>
+        <textarea class="library-sizeAndStyle-TextAreaOfAForm library-color-commonFormInputs" type="description_product" name="description_material" cols="30" rows="10">Descripcion del estampado</textarea><br>
+        <label for="">Archivo</label><br>
         <div> 
           <input name="upload_file[]" type="file" multiple=""/>
           <label for="">Subir archivo</label>

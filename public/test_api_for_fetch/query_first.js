@@ -79,6 +79,34 @@ form_upload_add_product.addEventListener('submit', function(event_of_submit_for_
 
 });
 
+
+
+
+let form_add_stamping_materials = document.getElementById('form_add_stamping_materials');
+              
+form_add_stamping_materials.addEventListener('submit', function(event_of_submit_for_default)
+{
+    event_of_submit_for_default.preventDefault();
+
+    let data = new FormData(form_add_stamping_materials);
+    console.log(data)
+    fetch('/administrative_panel', 
+    {
+        method: 'POST',
+        body:   data,
+    })
+    .then(response => response.text())
+    .then(function(texto) 
+    {
+        document.getElementById("result_message").innerHTML = '<pre>'+texto+'</pre>';
+    })
+    .catch(function(error) 
+    {
+        console.log(error);
+    })
+
+});
+
 /* 
 const close_sessionData = new FormData();
 close_sessionData.append('login_type', 'close_session');

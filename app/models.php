@@ -68,20 +68,59 @@ $stamping_materials = function($method, $connection, array $petition)
     $methodsToReturn = [
         'add_stamping_model' => function() use ($connection, $petition)
             {
-                def($consultation_stamping_materials ,"INSERT INTO `stamping_materials` 
-                (`name_of_material`, `description_material`)
-                VALUES
-                ('".$petition['name_of_material']."', '".$petition['description_material']."');");
-                $connection->query($consultation_stamping_materials);
-                
-                $connection->query($consultation_stamping_materials);
+                def($consultation_stamping_materials ,
+                    $connection->query(
+                        "INSERT INTO `stamping_materials` 
+                        (`name_of_material`, `description_material`)
+                        VALUES
+                        ('".$petition['name_of_material']."', '".$petition['description_material']."');"
+                    )
+                );
+
+                def($id_stamping_materials, 
+                    (
+                        assocQuery(
+                            $connection->query(
+                                'SELECT * FROM `stamping_materials` ORDER BY `id_stamping_materials` DESC LIMIT 1'
+                            )
+                        )
+                    )['id_stamping_materials'] 
+                );
+                var_dump($id_stamping_materials);
+
+                return $id_stamping_materials;
+            },
+        'add_stamping_images_model' => function() use ($connection, $petition)
+            {
+
+                def($consultation_resources_images, 
+                    $connection->query(
+                        "INSERT INTO `resources_images` 
+                        (`image_name`, `linck_image`)
+                        VALUES
+                        ('".$petition['image_name']."', '".$petition['linck_image']."');"
+                    )
+                );
+
+                def($id_resources_images, 
+                (
+                    assocQuery(
+                        $connection->query(
+                            'SELECT * FROM `resources_images` ORDER BY `id_resources_images` DESC LIMIT 1'
+                        )
+                    )
+                )['id_resources_images']
+            );
 
 
-                def($consultation, "INSERT INTO `material_images` 
-                (`id_stamping_materials`, `id_resources_images`)
-                VALUES
-                ('".$petition['name_of_material']."', '".$petition['description_material']."');");
-                return true;
+                def($consultation_material_images, 
+                    $connection->query(
+                        "INSERT INTO `material_images` 
+                        (`id_stamping_materials`, `id_resources_images`)
+                        VALUES
+                        ('".$petition['id_stamping_materials']."', '".$id_resources_images."');"
+                    )
+                );
             }
     ];
     
