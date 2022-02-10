@@ -154,6 +154,10 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                             });
                             return $carga_de_archivos($_FILES['upload_file']);
                         },
+                    'get_stamping_materials' => function() use ($petition, $models, $connectionArg)
+                        {
+                            return json_encode(['uno', 'dos', 'tres', 'cuatro', 'cinco']);
+                        }
                 ]);
                 return $administrative_panel_api[$petition['administrative_panel_type']]();
             },
