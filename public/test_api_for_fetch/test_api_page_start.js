@@ -16,27 +16,21 @@ fetch('../administrative_panel',
 .then(response=> response.json())
 .then(text =>
 {
-    let card_stamping_materials = document.querySelector('#template_stamping_materials').content;
+    let stamping_materials = document.querySelector('#stamping_materials');
+    let template_stamping_materials = document.querySelector('#template_stamping_materials').content;
     let fragmet = document.createDocumentFragment();
 
     text.forEach(element => {
-        let img_stamping_materials = document.createElement('img');
-        let img_element_promise = new Promise((resolve, reject) => {
-            if(element){
-                resolve(element);
-            }
-        });
-
-        img_element_promise.then(res_stamping_materials =>{
-            img_stamping_materials.setAttribute('src', `/file_store/img_products/${res_stamping_materials}`);
-            let add_stamping = card_stamping_materials.querySelector('div').append(img_stamping_materials);
-            fragmet.append(add_stamping);
-        })
-        .catch()
+        template_stamping_materials.querySelector('div div img').setAttribute('src', `/file_store/img_products/${element}`);
+        template_stamping_materials.querySelector('div div img').setAttribute('alt', `hola mundo`);
+        template_stamping_materials.querySelector('div p').textContent = 'Este es el contenido';
+        /* True copia toda la estructura interna, si se le pasa un false, solo copia 
+        la etiqueta elegida (apertura y cierre)*/
+        let clone = document.importNode(template_stamping_materials, true)
+        fragmet.append(clone);
     });
     console.log(fragmet);
-    let stamping_materials_container = document.querySelector('#stamping_materials');
-    stamping_materials_container.append(fragmet);
+    stamping_materials.append(fragmet);
     
 })
 .catch(error => console.log(error));

@@ -103,15 +103,14 @@ $stamping_materials = function($method, $connection, array $petition)
                 );
 
                 def($id_resources_images, 
-                (
-                    assocQuery(
-                        $connection->query(
-                            'SELECT * FROM `resources_images` ORDER BY `id_resources_images` DESC LIMIT 1'
+                    (
+                        assocQuery(
+                            $connection->query(
+                                'SELECT * FROM `resources_images` ORDER BY `id_resources_images` DESC LIMIT 1'
+                            )
                         )
-                    )
-                )['id_resources_images']
-            );
-
+                    )['id_resources_images']
+                );
 
                 def($consultation_material_images, 
                     $connection->query(
@@ -121,6 +120,35 @@ $stamping_materials = function($method, $connection, array $petition)
                         ('".$petition['id_stamping_materials']."', '".$id_resources_images."');"
                     )
                 );
+            },
+        'get_stamping_materials' => function() use ($connection, $petition)
+            {
+                /**
+                 * Estas consultas se deben traer el nombre de los materiales de estampados, y las imagenes
+                 * Entonces primero se hace una consulta a la tabla stamping_materials, con la cual se trae
+                 * el nombre y la descripción del material. Luego 
+                 */
+                def($consultation_get_stamping_materials ,
+                    $connection->query(
+                        "SELECT INTO `stamping_materials` 
+                        (`name_of_material`, `description_material`)
+                        VALUES
+                        ('".$petition['name_of_material']."', '".$petition['description_material']."');"
+                    )
+                );
+
+                def($id_stamping_materials, 
+                    (
+                        assocQuery(
+                            $connection->query(
+                                'SELECT * FROM `stamping_materials` ORDER BY `id_stamping_materials` DESC LIMIT 1'
+                            )
+                        )
+                    )['id_stamping_materials'] 
+                );
+                var_dump($id_stamping_materials);
+
+                return $id_stamping_materials;
             }
     ];
     
