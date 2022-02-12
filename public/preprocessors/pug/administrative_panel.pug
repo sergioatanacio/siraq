@@ -2,21 +2,21 @@
 
 html(lang="es")
     include resourses/templates/template_head_index.pug
-    style. 
-        [data-content]{
-            display: none;
-        }
-
-        .active_button[data-target]{
-            background-color: rgba(127, 255, 212, 0.418);
-        }
-
-        .active[data-content]{
-            display: grid;
-        }
-
-
     body
+
+        style. 
+            [data-content]{
+                display: none;
+            }
+
+            .active_button[data-target]{
+                background-color: rgba(127, 255, 212, 0.418);
+            }
+
+            .active[data-content]{
+                display: grid;
+            }
+
         .wrapper_admin
             section.sidebar
                 a.a_button(name="anchor" href="administrative_panel.html")
@@ -37,14 +37,13 @@ html(lang="es")
                     section#tab_add_tag(data-content)
                         section.section_add_product
                             h1 Etiquetas
-                            form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
+                            form#form_upload_tag_id.form_add_product(enctype="multipart/form-data")
 
                                 label Nombre de etiqueta&nbsp;
                                 input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
                                 label Descripción
                                 input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs
                                 label Portada de etiqueta
-
 
                                 div 
                                     input(name="upload_file[]" type="file" multiple="")
@@ -53,12 +52,12 @@ html(lang="es")
                     section#tab_add_stamping_materials(data-content)
                         section.section_add_product
                             h1 Materiales de estampados
-                            form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
-
+                            form#form_add_stamping_materials.form_add_product(enctype="multipart/form-data")
+                                input(type="hidden" name="administrative_panel_type" value="add_stamping_materials")
                                 label(for="") Nombre de material
-                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_product" required)
+                                input.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs(type="" name="name_of_material" required="required")
                                 label(for="") Descripción
-                                textarea.library-sizeAndStyle-TextAreaOfAForm.library-color-commonFormInputs(type="description_product" name="" cols="30" rows="10")
+                                textarea.library-sizeAndStyle-TextAreaOfAForm.library-color-commonFormInputs(name="description_material" cols="30" rows="10")
                                 label(for="") Archivo
 
                                 div 
@@ -70,7 +69,7 @@ html(lang="es")
                     section#tab_add_quantity_pricing_table(data-content)
                         section.section_add_product
                             h1 Tabla de precios
-                            form#form_upload_add_product_id.form_add_product(enctype="multipart/form-data")
+                            form#form_upload_material_price_id.form_add_product(enctype="multipart/form-data")
 
                                 label(for="") Materiales de estampados
                                 select.library-sizeAndStyle-inputOfAForm.library-color-commonFormInputs#product_label_id(type="" name="product_label")
@@ -124,4 +123,5 @@ html(lang="es")
             });
 
 
-        script(src="/scripts/temporaryAdmin.js")
+        script(src="/scripts/scripts_administrative_panel.js")
+        
