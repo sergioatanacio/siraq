@@ -128,7 +128,7 @@ $stamping_materials = function($method, $connection, array $petition)
                  * Entonces primero se hace una consulta a la tabla stamping_materials, con la cual se trae
                  * el nombre y la descripción del material. Luego 
                  */
-                return assocQuery(
+                /* return assocQuery(
                     $connection->query(
                         "SELECT  s.name_of_material, r.image_name, r.linck_image
                         FROM stamping_materials AS s
@@ -137,7 +137,35 @@ $stamping_materials = function($method, $connection, array $petition)
                         JOIN resources_images AS r
                             ON r.id_resources_images = m.id_resources_images;"
                     )
+                ); */
+                def($stamping_materials,
+                    assocQuery(
+                        $connection->query(
+                            'SELECT id_stamping_materials, name_of_material 
+                            FROM stamping_materials;')
+                    )
                 );
+                
+                $news_querys = array_reduce($stamping_materials, function(mixed $carry, mixed $item) use ($connection)
+                {
+                    $new_item = array_merge($item, 
+                        [
+                            'material_images' =>
+                                assocQuery(
+                                    $connection->query(
+                                        'SELECT r.image_name, r.linck_image
+                                        FROM material_images AS m
+                                        JOIN resources_images AS r
+                                            ON r.id_resources_images = m.id_resources_images
+                                            WHERE m.id_stamping_materials = '.$item['id_stamping_materials'].';'
+                                    )
+                                )
+                        ]
+                    );
+                    $new_carry = array_merge($carry, [$new_item]);
+                    return $new_carry;
+                }, []);
+                return $news_querys;
             }
     ];
     
