@@ -21,7 +21,11 @@ html(lang="es")
                 p Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.
             section
                 p Los tipos de estampado que usamos son.
-                section.tipos_estampados
+                template#template_stamping_materials
+                    div
+                        div: img 
+                        p
+                section.tipos_estampados#stamping_materials
                     +card-products('Base directa')
                     +card-products('Sublimado')
                     +card-products('Transfer digital')
@@ -56,3 +60,4 @@ html(lang="es")
                     | La Victoria. <br>
                     | Lima-Perú<br>
         .footer_botton
+        script(src="scripts/firs_index.js") 
