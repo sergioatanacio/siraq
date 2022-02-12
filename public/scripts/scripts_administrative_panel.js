@@ -1,4 +1,4 @@
-alert('Hola mundo');
+
 //http://localhost:8000/test_api_for_fetch/test_api_for_fetch.html
 
 /* 

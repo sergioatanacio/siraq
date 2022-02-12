@@ -65,6 +65,20 @@ html(lang="es")
                                     label(for="") Subir archivo
                                 input#upload_add_product(type="submit" value="Subir materiales de estampados")
                             #result_message
+                        //- template#template_table_stamping_materials
+                        table.table_stamping_materials
+                            caption Lista de materiales de estampado.
+                            thead 
+                                tr 
+                                    th Nombre 
+                                    th Descripción 
+                                    th Imagen de referencia
+                            tbody 
+                                tr 
+                                    td Vinil textil 
+                                    td Es una tecnica de estampado donde se esa el vinil textil para estampar en un solo color.
+                                    td Esto es un elemento o un alt de una imagen.
+                                    //- td: img(src="http://pinegrow.com/placeholders/img13.jpg" style="display: flex; high: 100%;")
 
                     section#tab_add_quantity_pricing_table(data-content)
                         section.section_add_product
