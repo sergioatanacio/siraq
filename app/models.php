@@ -148,18 +148,21 @@ $stamping_materials = function($method, $connection, array $petition)
                 
                 $news_querys = array_reduce($stamping_materials, function(mixed $carry, mixed $item) use ($connection)
                 {
+                    $obtaining_the_images_of_the_materials = assocQuery(
+                        $connection->query(
+                            'SELECT r.image_name, r.linck_image
+                            FROM material_images AS m
+                            JOIN resources_images AS r
+                                ON r.id_resources_images = m.id_resources_images
+                                WHERE m.id_stamping_materials = '.$item['id_stamping_materials'].';'
+                        )
+                    );
+
                     $new_item = array_merge($item, 
                         [
-                            'material_images' =>
-                                assocQuery(
-                                    $connection->query(
-                                        'SELECT r.image_name, r.linck_image
-                                        FROM material_images AS m
-                                        JOIN resources_images AS r
-                                            ON r.id_resources_images = m.id_resources_images
-                                            WHERE m.id_stamping_materials = '.$item['id_stamping_materials'].';'
-                                    )
-                                )
+                            'material_images' => (isset($obtaining_the_images_of_the_materials[0])) 
+                                ? $obtaining_the_images_of_the_materials
+                                : [$obtaining_the_images_of_the_materials]
                         ]
                     );
                     $new_carry = array_merge($carry, [$new_item]);
