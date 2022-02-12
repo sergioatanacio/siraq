@@ -128,27 +128,16 @@ $stamping_materials = function($method, $connection, array $petition)
                  * Entonces primero se hace una consulta a la tabla stamping_materials, con la cual se trae
                  * el nombre y la descripción del material. Luego 
                  */
-                def($consultation_get_stamping_materials ,
+                return assocQuery(
                     $connection->query(
-                        "SELECT INTO `stamping_materials` 
-                        (`name_of_material`, `description_material`)
-                        VALUES
-                        ('".$petition['name_of_material']."', '".$petition['description_material']."');"
+                        "SELECT  s.name_of_material, r.image_name, r.linck_image
+                        FROM stamping_materials AS s
+                        JOIN material_images AS m
+                            ON m.id_stamping_materials = s.id_stamping_materials
+                        JOIN resources_images AS r
+                            ON r.id_resources_images = m.id_resources_images;"
                     )
                 );
-
-                def($id_stamping_materials, 
-                    (
-                        assocQuery(
-                            $connection->query(
-                                'SELECT * FROM `stamping_materials` ORDER BY `id_stamping_materials` DESC LIMIT 1'
-                            )
-                        )
-                    )['id_stamping_materials'] 
-                );
-                var_dump($id_stamping_materials);
-
-                return $id_stamping_materials;
             }
     ];
     

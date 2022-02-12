@@ -11,3 +11,10 @@ SELECT s.name_of_material, r.image_name, r.linck_image
         ON m.id_stamping_materials = s.id_stamping_materials
     JOIN resources_images AS r
         ON r.id_resources_images = m.id_resources_images;
+
+SELECT  s.name_of_material, r.image_name, r.linck_image
+    FROM stamping_materials AS s
+    JOIN material_images AS m
+        ON m.id_stamping_materials = s.id_stamping_materials
+    JOIN resources_images AS r
+        ON r.id_resources_images = m.id_resources_images;

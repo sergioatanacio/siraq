@@ -156,7 +156,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                         },
                     'get_stamping_materials' => function() use ($petition, $models, $connectionArg)
                         {
-                            return json_encode(['uno', 'dos', 'tres', 'cuatro', 'cinco']);
+                            return json_encode($models('stamping_materials', 'get_stamping_materials', $petition, $connectionArg)());
                         }
                 ]);
                 return $administrative_panel_api[$petition['administrative_panel_type']]();

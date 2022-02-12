@@ -21,9 +21,10 @@ fetch('../administrative_panel',
     let fragmet = document.createDocumentFragment();
 
     text.forEach(element => {
-        template_stamping_materials.querySelector('div div img').setAttribute('src', `/file_store/img_products/${element}`);
+        console.log(element);
+        template_stamping_materials.querySelector('div div img').setAttribute('src', `/file_store/img_products/${element.linck_image}`);
         template_stamping_materials.querySelector('div div img').setAttribute('alt', `hola mundo`);
-        template_stamping_materials.querySelector('div p').textContent = 'Este es el contenido';
+        template_stamping_materials.querySelector('div p').textContent = element.name_of_material;
         /* True copia toda la estructura interna, si se le pasa un false, solo copia 
         la etiqueta elegida (apertura y cierre)*/
         let clone = document.importNode(template_stamping_materials, true)
