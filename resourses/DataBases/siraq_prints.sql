@@ -16,30 +16,30 @@ CREATE TABLE `users` (
 
 
 /* Open Aún no se está desarrollando */
-  CREATE TABLE `tags` (
-    `id_tag` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name_tag` varchar(300) NOT NULL,
-    `description_tag` text NOT NULL,
-    `cover_tag` text NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tags` (
+  `id_tag` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name_tag` varchar(300) NOT NULL,
+  `description_tag` text NOT NULL,
+  `cover_tag` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-  CREATE TABLE `sheets` (
-    `id_sheets` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name_sheets` varchar(300) NOT NULL,
-    `description_sheets` text NOT NULL,
-    `product_size` text NOT NULL,
-    `price` int NOT NULL,
-    `amount` int NOT NULL,
-    `image_sheets` text NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `sheets` (
+  `id_sheets` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name_sheets` varchar(300) NOT NULL,
+  `description_sheets` text NOT NULL,
+  `product_size` text NOT NULL,
+  `price` int NOT NULL,
+  `amount` int NOT NULL,
+  `image_sheets` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-  CREATE TABLE `relations_tags_sheets` (
-    `id_relations` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `id_tag` int NOT NULL,
-    `id_sheets` int NOT NULL
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `relations_tags_sheets` (
+  `id_relations` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_tag` int NOT NULL,
+  `id_sheets` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* Close Aún no se está desarrollando */
 
