@@ -262,7 +262,34 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                                     ],
                                 ]
                             );
-                        }
+                        },
+                    'single_stamping_material' =>  function() use ($petition, $models, $connectionArg)
+                    {
+                        return json_encode(
+                            [
+                                [
+                                    'id_stamping_materials' => '1',
+                                    'name_of_material' => 'Sublimado',
+                                    'description_material' => 'Esta es la descripción del material y del producto.',
+                                    'material_images' => 
+                                        [
+                                            [
+                                                'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                                                'linck_image' => 'pruebas_svg/prueba1.svg',
+                                            ],
+                                            [
+                                                'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                                                'linck_image' => 'pruebas_svg/prueba2.svg',
+                                            ],
+                                            [
+                                                'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                                                'linck_image' => 'pruebas_svg/prueba3.svg',
+                                            ],
+                                        ],
+                                ],
+                            ]
+                        );
+                    }
                 ]);
                 return $administrative_panel_api[$petition['administrative_panel_type']]();
             },
