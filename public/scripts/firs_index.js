@@ -23,7 +23,10 @@ fetch('../administrative_panel',
 
     text.forEach(element => {
         console.log(element);
-        template_stamping_materials.querySelector('div div img').setAttribute('src', `/file_store/img_products/${element.material_images[0].linck_image}`);
+        let linck_image = (element.material_images[0].linck_image) 
+            ? '/file_store/img_products/' + element.material_images[0].linck_image 
+            : '';
+        template_stamping_materials.querySelector('div div img').setAttribute('src', `${linck_image}`);
         template_stamping_materials.querySelector('div div img').setAttribute('alt', `hola mundo`);
         template_stamping_materials.querySelector('div p').textContent = element.name_of_material;
         /* True copia toda la estructura interna, si se le pasa un false, solo copia 

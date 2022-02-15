@@ -145,8 +145,7 @@ $stamping_materials = function($method, $connection, array $petition)
                             FROM stamping_materials;')
                     )
                 );
-                
-                $news_querys = array_reduce($stamping_materials, function(mixed $carry, mixed $item) use ($connection)
+                $news_querys = array_reduce($stamping_materials, function($carry, $item) use ($connection)
                 {
                     $obtaining_the_images_of_the_materials = assocQuery(
                         $connection->query(
