@@ -8,7 +8,7 @@
 let data = new FormData();
 data.append('administrative_panel_type', 'get_stamping_materials');
 
-fetch('../administrative_panel', 
+fetch('/administrative_panel', 
 {
     method: 'POST',
     body:   data,
