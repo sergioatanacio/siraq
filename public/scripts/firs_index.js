@@ -23,9 +23,9 @@ fetch('administrative_panel',
         let linck_image = (element.material_images[0].linck_image) 
             ? '/file_store/img_products/' + element.material_images[0].linck_image 
             : '';
-        template_stamping_materials.querySelector('div div img').setAttribute('src', `${linck_image}`);
-        template_stamping_materials.querySelector('div div img').setAttribute('alt', `hola mundo`);
-        template_stamping_materials.querySelector('div p').textContent = element.name_of_material;
+        template_stamping_materials.querySelector('img').setAttribute('src', `${linck_image}`);
+        template_stamping_materials.querySelector('img').setAttribute('alt', `hola mundo`);
+        template_stamping_materials.querySelector('p').textContent = element.name_of_material;
         /* True copia toda la estructura interna, si se le pasa un false, solo copia 
         la etiqueta elegida (apertura y cierre)*/
         let clone = document.importNode(template_stamping_materials, true)

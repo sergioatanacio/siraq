@@ -1,9 +1,69 @@
-head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    link(rel="shortcut icon" href="images/favicon.svg" type="")
-    meta(name="description" content="")
-    meta(name="author" content="")
-    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
-    title Siraq
-    link(href="css/first.css" rel="stylesheet") 
+mixin head_template()
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        link(rel="shortcut icon" href="images/favicon.svg" type="")
+        meta(name="description" content="")
+        meta(name="author" content="")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        title Siraq
+        link(href="css/first.css" rel="stylesheet") 
+
+
+    
+mixin title_of_page(title_of_page, descriptionof_page)
+    section
+        h2= title_of_page
+        p= descriptionof_page
+
+mixin card_products_template()
+    template#template_stamping_materials
+        a(href="single_stamping_material.html") 
+            div
+                div: img 
+                p
+
+mixin card-products(tex_of_card)
+    div 
+        div: img(src="http://pinegrow.com/placeholders/img13.jpg") 
+        p= tex_of_card
+
+mixin menu_of_navigation()
+    nav
+        a(href="/" style="width: 6.5em;")
+            img(width="250" src="/images/logo.svg" alt="#")
+        div
+            a(href="https://sites.google.com/view/siraq-shop/inicio") Catalogo de polos en stock
+            a Nosotros
+        
+
+mixin footer_sira()
+    footer
+        section.footer_contend
+            div
+                p Contacto directo <br><br>
+                p Whatsapp Tienda, y tambien yape: +51 935 863 556 <br>
+                | Email: siraqshop@gmail.com <br>
+                | Sergio Atanacio. Representante: +51 953 225 906 <br><br>
+                p Redes
+                ul 
+                    li Youtube
+                    li Facebook
+                    li TikTok
+            div 
+                p Dirección <br>
+                | Aviación 282. Tercer piso. Puesto 311. <br>
+                | Referencia: Cerca a la reja entre Avicación con Jiron Humbold.<br>
+                | La Victoria. <br>
+                | Lima-Perú<br>
+    .footer_botton
+
+mixin section_of_cards(description_section, id_section)
+    section
+        p=description_section
+        section.tipos_estampados(id=id_section)
+
+mixin button_section()
+    section.boton_ver_precio
+        a: button.library-color-mainButton Ver precio de estampado de Polos
+        a: button.library-color-mainButton Ver precio de estampado en Poleras

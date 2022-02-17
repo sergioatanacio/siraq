@@ -1,54 +1,23 @@
 //- Se debe compilar en la carpeta raiz.
 
-<!DOCTYPE html> 
-mixin card-products(tex_of_card)
-    div 
-        div: img(src="http://pinegrow.com/placeholders/img13.jpg") 
-        p= tex_of_card
+include resourses/templates/template_head_index.pug
 
+doctype html
 html(lang="es")
-    include resourses/templates/template_head_index.pug
+    +head_template()
     body
-        nav
-            a(href="/" style="width: 6.5em;")
-                img(width="250" src="/images/logo.svg" alt="#")
-            div
-                a(href="https://sites.google.com/view/siraq-shop/inicio") Catalogo de polos en stock
-                a Nosotros
+        +menu_of_navigation()
         section.wrapper 
-            template#template_stamping_materials
-                div
-                    div: img 
-                    p
-            section
-                h2 Estampado de polos
-                p Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.
-            section
-                p Los tipos de estampado que usamos son.
-                section.tipos_estampados#stamping_materials
-            section 
-                p Los precios del estampado dependen del tamaño del diseño, ascí como el color de la prenda. Prenda: Negra, de colores, blanca.
-                section.tipos_estampados#stamping_size
-            section.boton_ver_precio
-                a: button.library-color-mainButton Ver precio de estampado de Polos
-                a: button.library-color-mainButton Ver precio de estampado en Poleras
-        footer
-            section.footer_contend
-                div
-                    p Contacto directo <br><br>
-                    p Whatsapp Tienda, y tambien yape: +51 935 863 556 <br>
-                    | Email: siraqshop@gmail.com <br>
-                    | Sergio Atanacio. Representante: +51 953 225 906 <br><br>
-                    p Redes
-                    ul 
-                        li Youtube
-                        li Facebook
-                        li TikTok
-                div 
-                    p Dirección <br>
-                    | Aviación 282. Tercer piso. Puesto 311. <br>
-                    | Referencia: Cerca a la reja entre Avicación con Jiron Humbold.<br>
-                    | La Victoria. <br>
-                    | Lima-Perú<br>
-        .footer_botton
+            +card_products_template()
+            +title_of_page(
+                'Estampado de polos', 
+                'Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.')
+            +section_of_cards(
+                'Los tipos de estampado que usamos son.', 
+                'stamping_materials')
+            +section_of_cards(
+                'Los precios del estampado dependen del tamaño del diseño, ascí como el color de la prenda. Prenda: Negra, de colores, blanca.', 
+                'stamping_size')
+            +button_section()
+        +footer_sira()
         script(src="scripts/firs_index.js") 
