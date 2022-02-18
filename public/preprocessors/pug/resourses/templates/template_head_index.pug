@@ -18,10 +18,10 @@ mixin title_of_page(title_of_page, descriptionof_page)
 
 mixin card_products_template()
     template#template_stamping_materials
-        a(href="single_stamping_material.html") 
+        a.card_data_link(href="single_stamping_material.html") 
             div
-                div: img 
-                p
+                div: img.card_image
+                p.name_card
 
 mixin card-products(tex_of_card)
     div 
