@@ -15,7 +15,8 @@ html(lang="es")
         +footer_sira()
         script.
             //alert(window.location.search.substring(1));
-            alert(window.location.search.substring(1));
+            const urlParams = Object.fromEntries(new URLSearchParams(window.location.search));
+            console.log(urlParams);
 
 
 
