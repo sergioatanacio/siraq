@@ -5,7 +5,7 @@ mixin card-products(tex_of_card)
     div 
         div: img(src="http://pinegrow.com/placeholders/img13.jpg") 
         p= tex_of_card
-            
+
 html(lang="es")
     include resourses/templates/template_head_index.pug
     body
@@ -16,24 +16,19 @@ html(lang="es")
                 a(href="https://sites.google.com/view/siraq-shop/inicio") Catalogo de polos en stock
                 a Nosotros
         section.wrapper 
+            template#template_stamping_materials
+                div
+                    div: img 
+                    p
             section
                 h2 Estampado de polos
                 p Nos dedicamos a la venta el diseño y estampado de prendas personalizadas.
             section
                 p Los tipos de estampado que usamos son.
-                section.tipos_estampados
-                    +card-products('Base directa')
-                    +card-products('Sublimado')
-                    +card-products('Transfer digital')
-                    +card-products('Vinil textil')
-                    +card-products('Plastizol')
-                    +card-products('Dtf')
+                section.tipos_estampados#stamping_materials
             section 
                 p Los precios del estampado dependen del tamaño del diseño, ascí como el color de la prenda. Prenda: Negra, de colores, blanca.
-                section.tipos_estampados
-                    +card-products('Logo 7 cm x 5 cm')
-                    +card-products('A4')
-                    +card-products('A3')
+                section.tipos_estampados#stamping_size
             section.boton_ver_precio
                 a: button.library-color-mainButton Ver precio de estampado de Polos
                 a: button.library-color-mainButton Ver precio de estampado en Poleras
@@ -56,3 +51,4 @@ html(lang="es")
                     | La Victoria. <br>
                     | Lima-Perú<br>
         .footer_botton
+        script(src="scripts/firs_index.js") 
