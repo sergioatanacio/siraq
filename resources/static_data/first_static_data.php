@@ -125,7 +125,50 @@ return [
                         ],
                     ],
             ],
+            [
+                'id_stamping_materials' => '2',
+                'name_of_material' => 'Vinil textil',
+                'description_material' => 'Esta es la descripción del material y del producto.',
+                'material_images' => 
+                    [
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba1.svg',
+                        ],
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba2.svg',
+                        ],
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba3.svg',
+                        ],
+                    ],
+            ],
+            [
+                'id_stamping_materials' => '3',
+                'name_of_material' => 'Serigrafía',
+                'description_material' => 'Esta es la descripción del material y del producto.',
+                'material_images' => 
+                    [
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba1.svg',
+                        ],
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba2.svg',
+                        ],
+                        [
+                            'image_name' => 'Imagen_AI_cristiana@3x@3x.png',
+                            'linck_image' => 'pruebas_svg/prueba3.svg',
+                        ],
+                    ],
+            ],
         ],
 
 
 ];
+
+
+
