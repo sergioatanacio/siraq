@@ -18,7 +18,7 @@ fetch('administrative_panel',
 {
     let template_stamping_materials = document.querySelector('#template_stamping_materials').content;
     let fragmet = document.createDocumentFragment();
-    
+    console.log(text);
     text.forEach(element => {
         let linck_image = (element.material_images[0].linck_image) 
         ? '/file_store/img_products/' + element.material_images[0].linck_image 

@@ -3,8 +3,8 @@
 shell_exec('git pull origin master && git pull origin desarrollo');
 
 shell_exec(
-    ' start pug -w --pretty resourses/preprocessors/pug/public -o ./public &&'.
-    ' start stylus -w resourses\preprocessors\stylus\first.styl -o .\public\css\\ &&'.
+    ' start pug -w --pretty resources/preprocessors/pug/public -o ./public &&'.
+    ' start stylus -w resources\preprocessors\stylus\first.styl -o .\public\css\\ &&'.
     ' code .  && cd public && start php -S localhost:8000 && cd ../ && ls -lha  '.
     ' '
 );
@@ -12,9 +12,9 @@ shell_exec(
 
 
 /* 
-shell_exec('start pug -w --pretty resourses/preprocessors/pug/public -o ./public');
+shell_exec('start pug -w --pretty resources/preprocessors/pug/public -o ./public');
 
-shell_exec('start stylus -w resourses\preprocessors\stylus\first.styl -o .\public\css\\');
+shell_exec('start stylus -w resources\preprocessors\stylus\first.styl -o .\public\css\\');
 
 shell_exec('code .  && cd public && start php -S localhost:8000 && cd ../ && ls -lha ');
  */
