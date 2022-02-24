@@ -3,6 +3,7 @@ const urlParams = Object.fromEntries(new URLSearchParams(window.location.search)
 let get_stamping_materials = new FormData();
 let id_of_element = Object.keys(urlParams)[0];
 get_stamping_materials.append(id_of_element, `${urlParams[id_of_element]}`);
+get_stamping_materials.append('administrative_panel_type', 'get_single_stamping_material');
 
 fetch('administrative_panel', 
 {
@@ -12,7 +13,7 @@ fetch('administrative_panel',
 .then(response=> response.json() )
 .then(text =>
 {
-    console.log(text);
+    console.log(text[0]);
 
 })
 .catch(error => console.log(error));
