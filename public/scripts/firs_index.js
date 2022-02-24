@@ -23,7 +23,7 @@ fetch('administrative_panel',
         let linck_image = (element.material_images[0].linck_image) 
         ? '/file_store/img_products/' + element.material_images[0].linck_image 
         : '';
-        template_stamping_materials.querySelector('.card_data_link').setAttribute('href', `single_stamping_material.html?id_stamping_size=${element.id_stamping_materials}`);
+        template_stamping_materials.querySelector('.card_data_link').setAttribute('href', `single_stamping_material.html?${Object.keys(element)[0]}=${element.id_stamping_materials}`);
         template_stamping_materials.querySelector('.card_image').setAttribute('src', `${linck_image}`);
         template_stamping_materials.querySelector('.card_image').setAttribute('alt', `hola mundo`);
         template_stamping_materials.querySelector('.name_card').textContent = element.name_of_material;
