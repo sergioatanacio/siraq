@@ -169,7 +169,7 @@ def($generalController, function($method, $connectionArg, $petition) use ($model
                         {
                                 def($data_array, require __DIR__.'./../resources/static_data/first_static_data.php');
                                 $result_of_array = array_filter($data_array['single_stamping_material'], fn($item)=>$item['id_stamping_materials'] == $petition['id_stamping_materials']);
-                                return json_encode($result_of_array);
+                                return json_encode(array_merge($result_of_array) );
                         },
                 ]);
                 return $administrative_panel_api[$petition['administrative_panel_type']]();
