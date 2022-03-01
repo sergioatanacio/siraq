@@ -13,7 +13,24 @@ fetch('administrative_panel',
 .then(response=> response.json() )
 .then(text =>
 {
-    console.log(text[0]);
+    let object_single_material = text[0];
+    console.log(object_single_material);
+
+    let template_stamping_materials = document.querySelector('#template_stamping_materials').content;
+    let fragmet = document.createDocumentFragment();
+
+    template_stamping_materials.querySelector('h2').textContent = object_single_material.name_of_material;
+    template_stamping_materials.querySelector('p').textContent = object_single_material.description_material;
+    
+    /* True copia toda la estructura interna, si se le pasa un false, solo copia 
+    la etiqueta elegida (apertura y cierre)*/
+    let clone = document.importNode(template_stamping_materials, true)
+    fragmet.append(clone);
+
+    let stamping_materials = document.querySelector('.wrapper');
+    stamping_materials.append(fragmet);
+
+
 
 })
 .catch(error => console.log(error));
